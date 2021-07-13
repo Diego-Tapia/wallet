@@ -1,1 +1,0 @@
-// Componente que une Header, Menu y Footer
