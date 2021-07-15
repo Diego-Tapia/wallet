@@ -1,42 +1,45 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="box">
+  <div class="one">Últimos movimientos</div>
+  <div class="two"><img src="../../../../assets/icons/Lupa.svg" class="icons"/>Buscar</div>
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+</div>
 
-  <!-- Position Column -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 data-table">
+  
+  <!-- type Column -->
   <ng-container matColumnDef="type">
     <th mat-header-cell *matHeaderCellDef>Tipo</th>
     <td mat-cell *matCellDef="let element"> {{element.type}} </td>
   </ng-container>
 
-  <!-- Name Column -->
+  <!-- date Column -->
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef>Fecha</th>
     <td mat-cell *matCellDef="let element"> {{element.date}} </td>
   </ng-container>
 
-  <!-- Weight Column -->
+  <!-- typet Column -->
   <ng-container matColumnDef="typet">
     <th mat-header-cell *matHeaderCellDef>Tipo de transaccion</th>
-    <td mat-cell *matCellDef="let element"> {{element.typet}} </td>
+    <td mat-cell *matCellDef="let element"><span class="type-color">{{element.typet}} </span></td>
   </ng-container>
 
-  <!-- Symbol Column -->
+  <!-- description Column -->
   <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.description}}<img src="../../../../assets/icons/info.svg" class="icons"></td>
   </ng-container>
 
-  <!---->
+  <!--credit column-->
   <ng-container matColumnDef="credit">
     <th mat-header-cell *matHeaderCellDef> Creditos </th>
     <td mat-cell *matCellDef="let element"> {{element.credit}} </td>
   </ng-container>
 
-  <!---->
+  <!--total column-->
   <ng-container matColumnDef="total">
     <th mat-header-cell *matHeaderCellDef> Total </th>
-    <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.total}}<img src="../../../../assets/icons/invoice.svg" class="icons"></td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 export interface PeriodicElement {
   date: string;
   type: string;
-  typet: number;
+  typet: string;
   description: string;
   credit: Number;
   total: number
@@ -10,11 +10,11 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {type: 'DBI', date: '03/02/2021', typet: 1.0079, description: 'Detalle concepto decremento 1', credit: 6, total: 50},
-  {type: 'PPA', date: '02/02/2021', typet: 4.0026, description: 'Detalle concepto decremento 2', credit: 5, total: 60},
-  {type: 'PPA', date: '01/02/2021', typet: 6.941, description: 'Detalle concepto incremento ma...', credit: 5, total: 30},
-  {type: 'DBI', date: '28/01/2021', typet: 9.0122, description: 'Detalle concepto incremento 1', credit: 5, total: 40},
-  {type: 'PPA', date: '28/01/2021', typet: 10.811, description: 'Detalle concepto incremento 2', credit: 5, total:70}
+  {type: 'DBI', date: '03/02/2021', typet: 'Decremento Individual', description: 'Detalle concepto decremento 1', credit: (50), total: 50},
+  {type: 'PPA', date: '02/02/2021', typet: 'Decremento Individual', description: 'Detalle concepto decremento 2', credit: (350), total: 100},
+  {type: 'PPA', date: '01/02/2021', typet: 'Incremento Masivo', description: 'Detalle concepto incremento ma...', credit: 350, total: 450},
+  {type: 'DBI', date: '28/01/2021', typet: 'Incremento Individual', description: 'Detalle concepto incremento 1', credit: 70, total: 100},
+  {type: 'PPA', date: '28/01/2021', typet: 'Incremento Individual', description: 'Detalle concepto incremento 2', credit: 30, total:30}
 ];
 
 @Component({
