@@ -25,9 +25,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class OperationDetailComponent implements OnInit {
   displayedColumns: string[] = ['type', 'date', 'typet', 'description', 'credit', 'total'];
   dataSource = ELEMENT_DATA;
+
+ 
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
 }

@@ -1,7 +1,8 @@
 <div class="box">
   <div class="vl"></div><div class="one">Últimos movimientos</div>
-  <div class="two"><img src="../../../../assets/icons/Lupa.svg" class="icons"/>Buscar</div>
-
+  <div class="two"><img src="../../../../assets/icons/Lupa.svg" class="icons"/>
+    <input type="text" class="form-control search" name="filterPost" placeholder="Buscar"/>
+  </div>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 data-table">
@@ -45,10 +46,8 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<div class="">
-  <div class="pagination">
-    <img src="../../../../assets/icons/Flecha Paginacion.svg"/><span>1</span>
-    <img src="../../../../assets/icons/Flecha Paginacion (1).svg"/>
-  </div>
-</div>
+<mat-paginator class="pagination" [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
 
