@@ -6,7 +6,9 @@ import { OperationDetailComponent } from './operation-detail/operation-detail.co
 import { CardComponent } from './card/card.component';
 import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -21,7 +23,9 @@ import { MatTableModule } from '@angular/material/table'
     CommonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule
   ]
 })
 export class ComponentsModule { }
