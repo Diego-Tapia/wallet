@@ -11,7 +11,7 @@ import { ComponentsModule } from './shared/components/components.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
