@@ -7,12 +7,11 @@ import { LoginDeskComponent } from '../components/login/login-desk/login-desk.co
 const routes: Routes = [
   {path: '', component: MainLayoutComponent,
     children:[
-      {path:'', component: HomeDeskComponent},
-      {path: 'credits', component: CreditDeskComponent}  
+      {path:'', component: HomeDeskComponent},  
     ]},
-   {
-     path: 'login', component: LoginDeskComponent
-   }
+    {
+      path: 'login', component: LoginDeskComponent
+    },
 ];
 
 @NgModule({
