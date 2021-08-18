@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Transferir créditos</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+ <div class="row">
+  <div class="credits">
+    <p class="total-credits">140 PPA</p>
+    <p class="text-principal">Pagos Pendientes de Aplicar</p>
+  </div>
+ </div>
+ <hr>
+ <div class="box">
+  <div class="one"><span>Origen</span></div>
+  <div class="two">
+    <p>27-39621302-3</p><br>
+    <p>Xxxxx-Xxxxx</p>
+  </div>
+</div>
+<hr>
+<div class="box">
+  <div class="one"><span>Destinatario</span></div>
+  <div class="two">
+    <p>20-39567124-1</p>
+    <p>Xxxxxx-Xxxxxx</p>
+  </div>
+</div>
+<hr>
+<div class="box">
+  <div class="one"><span>Créditos</span></div>
+  <div class="two">
+    <p>140</p>
+    <p>desde 01/01/2001</p>
+  </div>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

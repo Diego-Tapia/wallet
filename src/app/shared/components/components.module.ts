@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
 import { CreditsModule } from './credits/credits.module';
 import { LoginModule } from './login/login.module';
+import { TransferTokensModule } from './transfer-tokens/transfer-tokens.module';
 import { RouterModule } from '@angular/router';
 
 
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
     HomeModule,
     CreditsModule,
     LoginModule,
+    TransferTokensModule,
     RouterModule
   ]
 })
