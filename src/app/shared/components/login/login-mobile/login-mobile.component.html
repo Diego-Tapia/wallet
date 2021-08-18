@@ -11,6 +11,11 @@
           <span class="hidden">Password</span>
           <input id="login-password" type="password" class="form-input" placeholder="Password" formControlName="Password">
         </div>
+
+        <div class="form-field">
+          <span class="hidden">Email</span>
+          <input id="login-email" type="text" class="form-input" placeholder="E-mail" formControlName="Mail">
+        </div>
   
         <div class="form-field redirection">
             <div class="div-check">
@@ -21,7 +26,7 @@
         </div>
   
         <div class="form-field">
-            <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Log in" class="button"><span class="button-text">INGRESAR</span></button>
+            <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Log in" class="button" routerLink="/home"><span class="button-text">INGRESAR</span></button>
         </div>
 
         <div class="box">

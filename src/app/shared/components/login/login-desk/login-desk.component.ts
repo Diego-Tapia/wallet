@@ -8,8 +8,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 export class LoginDeskComponent implements OnInit {
   constructor() { }
   myForm = new FormGroup({
-    userName: new FormControl('', Validators.required),
-    Password: new FormControl('', Validators.required),
+    userName: new FormControl('', [Validators.required, Validators.maxLength(16)]),
+    Password: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),
+    Mail: new FormControl ('', [Validators.required, Validators.email])
 });
   login() {
     // TODO: Use EventEmitter with form value
