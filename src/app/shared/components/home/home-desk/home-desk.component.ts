@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { TransferTokensDeskComponent } from '../../transfer-tokens/transfer-tokens-desk/transfer-tokens-desk.component';
 export interface PeriodicElement {
   date: string;
   type: string;
@@ -24,8 +26,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class HomeDeskComponent implements OnInit {
   displayedColumns: string[] = ['type', 'date', 'typet', 'description', 'credit', 'total'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
 
+  constructor(public dialog: MatDialog) { }
+  openDialog() {
+    const dialogRef = this.dialog.open(TransferTokensDeskComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   ngOnInit(): void {
   }
 

@@ -7,8 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutComponentsModule } from './shared/layout-components/layout-components.module';
 import { ComponentsModule } from './shared/components/components.module';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
