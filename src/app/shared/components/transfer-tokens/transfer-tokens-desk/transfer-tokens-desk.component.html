@@ -9,30 +9,36 @@
  </div>
  <hr>
  <div class="box">
-  <div class="one"><span>Origen</span></div>
+  <div class="one"><span class="subtitle-principal">Origen</span></div>
   <div class="two">
-    <p>27-39621302-3</p><br>
-    <p>Xxxxx-Xxxxx</p>
+    <p style="font-weight: 500;">27-39621302-3</p><br>
+    <p style="margin-top: -23px; font-weight: 500;">Xxxxx-Xxxxx</p>
   </div>
 </div>
 <hr>
 <div class="box">
-  <div class="one"><span>Destinatario</span></div>
+  <div class="one"><span class="subtitle-principal">Destinatario</span></div>
   <div class="two">
-    <p>20-39567124-1</p>
-    <p>Xxxxxx-Xxxxxx</p>
+    <p style="font-weight: 500;">20-39567124-1</p>
+    <p style="font-weight: 500;">Xxxxxx-Xxxxxx</p>
   </div>
 </div>
 <hr>
 <div class="box">
-  <div class="one"><span>Créditos</span></div>
+  <div class="one"><span class="subtitle-principal">Créditos</span></div>
   <div class="two">
-    <p>140</p>
-    <p>desde 01/01/2001</p>
+    <p style="font-weight: 500;">140</p>
+    <p style="font-weight: 500;">desde 01/01/2001</p>
   </div>
 </div>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+<mat-dialog-actions align="center">
+  <div class="box-buttons">
+    <div>
+      <button mat-button mat-dialog-close class="button-confirm" disabled><span style="color: #ffffff;">Confirmar</span></button>
+    </div>
+    <div>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="button-cancel"><span style="color: #1c7cd5;">Cancelar</span></button>
+    </div>
+  </div>
 </mat-dialog-actions>
