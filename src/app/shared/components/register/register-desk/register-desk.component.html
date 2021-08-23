@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="logo"><img src="../../../../../assets/images/Interconomy-Isotipo.png" class="image"/></div>
                 <div class="login-item">
-                  <form [formGroup]="myForm" (ngSubmit)="login(myForm.value)" method="post" class="form form-login">
+                  <form [formGroup]="myForm" (ngSubmit)="register(myForm.value)" method="post" class="form form-login">
                     <div class="form-field">
                       <span class="hidden">Username</span>
                       <input id="login-username" type="text" class="form-input" placeholder="Username" formControlName="name">
@@ -16,10 +16,10 @@
                       <input id="login-password" type="password" class="form-input" placeholder="Password" formControlName="password">
                     </div>
 
-                    <!--<div class="form-field">
+                    <div class="form-field">
                         <span class="hidden">Email</span>
                         <input id="login-mail" type="text" class="form-input" placeholder="E-mail" formControlName="email">
-                    </div>-->
+                    </div>
               
                     <div class="form-field redirection">
                         <div class="div-check">
@@ -30,13 +30,13 @@
                     </div>
               
                     <div class="form-field">
-                        <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Log in" class="button"><span class="button-text">INGRESAR</span></button>
+                        <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Register" class="button"><span class="button-text">REGISTRAR</span></button>
                     </div>
 
-                    <div class="box">
+                    <!--<div class="box">
                         <div class="one"><span class="option">Olvidé mi contraseña</span></div>
-                        <div class="two" routerLink="/register"><span class="option">Crear cuenta</span></div>
-                    </div>
+                        <div class="two"><span class="option">Crear cuenta</span></div>
+                    </div>-->
 
                   </form>
                 </div>
@@ -44,4 +44,4 @@
         </mat-grid-tile>
     </mat-grid-list>
 </section>
-<app-login-mobile class="mobile"></app-login-mobile>
+<app-register-mobile class="mobile"></app-register-mobile>

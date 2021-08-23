@@ -5,15 +5,15 @@
             <div class="container">
                 <div class="logo"><img src="../../../../../assets/images/Interconomy-Isotipo.png" class="image"/></div>
                 <div class="login-item">
-                  <form [formGroup]="myForm" (ngSubmit)="login(myForm.value)" method="post" class="form form-login">
+                  <form [formGroup]="myForm" (ngSubmit)="confirm(myForm.value)" method="post" class="form form-login">
                     <div class="form-field">
                       <span class="hidden">Username</span>
-                      <input id="login-username" type="text" class="form-input" placeholder="Username" formControlName="name">
+                      <input id="confirm-username" type="text" class="form-input" placeholder="Username" formControlName="username">
                     </div>
               
                     <div class="form-field">
-                      <span class="hidden">Password</span>
-                      <input id="login-password" type="password" class="form-input" placeholder="Password" formControlName="password">
+                      <span class="hidden">Confirmation Code</span>
+                      <input id="confirm-code" type="text" class="form-input" placeholder="Confirm-code" formControlName="confirmationCode">
                     </div>
 
                     <!--<div class="form-field">
@@ -21,22 +21,22 @@
                         <input id="login-mail" type="text" class="form-input" placeholder="E-mail" formControlName="email">
                     </div>-->
               
-                    <div class="form-field redirection">
+                    <!--<div class="form-field redirection">
                         <div class="div-check">
                             <section class="example-section">
                                 <mat-checkbox class="example-margin"><span style="font-family: monospace; font-weight: 600; color: #000;">Recordar contraseña</span></mat-checkbox>
                             </section>
                         </div>
-                    </div>
+                    </div>-->
               
                     <div class="form-field">
-                        <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Log in" class="button"><span class="button-text">INGRESAR</span></button>
+                        <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Log in" class="button"><span class="button-text">CONFIRMAR</span></button>
                     </div>
 
-                    <div class="box">
+                    <!--<div class="box">
                         <div class="one"><span class="option">Olvidé mi contraseña</span></div>
                         <div class="two" routerLink="/register"><span class="option">Crear cuenta</span></div>
-                    </div>
+                    </div>-->
 
                   </form>
                 </div>
@@ -44,4 +44,5 @@
         </mat-grid-tile>
     </mat-grid-list>
 </section>
-<app-login-mobile class="mobile"></app-login-mobile>
+<app-confirm-code-mobile class="mobile"></app-confirm-code-mobile>
+

@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { ApiLoginService } from '../services/api-login.service';
+import { LoginI } from '../models/login.interface';
 @Component({
   selector: 'app-login-desk',
   templateUrl: './login-desk.component.html',
   styleUrls: ['./login-desk.component.sass']
 })
 export class LoginDeskComponent implements OnInit {
-  constructor() { }
+  constructor(
+    private apiLogin: ApiLoginService,
+  ) { }
   myForm = new FormGroup({
-    userName: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-    Password: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),
-    Mail: new FormControl ('', [Validators.required, Validators.email])
+    name: new FormControl('', [Validators.required, Validators.maxLength(16)]),
+    password: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),
+    //email: new FormControl ('', [Validators.required, Validators.email])
 });
-  login() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.myForm.value);
+  login(form: LoginI) {
+    this.apiLogin.onLogin(form).subscribe(data => {
+      console.log(data);
+    });
+    console.log(form)
   }
   ngOnInit(): void {
   }
