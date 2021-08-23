@@ -4,6 +4,8 @@ import { HomeModule } from './home/home.module';
 import { CreditsModule } from './credits/credits.module';
 import { LoginModule } from './login/login.module';
 import { TransferTokensModule } from './transfer-tokens/transfer-tokens.module';
+import { ConfirmCodeModule } from './confirm-code/confirm-code.module';
+import { RegisterModule } from './register/register.module';
 import { RouterModule } from '@angular/router';
 
 
@@ -17,6 +19,8 @@ import { RouterModule } from '@angular/router';
     CreditsModule,
     LoginModule,
     TransferTokensModule,
+    ConfirmCodeModule,
+    RegisterModule,
     RouterModule
   ]
 })
