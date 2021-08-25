@@ -30,7 +30,7 @@
                     </div>
               
                     <div class="form-field">
-                        <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Register" class="button"><span class="button-text">REGISTRAR</span></button>
+                        <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Register" class="button" (click)="register(myForm.value)"><span class="button-text">REGISTRAR</span></button>
                     </div>
 
                     <!--<div class="box">
