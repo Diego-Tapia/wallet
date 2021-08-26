@@ -1,6 +1,7 @@
 <mat-drawer-container class="example-container">
-  <mat-drawer #drawer class="sidenav">
-    <h2 mat-dialog-title>Transferir créditos</h2>
+  <mat-drawer #drawer class="sidenav" position='end'>
+    <h2 mat-dialog-title style="margin-left: 23px;
+    margin-top: 16px;">Transferir créditos</h2>
 <hr>
 <mat-dialog-content class="mat-typography">
  <div class="row">
@@ -21,7 +22,14 @@
 <div class="box">
   <div class="one"><span class="subtitle-principal">Destinatario</span></div>
   <div class="two">
-    <p style="font-weight: 500;">20-39567124-1</p>
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Destinatario</mat-label>
+        <input matInput #destination maxlength="256" placeholder="Ex. I need help with...">
+        <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+        <mat-hint align="end">{{destination.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </form>
     <p style="font-weight: 500;">Xxxxxx-Xxxxxx</p>
   </div>
 </div>
@@ -29,7 +37,14 @@
 <div class="box">
   <div class="one"><span class="subtitle-principal">Créditos</span></div>
   <div class="two">
-    <p style="font-weight: 500;">140</p>
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Creditos</mat-label>
+        <input matInput #credits maxlength="256" placeholder="Ex. I need help with...">
+        <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+        <mat-hint align="end">{{credits.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </form>
     <p style="font-weight: 500;">desde 01/01/2001</p>
   </div>
 </div>

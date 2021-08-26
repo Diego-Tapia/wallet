@@ -12,7 +12,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list'
-
+import {MatInputModule} from '@angular/material/input'
 @NgModule({
   declarations: [HomeDeskComponent, HomeMobileComponent],
   imports: [
@@ -26,6 +26,7 @@ import {MatGridListModule} from '@angular/material/grid-list'
     MatSidenavModule,
     MatSelectModule,
     MatGridListModule,
+    MatInputModule,
     RouterModule
 
   ]
