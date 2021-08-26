@@ -9,7 +9,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list'
 
 @NgModule({
   declarations: [HomeDeskComponent, HomeMobileComponent],
@@ -21,6 +23,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatGridListModule,
     RouterModule
 
   ]
