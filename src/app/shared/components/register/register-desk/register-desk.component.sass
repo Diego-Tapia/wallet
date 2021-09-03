@@ -5,6 +5,12 @@ mat-grid-tile
   background: #ffffff
 mat-grid-tile
   height: 92%
+  width: 41% !important
+.mat-stepper-horizontal
+  margin-top: 8px
+.mat-form-field
+  margin-top: 16px
+
 //--------------------------------------------------------
 .container
   background:rgba(58,63,68,0.5)
@@ -18,7 +24,9 @@ mat-grid-tile
   text-align: center
   padding: 20px 20px 0
   margin:0
-  margin-top: -85px  
+  margin-top: 18px
+  margin-bottom: -33px
+  margin-right: 55px
 .login-item
   color:#0645AD
   padding: 0px 25px 0
@@ -28,6 +36,7 @@ mat-grid-tile
   font-family: monospace
   font-weight: 600
   cursor: pointer
+  margin-left: -8%
 input
   border: 0
   color: inherit
@@ -61,13 +70,20 @@ input
   padding-left: 1.25rem
   padding-right: 1.25rem
 .form-login input[type="text"], .form-login input[type="password"]
-  background-color: #dcdcdc
+  background-color:#f1efef
   border-bottom-left-radius: 0
   border-top-left-radius: 0
   font-weight: 600
 .form-login input[type="text"]:focus, .form-login input[type="text"]:hover, .form-login input[type="password"]:focus, .form-login input[type="password"]:hover
-  background-color: #eeeeee
-.form-login button[type="submit"]
+  background-color: #c7c7c7    
+.form-field
+  display: -webkit-box
+  display: -webkit-flex
+  display: -ms-flexbox
+  display: flex
+  margin-bottom: 1rem
+  width: 473px
+.button
   background-color:#1D46FB
   color: #eee
   font-weight: bold
@@ -75,14 +91,20 @@ input
   padding-top: 0px
   padding-bottom: 0px
   cursor: pointer
-.form-login button[type="submit"]:focus, .form-login button[type="submit"]:hover
+  width: 81%
+.button:hover
   background-color:#0645AD
-.form-field
-  display: -webkit-box
-  display: -webkit-flex
-  display: -ms-flexbox
-  display: flex
-  margin-bottom: 2rem
+.button-cancel
+  background-color:#ffffff
+  color: #a7a7a7
+  font-weight: bold
+  text-transform: uppercase
+  padding-top: 0px
+  padding-bottom: 0px
+  cursor: pointer
+  width: 81%
+.button-cancel:hover
+  background-color:#e2e2e2
 .hidden
   border: 0
   clip: rect(0 0 0 0)
@@ -95,7 +117,7 @@ input
 .text--center
   text-align: center
 .image
-  width: 30%
+  width: 25%
 .link
   font-family: Arial, Helvetica, sans-serif
   font-size: 20px

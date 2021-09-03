@@ -4,41 +4,108 @@
         <mat-grid-tile>
             <div class="container">
                 <div class="logo"><img src="../../../../../assets/images/Interconomy-Isotipo.png" class="image"/></div>
+                <div>
+
+                </div>
                 <div class="login-item">
-                  <form [formGroup]="myForm" (ngSubmit)="register(myForm.value)" method="post" class="form form-login">
-                    <div class="form-field">
-                      <span class="hidden">Username</span>
-                      <input id="login-username" type="text" class="form-input" placeholder="Username" formControlName="name">
-                    </div>
-              
-                    <div class="form-field">
-                      <span class="hidden">Password</span>
-                      <input id="login-password" type="password" class="form-input" placeholder="Password" formControlName="password">
-                    </div>
+                  <!--First step-->
 
-                    <div class="form-field">
-                        <span class="hidden">Email</span>
-                        <input id="login-mail" type="text" class="form-input" placeholder="E-mail" formControlName="email">
-                    </div>
-              
-                    <div class="form-field redirection">
-                        <div class="div-check">
-                            <section class="example-section">
-                                <mat-checkbox class="example-margin"><span style="font-family: monospace; font-weight: 600; color: #000;">Recordar contraseña</span></mat-checkbox>
-                            </section>
+                  <!--<button mat-raised-button (click)="isEditable = !isEditable">
+                    {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+                  </button>-->
+                  
+                  <mat-stepper linear #stepper>
+                    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+                      <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel>Firts Step</ng-template>
+
+                        <div class="title-register">
+                          <h1 style="color: #000;">Datos de Registro</h1>
                         </div>
-                    </div>
-              
-                    <div class="form-field">
-                        <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Register" class="button" (click)="register(myForm.value)"><span class="button-text">REGISTRAR</span></button>
-                    </div>
 
-                    <!--<div class="box">
-                        <div class="one"><span class="option">Olvidé mi contraseña</span></div>
-                        <div class="two"><span class="option">Crear cuenta</span></div>
-                    </div>-->
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                          <mat-label>Name</mat-label>
+                          <input matInput formControlName="name" class="form-input" placeholder="Nombre*" required>
+                        </mat-form-field>
 
-                  </form>
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                          <mat-label>Lastname</mat-label>
+                          <input matInput formControlName="lastname" class="form-input" placeholder="Apellido*" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                          <mat-label>DNI</mat-label>
+                          <input matInput formControlName="dni" class="form-input" placeholder="DNI*" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                          <mat-label>CUIL</mat-label>
+                          <input matInput formControlName="cuil" class="form-input" placeholder="CUIL*" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
+                          <mat-label>Fecha de nacimiento</mat-label>
+                          <input matInput formControlName="dateOfBirth" class="form-input" placeholder="Fecha de nacimiento*" required>
+                        </mat-form-field>
+                        <div>
+                          <div class="form-field">
+                            <button mat-raised-button matStepperNext type="submit" value="siguente" class="button">SIGUIENTE<span class="button-text"></span></button>
+                          </div>
+                          <div class="form-field">
+                            <button mat-raised-button type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>
+                          </div>
+                        </div>
+                      </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                      <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Second Step</ng-template>
+
+                        <div class="title-register">
+                          <h1 style="color: #000;">Datos de Registro</h1>
+                        </div>
+
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                          <mat-label>E-mail</mat-label>
+                          <input matInput formControlName="email" placeholder="E-mail*"
+                                 required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                          <mat-label>Teléfono</mat-label>
+                          <input matInput formControlName="telefono" placeholder="Teléfono*"
+                                 required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                          <mat-label>Usuario</mat-label>
+                          <input matInput formControlName="username" placeholder="Usuario*"
+                                 required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                          <mat-label>Contraseña</mat-label>
+                          <input matInput formControlName="password" placeholder="Contraseña*"
+                                 required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
+                          <mat-label>Confirmar contraseña</mat-label>
+                          <input matInput formControlName="confirmPassword" placeholder="Confirmar contraseña*"
+                                 required>
+                        </mat-form-field>
+                        <div>
+                          <div class="form-field">
+                            <button mat-raised-button type="submit" value="siguente" class="button">CREAR CUENTA<span class="button-text"></span></button>
+                          </div>
+                          <div class="form-field">
+                            <button mat-raised-button matStepperPrevious type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>
+                          </div>
+                        </div>
+                      </form>
+                    </mat-step>
+                  </mat-stepper>
+                  
                 </div>
               </div>
         </mat-grid-tile>
