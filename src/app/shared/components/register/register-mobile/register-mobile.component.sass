@@ -5,6 +5,11 @@ mat-grid-tile
   background: #ffffff
 mat-grid-tile
   height: 92%
+.mat-stepper-horizontal
+  margin-top: 8px
+  margin-right: -41px  
+.mat-form-field
+  margin-top: 16px  
 //--------------------------------------------------------
 .container
   background:rgba(58,63,68,0.5)
@@ -14,11 +19,11 @@ mat-grid-tile
   margin-left: 0%
 .logo
   font-family: "museo-slab"
-  font-size:20px
+  font-size:29px
   text-align: center
   padding: 20px 20px 0
   margin:0
-  margin-top: 60px  
+  margin-top: 5px  
 .login-item
   color:#0645AD
   padding: 0px 25px 0
@@ -67,7 +72,13 @@ input
   font-weight: 600
 .form-login input[type="text"]:focus, .form-login input[type="text"]:hover, .form-login input[type="password"]:focus, .form-login input[type="password"]:hover
   background-color: #eeeeee
-.form-login button[type="submit"]
+.form-field
+  display: -webkit-box
+  display: -webkit-flex
+  display: -ms-flexbox
+  display: flex
+  margin-bottom: 2rem
+.button
   background-color:#1D46FB
   color: #eee
   font-weight: bold
@@ -75,14 +86,21 @@ input
   padding-top: 0px
   padding-bottom: 0px
   cursor: pointer
-.form-login button[type="submit"]:focus, .form-login button[type="submit"]:hover
+  width: 293px
+  margin-bottom: -21px
+.button:hover
   background-color:#0645AD
-.form-field
-  display: -webkit-box
-  display: -webkit-flex
-  display: -ms-flexbox
-  display: flex
-  margin-bottom: 2rem
+.button-cancel
+  background-color:#ffffff
+  color: #a7a7a7
+  font-weight: bold
+  text-transform: uppercase
+  padding-top: 0px
+  padding-bottom: 0px
+  cursor: pointer
+  width: 293px
+.button-cancel:hover
+  background-color:#e2e2e2      
 .hidden
   border: 0
   clip: rect(0 0 0 0)
@@ -95,7 +113,7 @@ input
 .text--center
   text-align: center
 .image
-  width: 30%
+  width: 27%
 .link
   font-family: Arial, Helvetica, sans-serif
   font-size: 20px

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
-import { CreditsModule } from './credits/credits.module';
 import { LoginModule } from './login/login.module';
 import { ConfirmCodeModule } from './confirm-code/confirm-code.module';
 import { RegisterModule } from './register/register.module';
@@ -15,7 +14,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     HomeModule,
-    CreditsModule,
     LoginModule,
     ConfirmCodeModule,
     RegisterModule,
