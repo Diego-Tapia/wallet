@@ -16,7 +16,7 @@
                   
                   <mat-stepper linear #stepper>
                     <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-                      <form [formGroup]="firstFormGroup">
+                      <form [formGroup]="firstFormGroup" (ngSubmit)="register(firstFormGroup.value)" method="post">
                         <ng-template matStepLabel></ng-template>
 
                         <div class="title-register">
@@ -25,12 +25,12 @@
 
                         <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
                           <mat-label>Nombre</mat-label>
-                          <input matInput formControlName="name" class="form-input" placeholder="Nombre*" required>
+                          <input matInput formControlName="shortName" class="form-input" placeholder="Nombre*" required>
                         </mat-form-field>
 
                         <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
                           <mat-label>Apellido</mat-label>
-                          <input matInput formControlName="lastname" class="form-input" placeholder="Apellido*" required>
+                          <input matInput formControlName="lastName" class="form-input" placeholder="Apellido*" required>
                         </mat-form-field>
 
                         <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
@@ -38,18 +38,18 @@
                           <input matInput formControlName="dni" class="form-input" placeholder="DNI*" required>
                         </mat-form-field>
 
-                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
                           <mat-label>CUIL</mat-label>
                           <input matInput formControlName="cuil" class="form-input" placeholder="CUIL*" required>
                         </mat-form-field>
 
-                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
+                        <!--<mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
                           <mat-label>Fecha de nacimiento</mat-label>
                           <input matInput formControlName="dateOfBirth" class="form-input" placeholder="Fecha de nacimiento*" required>
-                        </mat-form-field>
+                        </mat-form-field>-->
                         <div>
                           <div class="form-field">
-                            <button mat-raised-button matStepperNext type="submit" value="siguente" class="button">SIGUIENTE<span class="button-text"></span></button>
+                            <button mat-raised-button matStepperNext type="button" value="siguente" class="button">SIGUIENTE<span class="button-text"></span></button>
                           </div>
                           <div class="form-field">
                             <button mat-raised-button type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>
@@ -58,7 +58,7 @@
                       </form>
                     </mat-step>
                     <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-                      <form [formGroup]="secondFormGroup">
+                      <form [formGroup]="secondFormGroup" (ngSubmit)="register(secondFormGroup.value)" method="post">
                         <ng-template matStepLabel></ng-template>
 
                         <div class="title-register">
@@ -73,7 +73,7 @@
 
                         <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
                           <mat-label>Teléfono</mat-label>
-                          <input matInput formControlName="telefono" placeholder="Teléfono*"
+                          <input matInput formControlName="phoneNumber" placeholder="Teléfono*"
                                  required>
                         </mat-form-field>
 
@@ -83,20 +83,20 @@
                                  required>
                         </mat-form-field>
 
-                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: -22px">
+                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
                           <mat-label>Contraseña</mat-label>
                           <input matInput formControlName="password" placeholder="Contraseña*"
                                  required>
                         </mat-form-field>
 
-                        <mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
+                        <!--<mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
                           <mat-label>Confirmar contraseña</mat-label>
                           <input matInput formControlName="confirmPassword" placeholder="Confirmar contraseña*"
                                  required>
-                        </mat-form-field>
+                        </mat-form-field>-->
                         <div>
                           <div class="form-field">
-                            <button mat-raised-button type="submit" value="siguente" class="button">CREAR CUENTA<span class="button-text"></span></button>
+                            <button mat-raised-button type="submit" value="crear cuenta" [disabled]="!secondFormGroup.valid" class="button" (click)="register(firstFormGroup.value)">CREAR CUENTA<span class="button-text"></span></button>
                           </div>
                           <div class="form-field">
                             <button mat-raised-button matStepperPrevious type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>

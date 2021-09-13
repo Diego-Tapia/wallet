@@ -20,21 +20,21 @@ export class RegisterDeskComponent implements OnInit {
 
     ngOnInit(): void {
       this.firstFormGroup = this._formBuilder.group({
-        name: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-        lastname: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-        dni: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-        cuil: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-        dateOfBirth: new FormControl('', [Validators.required, Validators.maxLength(16)]),
+        shortName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+        lastName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+        dni: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+        cuil: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+        //dateOfBirth: new FormControl('', [Validators.required, Validators.maxLength(30)]),
       });
       this.secondFormGroup = this._formBuilder.group({
-        email: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-        telefono: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-        username: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-        password: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-        confirmPassword: new FormControl('', [Validators.required, Validators.maxLength(16)]),
+        email: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.email]),
+        phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+        username: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+        password: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+        //confirmPassword: new FormControl('', [Validators.required, Validators.maxLength(30)]),
       });
   }
-  /*register(form: RegisterI) {
+  register(form: RegisterI) {
     this.apiregister.onRegister(form)
     .subscribe(
       data => data,
@@ -45,6 +45,6 @@ export class RegisterDeskComponent implements OnInit {
           this.router.navigate(['/confirm'])
         }
       }
-      )
-  }  */
+    )
+  }
 }
