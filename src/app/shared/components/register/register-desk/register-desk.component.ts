@@ -9,30 +9,30 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./register-desk.component.sass']
 })
 export class RegisterDeskComponent implements OnInit {
-  firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
   isEditable = false;
   constructor( 
     private apiregister: ApiRegisterService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private _formBuilder: FormBuilder) { }
+    //private _formBuilder: FormBuilder
+    ) { }
+
+    firstFormGroup = new FormGroup({
+      shortName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      lastName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      dni: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      cuil: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      //dateOfBirth: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+    });
+    secondFormGroup = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.email]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      username: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      password: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.minLength(8)]),
+      //confirmPassword: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+    });
 
     ngOnInit(): void {
-      this.firstFormGroup = this._formBuilder.group({
-        shortName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-        lastName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-        dni: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-        cuil: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-        //dateOfBirth: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-      });
-      this.secondFormGroup = this._formBuilder.group({
-        email: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.email]),
-        phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-        username: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-        password: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-        //confirmPassword: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-      });
   }
   register(form: RegisterI) {
     this.apiregister.onRegister(form)
@@ -44,7 +44,9 @@ export class RegisterDeskComponent implements OnInit {
         }if(error.status === 500){
           this.router.navigate(['/confirm'])
         }
+        console.log(form)
       }
     )
   }
+  
 }
