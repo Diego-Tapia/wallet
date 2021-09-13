@@ -15,7 +15,7 @@ export class LoginDeskComponent implements OnInit {
     private router: Router
   ) { }
   myForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(16)]),
+    username: new FormControl('', [Validators.required, Validators.maxLength(16)]),
     password: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),
     //email: new FormControl ('', [Validators.required, Validators.email])
 });

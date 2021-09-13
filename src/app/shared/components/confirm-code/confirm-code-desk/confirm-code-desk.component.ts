@@ -16,7 +16,7 @@ export class ConfirmCodeDeskComponent implements OnInit {
     private router: Router) { }
   myForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    confirmationCode: new FormControl('', Validators.required),
+    confirmCode: new FormControl('', Validators.required),
 });
   ngOnInit(): void {
   }
