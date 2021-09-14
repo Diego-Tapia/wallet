@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ConfirmCodeDeskComponent implements OnInit {
 
   constructor(
-    private confirmcode: ConfirmCodeService,
+    private confirmateCode: ConfirmCodeService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
   myForm = new FormGroup({
@@ -21,7 +21,7 @@ export class ConfirmCodeDeskComponent implements OnInit {
   ngOnInit(): void {
   }
  confirm(form: ConfirmI){
-  this.confirmcode.onConfirm(form).subscribe(
+  this.confirmateCode.onConfirm(form).subscribe(
     data => data,
     error => {
       if(error.status === 201){

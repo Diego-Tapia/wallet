@@ -47,12 +47,13 @@
                           <mat-label>Fecha de nacimiento</mat-label>
                           <input matInput formControlName="dateOfBirth" class="form-input" placeholder="Fecha de nacimiento*" required>
                         </mat-form-field>-->
+
                         <div>
                           <div class="form-field">
                             <button mat-raised-button matStepperNext type="button" value="siguente" class="button">SIGUIENTE<span class="button-text"></span></button>
                           </div>
                           <div class="form-field">
-                            <button mat-raised-button type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>
+                            <button mat-raised-button type="button" value="cancelar" class="button-cancel" routerLink="/">CANCELAR<span class="button-text"></span></button>
                           </div>
                         </div>
                       </form>
@@ -94,12 +95,13 @@
                           <input matInput formControlName="confirmPassword" placeholder="Confirmar contraseña*"
                                  required>
                         </mat-form-field>-->
+                        
                         <div>
                           <div class="form-field">
-                            <button mat-raised-button type="submit" value="crear cuenta" [disabled]="!secondFormGroup.valid" class="button" (click)="register(firstFormGroup.value)">CREAR CUENTA<span class="button-text"></span></button>
+                            <button mat-raised-button type="submit" value="crear cuenta" [disabled]="!secondFormGroup.valid" class="button" (click)="register(firstFormGroup.value || secondFormGroup.value)">CREAR CUENTA<span class="button-text"></span></button>
                           </div>
                           <div class="form-field">
-                            <button mat-raised-button matStepperPrevious type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>
+                            <button mat-raised-button matStepperPrevious type="button" value="cancelar" class="button-cancel" routerLink="/">CANCELAR<span class="button-text"></span></button>
                           </div>
                         </div>
                       </form>
