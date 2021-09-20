@@ -9,15 +9,10 @@
                 </div>
                 <div class="login-item">
                   <!--First step-->
-
-                  <!--<button mat-raised-button (click)="isEditable = !isEditable">
-                    {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-                  </button>-->
-                  
-                  <mat-stepper linear #stepper>
-                    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-                      <form [formGroup]="firstFormGroup" (ngSubmit)="register(firstFormGroup.value)" method="post">
-                        <ng-template matStepLabel></ng-template>
+                  <form [formGroup]="myForm" (ngSubmit)="register(myForm.value)" method="post">
+                  <mat-stepper>
+                    <mat-step [editable]="false">
+                      <ng-template matStepLabel></ng-template>
 
                         <div class="title-register">
                           <h1 style="color: #000;">Datos de Registro</h1>
@@ -53,15 +48,12 @@
                             <button mat-raised-button matStepperNext type="button" value="siguente" class="button">SIGUIENTE<span class="button-text"></span></button>
                           </div>
                           <div class="form-field">
-                            <button mat-raised-button type="button" value="cancelar" class="button-cancel" routerLink="/">CANCELAR<span class="button-text"></span></button>
+                            <button mat-button type="button" value="cancelar" class="button-cancel" routerLink="/">CANCELAR<span class="button-text"></span></button>
                           </div>
                         </div>
-                      </form>
                     </mat-step>
-                    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-                      <form [formGroup]="secondFormGroup" (ngSubmit)="register(secondFormGroup.value)" method="post">
-                        <ng-template matStepLabel></ng-template>
-
+                    <mat-step [editable]="false">
+                      <ng-template matStepLabel></ng-template>
                         <div class="title-register">
                           <h1 style="color: #000;">Datos de Registro</h1>
                         </div>
@@ -98,16 +90,16 @@
                         
                         <div>
                           <div class="form-field">
-                            <button mat-raised-button type="submit" value="crear cuenta" [disabled]="!secondFormGroup.valid" class="button" (click)="register(firstFormGroup.value || secondFormGroup.value)">CREAR CUENTA<span class="button-text"></span></button>
+                            <button mat-raised-button type="submit" value="crear cuenta" 
+                             class="button" [disabled]="!myForm.valid" ><span class="button-text" (click)="register(myForm.value)">CREAR CUENTA</span></button>
                           </div>
                           <div class="form-field">
-                            <button mat-raised-button matStepperPrevious type="button" value="cancelar" class="button-cancel" routerLink="/">CANCELAR<span class="button-text"></span></button>
+                            <button mat-button matStepperPrevious type="button" value="cancelar" class="button-cancel"><span class="button-text">CANCELAR</span></button>
                           </div>
                         </div>
-                      </form>
                     </mat-step>
                   </mat-stepper>
-                  
+                </form>
                 </div>
               </div>
         </mat-grid-tile>
