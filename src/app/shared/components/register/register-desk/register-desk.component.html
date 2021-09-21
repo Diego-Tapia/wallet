@@ -10,8 +10,8 @@
                 <div class="login-item">
                   <!--First step-->
                   <form [formGroup]="myForm" (ngSubmit)="register(myForm.value)" method="post">
-                  <mat-stepper>
-                    <mat-step [editable]="false">
+                  <mat-stepper linear #stepper>
+                    <mat-step [stepControl]="myForm" [editable]="false">
                       <ng-template matStepLabel></ng-template>
 
                         <div class="title-register">
@@ -52,7 +52,7 @@
                           </div>
                         </div>
                     </mat-step>
-                    <mat-step [editable]="false">
+                    <mat-step [stepControl]="myForm" [editable]="false">
                       <ng-template matStepLabel></ng-template>
                         <div class="title-register">
                           <h1 style="color: #000;">Datos de Registro</h1>
@@ -78,7 +78,7 @@
 
                         <mat-form-field appearance="fill" style="width: 384px; margin-bottom: 15px">
                           <mat-label>Contraseña</mat-label>
-                          <input matInput formControlName="password" placeholder="Contraseña*"
+                          <input matInput formControlName="password" type="password" placeholder="Contraseña*"
                                  required>
                         </mat-form-field>
 
@@ -91,10 +91,10 @@
                         <div>
                           <div class="form-field">
                             <button mat-raised-button type="submit" value="crear cuenta" 
-                             class="button" [disabled]="!myForm.valid" ><span class="button-text" (click)="register(myForm.value)">CREAR CUENTA</span></button>
+                             class="button" [disabled]="!myForm.valid"  (click)="register(myForm.value)"><span class="button-text">CREAR CUENTA</span></button>
                           </div>
                           <div class="form-field">
-                            <button mat-button matStepperPrevious type="button" value="cancelar" class="button-cancel"><span class="button-text">CANCELAR</span></button>
+                            <button mat-button type="button" value="cancelar" class="button-cancel" routerLink="/"><span class="button-text">CANCELAR</span></button>
                           </div>
                         </div>
                     </mat-step>

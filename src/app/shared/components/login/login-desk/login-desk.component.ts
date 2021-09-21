@@ -27,9 +27,9 @@ export class LoginDeskComponent implements OnInit {
       data => data,
       error => {
         if(error.status === 201){
-          this.router.navigate(['/'])
-        }if(error.status === 500){
           this.router.navigate(['/home'])
+        }if(error.status === 500){
+          this.router.navigate(['/'])
         }
       }
     )
