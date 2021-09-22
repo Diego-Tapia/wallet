@@ -9,7 +9,6 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./register-desk.component.sass']
 })
 export class RegisterDeskComponent implements OnInit {
-  
 
   constructor( 
     private apiregister: ApiRegisterService,
@@ -33,16 +32,18 @@ export class RegisterDeskComponent implements OnInit {
 
     ngOnInit(): void {
   }
+
   register(form: RegisterI) {
     this.apiregister.onRegister(form)
     .subscribe(
       data => data,
       error => {
         if(error.status === 201){
-          this.router.navigate(['/confirm'])
-        }if(error.status === 500){
           this.router.navigate(['/'])
+        }if(error.status === 500){
+          this.router.navigate(['/confirm'])
         }
+        console.log(form)
       }
     )
   }
