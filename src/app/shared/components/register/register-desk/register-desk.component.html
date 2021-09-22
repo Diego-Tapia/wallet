@@ -11,7 +11,7 @@
                   <!--First step-->
                   <form [formGroup]="myForm" (ngSubmit)="register(myForm.value)" method="post">
                   <mat-stepper linear #stepper>
-                    <mat-step [stepControl]="myForm" [editable]="false">
+                    <mat-step [editable]="false">
                       <ng-template matStepLabel></ng-template>
 
                         <div class="title-register">

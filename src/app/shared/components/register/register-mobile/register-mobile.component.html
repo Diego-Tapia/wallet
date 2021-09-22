@@ -1,58 +1,52 @@
 <div class="container">
     <div class="logo"><img src="../../../../../assets/images/Interconomy-Isotipo.png" class="image"/></div>
     <div class="login-item">
-      <!--<button mat-raised-button (click)="isEditable = !isEditable">
-        {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-      </button>-->
-      
-      <mat-stepper linear #stepper>
-        <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-          <form [formGroup]="firstFormGroup">
-            <!--First Step-->
+
+      <form [formGroup]="myForm" (ngSubmit)="register(myForm.value)" method="post">
+        <mat-stepper linear #stepper>
+          <mat-step>
             <ng-template matStepLabel></ng-template>
+            <!--First Step-->
 
-            <div class="title-register">
-              <h1 style="color: #000;">Datos de Registro</h1>
-            </div>
-
-            <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
-              <mat-label>Nombre</mat-label>
-              <input matInput formControlName="name" placeholder="Nombre*" required>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
-              <mat-label>Apellido</mat-label>
-              <input matInput formControlName="lastname" placeholder="Apellido*" required>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
-              <mat-label>DNI</mat-label>
-              <input matInput formControlName="dni" placeholder="DNI*" required>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
-              <mat-label>CUIL</mat-label>
-              <input matInput formControlName="cuil" placeholder="CUIL*" required>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" style="width: 316px; margin-bottom: 0px; margin-left: -11px;">
-              <mat-label>Fecha de nacimiento</mat-label>
-              <input matInput formControlName="dateOfBirth" placeholder="Fecha de nacimiento*" required>
-            </mat-form-field>
-            <!--Buttons-->
-            <div>
-              <div class="form-field">
-                <button mat-raised-button matStepperNext type="submit" value="siguente" class="button">SIGUIENTE<span class="button-text"></span></button>
+              <div class="title-register">
+                <h1 style="color: #000;">Datos de Registro</h1>
               </div>
-              <div class="form-field">
-                <button mat-raised-button type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>
+    
+              <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="shortName" placeholder="Nombre*" required>
+              </mat-form-field>
+    
+              <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
+                <mat-label>Apellido</mat-label>
+                <input matInput formControlName="lastName" placeholder="Apellido*" required>
+              </mat-form-field>
+    
+              <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
+                <mat-label>DNI</mat-label>
+                <input matInput formControlName="dni" placeholder="DNI*" required>
+              </mat-form-field>
+    
+              <mat-form-field appearance="fill" style="width: 316px; margin-bottom: 8px; margin-left: -11px;">
+                <mat-label>CUIL</mat-label>
+                <input matInput formControlName="cuil" placeholder="CUIL*" required>
+              </mat-form-field>
+    
+              <!--<mat-form-field appearance="fill" style="width: 316px; margin-bottom: 0px; margin-left: -11px;">
+                <mat-label>Fecha de nacimiento</mat-label>
+                <input matInput formControlName="dateOfBirth" placeholder="Fecha de nacimiento*" required>
+              </mat-form-field>-->
+              <!--Buttons-->
+              <div>
+                <div class="form-field">
+                  <button mat-raised-button matStepperNext type="submit" value="siguente" class="button">SIGUIENTE<span class="button-text"></span></button>
+                </div>
+                <div class="form-field">
+                  <button mat-raised-button type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>
+                </div>
               </div>
-            </div>
-
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-          <form [formGroup]="secondFormGroup">
+          </mat-step>
+          <mat-step>
             <!--Second Step-->
             <ng-template matStepLabel></ng-template>
 
@@ -68,7 +62,7 @@
 
             <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
               <mat-label>Teléfono</mat-label>
-              <input matInput formControlName="telefono" placeholder="Teléfono*"
+              <input matInput formControlName="phoneNumber" placeholder="Teléfono*"
                      required>
             </mat-form-field>
 
@@ -78,17 +72,17 @@
                      required>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" style="width: 316px; margin-bottom: -21px; margin-left: -11px;">
+            <mat-form-field appearance="fill" style="width: 316px; margin-bottom: 8px; margin-left: -11px;">
               <mat-label>Contraseña</mat-label>
               <input matInput formControlName="password" placeholder="Contraseña*"
                      required>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" style="width: 316px; margin-bottom: 0px; margin-left: -11px;">
+            <!--<mat-form-field appearance="fill" style="width: 316px; margin-bottom: 0px; margin-left: -11px;">
               <mat-label>Confirmar contraseña</mat-label>
               <input matInput formControlName="confirmPassword" placeholder="Confirmar contraseña*"
                      required>
-            </mat-form-field>
+            </mat-form-field>-->
             <!--Buttons-->
             <div>
               <div class="form-field">
@@ -98,10 +92,9 @@
                 <button mat-raised-button matStepperPrevious type="button" value="cancelar" class="button-cancel">CANCELAR<span class="button-text"></span></button>
               </div>
             </div>
-          </form>
-        </mat-step>
-      </mat-stepper>
-      
+          </mat-step>
+        </mat-stepper>
+      </form>
     </div>
   </div>
 
