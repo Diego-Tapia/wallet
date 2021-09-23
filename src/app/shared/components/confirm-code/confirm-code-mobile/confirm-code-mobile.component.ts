@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmI } from '../models/confirm.interface';
 import { ConfirmCodeService } from '../services/confirm-code.service';
 
@@ -10,7 +11,9 @@ import { ConfirmCodeService } from '../services/confirm-code.service';
 })
 export class ConfirmCodeMobileComponent implements OnInit {
 
-  constructor(private confirmcode: ConfirmCodeService) { }
+  constructor(private confirmcode: ConfirmCodeService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   myForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -20,8 +23,8 @@ export class ConfirmCodeMobileComponent implements OnInit {
   }
   confirm(form: ConfirmI){
     this.confirmcode.onConfirm(form).subscribe(data =>{
-    console.log(data)
+      this.router.navigate(['/'])
+      console.log(data)
     });
-    console.log()
  }
 }

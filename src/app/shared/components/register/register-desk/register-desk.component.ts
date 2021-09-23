@@ -12,9 +12,8 @@ export class RegisterDeskComponent implements OnInit {
 
   constructor( 
     private apiregister: ApiRegisterService,
-    private activatedRoute: ActivatedRoute,
+
     private router: Router,
-    private _formBuilder: FormBuilder
     ) { }
 
   myForm = new FormGroup({
@@ -35,16 +34,11 @@ export class RegisterDeskComponent implements OnInit {
 
   register(form: RegisterI) {
     this.apiregister.onRegister(form)
-    .subscribe(
-      data => data,
-      error => {
-        if(error.status === 201){
-          this.router.navigate(['/'])
-        }if(error.status === 500){
-          this.router.navigate(['/confirm'])
-        }
-        console.log(form)
-      }
+    .subscribe(data => {
+      this.router.navigate(['/confirm'])
+      console.log(data)
+    }
+      
     )
   }
   

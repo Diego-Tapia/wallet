@@ -38,14 +38,9 @@ export class RegisterMobileComponent implements OnInit {
   register(form: RegisterI) {
     this.apiRegister.onRegister(form)
     .subscribe(
-      data => data,
-      error => {
-        if(error.status === 201){
-          this.router.navigate(['/'])
-        }if(error.status === 500){
-          this.router.navigate(['/confirm'])
-        }
-        console.log(form)
+      data => {
+        this.router.navigate(['/confirm']);
+        console.log(data);
       }
     )
   }
