@@ -8,12 +8,12 @@
                   <form [formGroup]="myForm" (ngSubmit)="confirm(myForm.value)" method="post" class="form form-login">
                     <div class="form-field">
                       <span class="hidden">Username</span>
-                      <input id="confirm-username" type="text" class="form-input" placeholder="Username" formControlName="username">
+                      <input id="confirm-username" type="text" class="form-input" placeholder="Usuario*" formControlName="username">
                     </div>
               
                     <div class="form-field">
                       <span class="hidden">Confirmation Code</span>
-                      <input id="confirm-code" type="text" class="form-input" placeholder="Confirm-code" formControlName="confirmCode">
+                      <input id="confirm-code" type="text" class="form-input" placeholder="Confirmation Code*" formControlName="confirmCode">
                     </div>
 
                     <!--<div class="form-field">
@@ -31,6 +31,9 @@
               
                     <div class="form-field">
                         <button mat-raised-button type="submit" [disabled]="!myForm.valid" value="Log in" class="button" (click)="confirm(myForm.value)"><span class="button-text">CONFIRMAR</span></button>
+                    </div>
+                    <div class="form-field">
+                      <button mat-button type="button" value="cancelar" class="button-cancel" routerLink="/">CANCELAR<span class="button-text"></span></button>
                     </div>
 
                     <!--<div class="box">

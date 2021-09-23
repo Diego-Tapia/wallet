@@ -22,13 +22,9 @@ export class ConfirmCodeDeskComponent implements OnInit {
   }
  confirm(form: ConfirmI){
   this.confirmateCode.onConfirm(form).subscribe(
-    data => data,
-    error => {
-      if(error.status === 201){
-        this.router.navigate(['/']);
-      }if(error.status === 500){
-        this.router.navigate(['/']);
-      }
+    data => {
+      this.router.navigate(['/'])
+      console.log(data);
     }
   )}
 }

@@ -24,13 +24,9 @@ export class LoginDeskComponent implements OnInit {
   login(form: LoginI) {
     this.apiLogin.onLogin(form)
     .subscribe(
-      data => data,
-      error => {
-        if(error.status === 201){
-          this.router.navigate(['/home'])
-        }if(error.status === 500){
-          this.router.navigate(['/'])
-        }
+      data => {
+        this.router.navigate(['/home']);
+        console.log(data);
       }
     )
   }
