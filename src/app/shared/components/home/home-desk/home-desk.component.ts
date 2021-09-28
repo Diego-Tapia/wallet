@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { DataCardService } from '../services/data-card.service';
+import { Cards } from '../models/cards';
+
 export interface PeriodicElement {
   date: string;
   type: string;
@@ -26,7 +29,10 @@ export class HomeDeskComponent implements OnInit {
   displayedColumns: string[] = ['type', 'date', 'typet', 'description', 'credit', 'total'];
   dataSource = ELEMENT_DATA;
 
-  constructor(public dialog: MatDialog) { }
+  dataCards!: Cards[]; 
+
+  constructor(public dialog: MatDialog,
+              public dataCard: DataCardService) { }
   /*openDialog() {
     const dialogRef = this.dialog.open(TransferTokensDeskComponent);
 
@@ -35,6 +41,13 @@ export class HomeDeskComponent implements OnInit {
     });
   }*/
   ngOnInit(): void {
+    this.getBalances();
   }
 
+  getBalances():void{
+    this.dataCard.getCards().subscribe(data=>{
+      this.dataCards = data;
+      console.log(data)
+    })
+  }
 }

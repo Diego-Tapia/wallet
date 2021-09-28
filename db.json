@@ -1,0 +1,25 @@
+{
+    "Balances" : [
+        {
+          "Token": 1,
+          "symbol": "PPA",
+          "transferible": true,
+          "balance": 390,
+          "description": "Total de creditos"
+        },
+        {
+          "Token": 2,
+          "symbol": "DBI",
+          "transferible": true,
+          "balance": 90,
+          "description": "Total de creditos"
+        },
+        {
+          "Token": 3,
+          "symbol": "SUCEP",
+          "transferible": true,
+          "balance": 100,
+          "description": "Total de creditos"
+        }
+      ]
+}
