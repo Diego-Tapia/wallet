@@ -90,63 +90,21 @@
               <p>Conocé <a href="#" style="color: #1c7cd5; font-weight: 400;">como utilizar tu billetera</a></p>
             </div>
           </div>
-          <div class="box" style="margin-left: 118px; margin-right: -112px;">
+          <div class="box" style="margin-left: 118px; margin-right: -112px;" *ngFor="let card of dataCards">
             <div class="">
               <mat-card class="example-card card">
                 <mat-card-header>
-                  <mat-card-title>PPA</mat-card-title>
+                  <mat-card-title>{{card.symbol}}</mat-card-title>
                   <div><img src="../../../../assets/icons/info.svg"/></div>
                   <div style="margin-left: 55%;"><img src="../../../../assets/icons/calendar.svg"/></div>
                   <div style="margin-left: 5%;"><img src="../../../../assets/images/more-info.png"/></div>
                 </mat-card-header>
                 <mat-card-content class="data">
                   <p class="number">
-                    390
+                    {{card.balance}}
                   </p>
                   <p class="description">
-                    Total de creditos
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <button mat-button class="buttons" style="margin-right: 9px;"><span style="color: #1c7cd5;">Pagar</span></button>
-                  <button mat-button class="buttons" (click)="drawer.toggle()"><span style="color: #1c7cd5;">Transferir</span></button>
-                </mat-card-actions>
-              </mat-card>
-            </div>
-            <div class="">
-              <mat-card class="example-card card">
-                <mat-card-header>
-                  <mat-card-title>DBI</mat-card-title>
-                  <div><img src="../../../../assets/icons/info.svg"/></div>
-                  <div style="margin-left: 67%;"><img src="../../../../assets/images/more-info.png"/></div>
-                </mat-card-header>
-                <mat-card-content class="data">
-                  <p class="number">
-                    90
-                  </p>
-                  <p class="description">
-                    Total de creditos
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <button mat-button class="buttons" style="margin-right: 9px;"><span style="color: #1c7cd5;">Pagar</span></button>
-                  <button mat-button class="buttons" (click)="drawer.toggle()"><span style="color: #1c7cd5;">Transferir</span></button>
-                </mat-card-actions>
-              </mat-card>
-            </div>
-            <div class="">
-              <mat-card class="example-card card">
-                <mat-card-header>
-                  <mat-card-title>SUCEP</mat-card-title>
-                  <div><img src="../../../../assets/icons/info.svg"/></div>
-                  <div style="margin-left: 59%;"><img src="../../../../assets/images/more-info.png"/></div>
-                </mat-card-header>
-                <mat-card-content class="data">
-                  <p class="number">
-                    100
-                  </p>
-                  <p class="description">
-                    Total de creditos
+                    {{card.description}}
                   </p>
                 </mat-card-content>
                 <mat-card-actions>
