@@ -15,7 +15,7 @@ export class ApiLoginService {
   constructor(private http: HttpClient) { }
 
   onLogin(form: LoginI): Observable<ResponseI>{
-    let direction = this.url + '/auth/login';
+    let direction = this.url + '/api/auth/login';
     return this.http.post<ResponseI>(direction, form);
   }
 }

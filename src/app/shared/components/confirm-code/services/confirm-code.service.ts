@@ -13,7 +13,7 @@ export class ConfirmCodeService {
   constructor(private http: HttpClient) { }
 
   onConfirm(form: ConfirmI): Observable<ResponseI>{
-    let confirmateCode = this.url + '/auth/confirm';
+    let confirmateCode = this.url + '/api/auth/confirm';
     return this.http.post<ResponseI>(confirmateCode, form);
   }
 }

@@ -13,7 +13,7 @@ export class ApiRegisterService {
   constructor(private http: HttpClient) { }
 
   onRegister(form: RegisterI): Observable<ResponseI> {
-    let register = this.url + '/auth/register';
+    let register = this.url + '/api/auth/register';
     return this.http.post<ResponseI>(register, form)
   }
 }
