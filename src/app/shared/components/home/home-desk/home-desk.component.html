@@ -2,65 +2,61 @@
   <mat-drawer #drawer class="sidenav" position='end'>
     <h2 mat-dialog-title style="margin-left: 23px;
     margin-top: 16px;">Transferir créditos</h2>
-<hr>
-<mat-dialog-content class="mat-typography">
- <div class="row">
-  <div class="credits">
-    <p class="total-credits">140 PPA</p>
-    <p class="text-principal">Pagos Pendientes de Aplicar</p>
-  </div>
- </div>
- <hr>
- <div class="title-data">
-  <div class="one"><span class="subtitle-principal">Origen</span></div>
-  <div class="two">
-    <p style="font-weight: 500;">27-39621302-3</p><br>
-    <p style="margin-top: -23px; font-weight: 500;">Xxxxx-Xxxxx</p>
-  </div>
-</div>
-<hr>
-<div class="title-data">
-  <div class="one"><span class="subtitle-principal">Destinatario</span></div>
-  <div class="two">
-    <form class="example-form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Destinatario</mat-label>
-        <input matInput #destination maxlength="256" placeholder="Ex. I need help with...">
-        <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
-        <mat-hint align="end">{{destination.value.length}} / 256</mat-hint>
-      </mat-form-field>
-    </form>
-    <p style="font-weight: 500;">Xxxxxx-Xxxxxx</p>
-  </div>
-</div>
-<hr>
-<div class="title-data">
-  <div class="one"><span class="subtitle-principal">Créditos</span></div>
-  <div class="two">
-    <form class="example-form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Creditos</mat-label>
-        <input matInput #credits maxlength="256" placeholder="Ex. I need help with...">
-        <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
-        <mat-hint align="end">{{credits.value.length}} / 256</mat-hint>
-      </mat-form-field>
-    </form>
-    <p style="font-weight: 500;">desde 01/01/2001</p>
-  </div>
-</div>
-</mat-dialog-content>
-<mat-dialog-actions align="center">
-  <div class="box-buttons">
-    <div style="margin-bottom: 12px;">
-      <button mat-button mat-dialog-close class="button-confirm" disabled><span style="color: #ffffff;">Confirmar</span></button>
-    </div>
-    <div>
-      <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="button-cancel"><span style="color: #1c7cd5;">Cancelar</span></button>
-    </div>
-  </div>
-</mat-dialog-actions>
+    <hr>
+    <mat-dialog-content class="mat-typography">
+      <div class="row">
+        <div class="credits">
+          <p class="total-credits">140 PPA</p>
+          <p class="text-principal">Pagos Pendientes de Aplicar</p>
+        </div>
+      </div>
+      <hr>
+      <div class="title-data">
+        <div class="one"><span class="subtitle-principal">Origen</span></div>
+        <div class="two">
+          <p style="font-weight: 500;">27-39621302-3</p><br>
+          <p style="margin-top: -23px; font-weight: 500;">Xxxxx-Xxxxx</p>
+        </div>
+      </div>
+      <hr>
+      <div class="title-data">
+        <form [formGroup]="myForm" (ngSubmit)="transfer(myForm.value)" method="post" class="">
+          <div class="destinate"><span class="subtitle-principal">Destinatario</span></div>
+          <div class="input-destinate">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Destinatario</mat-label>
+                <input matInput #destination maxlength="256" placeholder="Ex. I need help with...">
+                <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+                <mat-hint align="end">{{destination.value.length}} / 256</mat-hint>
+              </mat-form-field>
+            <p style="font-weight: 500;">Xxxxxx-Xxxxxx</p>
+          </div>
+          <hr style="width: 213%; margin-left: -57%;">
+          <div class="credits-title"><span class="subtitle-principal">Créditos</span></div>
+          <div class="input-credits">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Creditos</mat-label>
+                <input matInput #credits maxlength="256" placeholder="Ex. I need help with...">
+                <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+                <mat-hint align="end">{{credits.value.length}} / 256</mat-hint>
+              </mat-form-field>
+            <p style="font-weight: 500;">desde 01/01/2001</p>
+          </div>
+          <mat-dialog-actions align="center">
+            <div class="box-buttons">
+              <div style="margin-bottom: 12px;">
+                <button mat-button mat-dialog-close class="button-confirm" [disabled]="!myForm.valid" (click)="transfer(myForm.value)"><span style="color: #ffffff;">Confirmar</span></button>
+              </div>
+              <div>
+                <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="button-cancel"><span style="color: #1c7cd5;">Cancelar</span></button>
+              </div>
+            </div>
+          </mat-dialog-actions>
+        </form>
+      </div>
+    </mat-dialog-content>
   </mat-drawer>
-  <mat-drawer-content>
+<mat-drawer-content>
     <section id="home" class="ml-auto hidden-md desk">
       <!--Cards Section-->
       <div class="container">
@@ -121,7 +117,7 @@
         <!--Table Section-->
         <div class="title-data">
           <div class="vl"></div><div class="one">Últimos movimientos</div>
-          <div class="two"><img src="../../../../assets/icons/Lupa.svg" class="icons"/>
+          <div class="search-table"><img src="../../../../assets/icons/Lupa.svg" class="icons"/>
             <input type="text" class="form-control search" name="filterPost" placeholder="Buscar"/>
           </div>
         </div>

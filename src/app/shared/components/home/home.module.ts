@@ -13,6 +13,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list'
 import {MatInputModule} from '@angular/material/input'
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [HomeDeskComponent, HomeMobileComponent],
   imports: [
@@ -27,7 +28,9 @@ import {MatInputModule} from '@angular/material/input'
     MatSelectModule,
     MatGridListModule,
     MatInputModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ]
 })

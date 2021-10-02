@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { DataCardService } from '../services/data-card.service';
 import { Cards } from '../models/cards';
+import { Transfer } from '../models/transfer';
+import { ApiTransferenciasService } from '../services/api-transferencias.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export interface PeriodicElement {
   date: string;
@@ -28,11 +31,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class HomeDeskComponent implements OnInit {
   displayedColumns: string[] = ['type', 'date', 'typet', 'description', 'credit', 'total'];
   dataSource = ELEMENT_DATA;
-
   dataCards!: Cards[]; 
 
   constructor(public dialog: MatDialog,
-              public dataCard: DataCardService) { }
+              public dataCard: DataCardService,
+              public balances: ApiTransferenciasService) { }
   /*openDialog() {
     const dialogRef = this.dialog.open(TransferTokensDeskComponent);
 
@@ -40,6 +43,12 @@ export class HomeDeskComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }*/
+
+  myForm = new FormGroup ({
+    amount: new FormControl('', Validators.required),
+    dniFrom: new FormControl('', Validators.required)
+  })
+
   ngOnInit(): void {
     this.getBalances();
   }
@@ -47,6 +56,12 @@ export class HomeDeskComponent implements OnInit {
   getBalances():void{
     this.dataCard.getCards().subscribe(data=>{
       this.dataCards = data;
+      console.log(data)
+    })
+  }
+  transfer(form: Transfer){
+    this.balances.onTransfer(form)
+    .subscribe(data => {
       console.log(data)
     })
   }
