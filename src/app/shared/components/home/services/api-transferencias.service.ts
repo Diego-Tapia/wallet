@@ -14,7 +14,7 @@ export class ApiTransferenciasService {
   constructor(private http: HttpClient) { }
 
   onTransfer(form: Transfer): Observable<ResponseI>{
-    let balance = this.url + '/transaction';
+    let balance = this.url + '/api/transaction';
     return this.http.post<ResponseI>(balance, form)
   }
 }
