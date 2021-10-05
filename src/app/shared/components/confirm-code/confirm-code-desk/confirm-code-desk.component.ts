@@ -21,10 +21,15 @@ export class ConfirmCodeDeskComponent implements OnInit {
   ngOnInit(): void {
   }
  confirm(form: ConfirmI){
-  this.confirmateCode.onConfirm(form).subscribe(
-    data => {
-      this.router.navigate(['/'])
-      console.log(data);
-    }
-  )}
+   try {
+    this.confirmateCode.onConfirm(form).subscribe(
+      data => {
+        this.router.navigate(['/'])
+        console.log(data);
+      }
+    )
+   } catch (error) {
+     console.log(error);
+   }
+  }
 }
