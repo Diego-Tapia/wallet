@@ -25,7 +25,7 @@
           <div class="input-destinate">
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Destinatario</mat-label>
-                <input matInput #destination maxlength="256" placeholder="Ex. I need help with...">
+                <input matInput formControlName="dniFrom" #destination maxlength="256" placeholder="Ex. I need help with...">
                 <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
                 <mat-hint align="end">{{destination.value.length}} / 256</mat-hint>
               </mat-form-field>
@@ -36,7 +36,7 @@
           <div class="input-credits">
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Creditos</mat-label>
-                <input matInput #credits maxlength="256" placeholder="Ex. I need help with...">
+                <input matInput formControlName="amount" #credits maxlength="256" placeholder="Ex. I need help with...">
                 <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
                 <mat-hint align="end">{{credits.value.length}} / 256</mat-hint>
               </mat-form-field>

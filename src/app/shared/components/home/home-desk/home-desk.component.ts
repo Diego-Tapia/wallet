@@ -45,8 +45,8 @@ export class HomeDeskComponent implements OnInit {
   }*/
 
   myForm = new FormGroup ({
-    amount: new FormControl('', Validators.required),
-    dniFrom: new FormControl('', Validators.required)
+    dniFrom: new FormControl('', Validators.required),
+    amount: new FormControl('', Validators.required)
   })
 
   ngOnInit(): void {
@@ -61,8 +61,8 @@ export class HomeDeskComponent implements OnInit {
   }
   transfer(form: Transfer){
     this.balances.onTransfer(form)
-    .subscribe(data => {
-      console.log(data)
+    .subscribe(info => {
+      console.log(info)
     })
   }
 }

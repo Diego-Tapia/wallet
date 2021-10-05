@@ -22,12 +22,15 @@ export class LoginDeskComponent implements OnInit {
   ngOnInit(): void {
   }
   login(form: LoginI) {
-    this.apiLogin.onLogin(form)
-    .subscribe(
-      data => {
-        this.router.navigate(['/home']);
-        console.log(data);
-      }
-    )
+    try {
+      this.apiLogin.onLogin(form)
+      .subscribe(
+        data => {
+          this.router.navigate(['/home']);
+          console.log(data);
+      })
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

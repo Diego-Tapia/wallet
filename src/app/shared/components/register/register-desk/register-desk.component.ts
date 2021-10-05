@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from
 import { RegisterI } from '../models/register.interface';
 import { ApiRegisterService } from '../services/api-register.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { registerLocaleData } from '@angular/common';
 @Component({
   selector: 'app-register-desk',
   templateUrl: './register-desk.component.html',
@@ -14,7 +15,7 @@ export class RegisterDeskComponent implements OnInit {
     private apiregister: ApiRegisterService,
 
     private router: Router,
-    ) { }
+    ) {}
 
   myForm = new FormGroup({
       shortName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
@@ -31,15 +32,15 @@ export class RegisterDeskComponent implements OnInit {
 
     ngOnInit(): void {
   }
-
   register(form: RegisterI) {
-    this.apiregister.onRegister(form)
+    try {
+      this.apiregister.onRegister(form)
     .subscribe(data => {
       this.router.navigate(['/confirm'])
       console.log(data)
+    })
+    } catch (error) {
+      console.log(error)
     }
-      
-    )
   }
-  
 }
