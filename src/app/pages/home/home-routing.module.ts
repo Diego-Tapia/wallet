@@ -24,6 +24,14 @@ const routes: Routes = [
         (module) => module.WalletModule
       ),
   },
+  {
+    path: 'transferencia',
+    component: HomeComponent,
+    loadChildren: () =>
+      import('./modules/tranferencia/transferencias.module').then(
+        (module) => module.TransferenciasModule
+      ),
+  },
 ];
 
 @NgModule({
