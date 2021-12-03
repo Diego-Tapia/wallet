@@ -32,6 +32,12 @@ const routes: Routes = [
         (module) => module.TransferenciasModule
       ),
   },
+  {
+    path: 'help',
+    component: HomeComponent,
+    loadChildren: () =>
+      import('./modules/help/help.module').then((module) => module.HelpModule),
+  },
 ];
 
 @NgModule({

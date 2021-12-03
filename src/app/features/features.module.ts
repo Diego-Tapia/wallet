@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FeaturesRoutingModule } from './features-routing.module';
-
+import { TitleComponent } from './title/title.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    FeaturesRoutingModule
-  ]
+  declarations: [TitleComponent],
+  imports: [CommonModule, FeaturesRoutingModule],
+  exports: [TitleComponent],
 })
-export class FeaturesModule { }
+export class FeaturesModule {}
