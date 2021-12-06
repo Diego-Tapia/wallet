@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-title',
-  templateUrl: './title.component.html',
-  styleUrls: ['./title.component.sass'],
+  selector: 'app-subtitle',
+  templateUrl: './subtitle.component.html',
+  styleUrls: ['./subtitle.component.sass'],
 })
-export class TitleComponent implements OnInit {
+export class SubtitleComponent implements OnInit {
   constructor() {}
 
-  @Input() title!: string;
+  @Input() subtitle!: string;
   @Input() textButton!: string;
-  @Input() showAll!: boolean;
+  @Input() displayButton!: boolean;
 
   @Output() newAction = new EventEmitter();
 

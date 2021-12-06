@@ -17,19 +17,18 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'wallet',
-    component: HomeComponent,
-    loadChildren: () =>
-      import('./modules/wallet/wallet.module').then(
-        (module) => module.WalletModule
-      ),
-  },
-  {
     path: 'transferencia',
     component: HomeComponent,
     loadChildren: () =>
       import('./modules/tranferencia/transferencias.module').then(
         (module) => module.TransferenciasModule
+      ),
+  },
+  {
+    path: 'detalles',
+    loadChildren: () =>
+      import('./modules/detalles-generales/detalles-generales.module').then(
+        (m) => m.DetallesGeneralesModule
       ),
   },
   {
