@@ -26,9 +26,10 @@ const routes: Routes = [
   },
   {
     path: 'detalles',
+    component: HomeComponent,
     loadChildren: () =>
       import('./modules/detalles-generales/detalles-generales.module').then(
-        (m) => m.DetallesGeneralesModule
+        (module) => module.DetallesGeneralesModule
       ),
   },
   {
