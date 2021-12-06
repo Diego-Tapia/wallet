@@ -1,0 +1,17 @@
+<ng-container>
+  <app-subtitle [subtitle]="'Novedades'" [displayButton]="false"></app-subtitle>
+  <div class="novedades__container">
+    <div *ngFor="let novedad of novedades; let lastItem = last">
+      <div class="novedad__item" style="display: flex">
+        <div class="novedad__img"></div>
+        <div>
+          <div class="novedad__title">
+            <span>{{ novedad.title }}</span>
+          </div>
+          <div class="novedad__text">{{ novedad.text }}</div>
+          <mat-divider *ngIf="!lastItem"></mat-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
