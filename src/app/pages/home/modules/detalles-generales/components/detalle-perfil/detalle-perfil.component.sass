@@ -1,9 +1,12 @@
 @import '../../../../../../../assets/style-variables/variables'
 
+.profile__container
+    display: flex
+    justify-content: space-evenly
 .edit__icon
     float: right
-    margin: 30px
-    font-size: 13px
+    margin: 20px
+    font-size: 15px
     color: #777
     cursor: pointer
 .first__block
@@ -27,15 +30,24 @@ table
 
 .lista__container
     width: 80%
-.flex__container
+.flex__container__representados
     display: flex
-    margin: 20px 10px
-.rep__img
+    margin: 30px 10px
+.representados__img
     width: 38px
     height: 38px
-    margin: 0 15px
+    margin: 2px 15px
     border-radius: 50%
     background: #aaa
+.representados__text
+    p
+        margin: 0
+    p:first-child
+        font-weight: 500
+    p:not(:first-child)
+        color: $grey
+        font-size: 14px
+
 .show__all__btn
     margin: 2px 0 0 15px
     font-size: 14px

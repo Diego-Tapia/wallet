@@ -13,6 +13,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HelpRoutingModule,
     FeaturesModule,
     MatExpansionModule,
+    FeaturesModule,
   ],
 })
 export class HelpModule {}
