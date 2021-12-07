@@ -28,7 +28,7 @@ export class SidenavBarComponent implements OnInit {
     { name: 'Ayuda', route: 'help', icon: 'info_outline' },
   ];
 
-  usuario = { name: 'Username', route: 'detalles/perfil', icon: 'user' };
+  usuario = { name: 'Username', id: '123456789' };
 
   constructor(private _sidenavService: SidenavService) {}
 

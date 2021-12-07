@@ -1,0 +1,25 @@
+<div class="header__container">
+    <div class="header__left">
+        <div class="total__container">
+            <p>Total en ARS
+                <mat-icon class="help__icon">help_outline</mat-icon>
+            </p>
+            <h2>≈{{ total | currency : 'ARS'}}</h2>
+        </div>
+    </div>
+    <div class="header__rigth">
+        <div class="usuario__container">
+            <button mat-mini-fab class="account__btn" routerLink="/home/detalles/perfil">
+                <mat-icon class="material-icons account__icon">account_circle</mat-icon>
+            </button>
+            <div class="usuario__nombre">
+                <p>Hola usuario!</p>
+                <p>Cargo usuario</p>
+            </div>
+        </div>
+        <div class="usuario__icons">
+            <mat-icon class="material-icons noti">notifications</mat-icon>
+            <mat-icon class="material-icons-outlined logout" (click)="onLogOut()">logout</mat-icon>
+        </div>
+    </div>
+</div>

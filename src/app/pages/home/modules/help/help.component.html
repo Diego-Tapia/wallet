@@ -1,13 +1,10 @@
 <div class="section_container">
   <app-title [title]="'Centro de ayuda'"></app-title>
   <div class="section_colapse">
-    <div class="vl"><span class="subtitle">Preguntas frecuentes</span></div>
+    <app-subtitle [subtitle]="'Preguntas frecuentes'" [displayButton]="false"></app-subtitle>
     <div class="collapse">
       <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title> Self aware panel </mat-panel-title>
             <mat-panel-description>
@@ -16,10 +13,7 @@
           </mat-expansion-panel-header>
           <p>I'm visible because I am open</p>
         </mat-expansion-panel>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title> Self aware panel </mat-panel-title>
             <mat-panel-description>
@@ -28,10 +22,7 @@
           </mat-expansion-panel-header>
           <p>I'm visible because I am open</p>
         </mat-expansion-panel>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title> Self aware panel </mat-panel-title>
             <mat-panel-description>
@@ -40,10 +31,7 @@
           </mat-expansion-panel-header>
           <p>I'm visible because I am open</p>
         </mat-expansion-panel>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title> Self aware panel </mat-panel-title>
             <mat-panel-description>
@@ -52,10 +40,7 @@
           </mat-expansion-panel-header>
           <p>I'm visible because I am open</p>
         </mat-expansion-panel>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title> Self aware panel </mat-panel-title>
             <mat-panel-description>

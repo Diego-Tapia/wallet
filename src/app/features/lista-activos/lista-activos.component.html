@@ -1,17 +1,17 @@
 <div class="lista__container">
   <div *ngFor="let activo of activos; let lastItem = last">
     <div class="activo__container">
-      <div class="activo__name" style="width: 50%; display: flex">
+      <div class="activo__name" style="width: 70%; display: flex">
         <div class="activo__img"></div>
         <span>{{ activo.shortName }}</span>
       </div>
-      <div class="activo__price" style="width: 30%">
+      <div class="activo__price" style="width: 15%">
         <div>
           <span> {{ activo.price | number }} {{ activo.symbol }} </span>
         </div>
-        <span class="activo__pesos"> ≈{{ activo.price | currency }} </span>
+        <span class="activo__pesos"> ≈{{ activo.price | currency: 'ARS' }} </span>
       </div>
-      <div class="btn_group" style="width: 20%">
+      <div class="btn__group">
         <button mat-raised-button class="activo__btn">COMPRAR</button>
         <button mat-stroked-button *ngIf="displayButton" class="detalles__btn">
           VER MÁS

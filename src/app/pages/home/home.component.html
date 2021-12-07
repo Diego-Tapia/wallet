@@ -1,12 +1,11 @@
-<mat-sidenav-container class="sidenav__container" [hasBackdrop]="false">
+<mat-sidenav-container class="section__container" [hasBackdrop]="false">
     <mat-sidenav #sidenav mode="over" opened>
         <app-sidenav-bar></app-sidenav-bar>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div class="main_content">
-            <div style="padding: 20px">
-                <router-outlet></router-outlet>
-            </div>
+        <app-header></app-header>
+        <div class="main__content">
+            <router-outlet></router-outlet>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
