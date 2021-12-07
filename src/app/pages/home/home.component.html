@@ -1,2 +1,11 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="section__container" [hasBackdrop]="false">
+    <mat-sidenav #sidenav mode="over" opened>
+        <app-sidenav-bar></app-sidenav-bar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header></app-header>
+        <div class="main__content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

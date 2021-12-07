@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   constructor() {}
 
+  total: number = 20755.6;
+
   ngOnInit(): void {}
 
   onLogOut(): void {

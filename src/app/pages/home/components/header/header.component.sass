@@ -1,36 +1,51 @@
 @import ../../../../../assets/style-variables/variables
 
 .header__container
-    padding: 35px 20px 15px 20px
+    margin-left: 18px
     display: flex
     align-items: center
     justify-content: space-between
-    width: 100%
+    width: calc(100% - 18px)
     border-bottom: .5px solid $light-gray
-.open__close__btn
-    margin-left: 1.5rem
-.open__close
-    color: $medium-gray
-img
-    margin-right: 15px
+
+.total__container
+    margin: 15px 0 0 70px
+    h2
+        font-weight: 600
+    p
+        font-size: 14px
+        margin-bottom: 0
+    .help__icon
+        height: 18px
+        width: 18px
+        font-size: 14px
+        color: $primary
+        cursor: pointer
+
 .header__rigth
     display: flex
     align-items: center
+
 .usuario__container
     display: flex
-    align-items: center
+    align-items: left
     margin-right: 3rem
 .usuario__nombre
     margin-right: 1rem
-    text-align: right
+    p
+        margin-bottom: 0
+    p:not(:first-child)
+        font-size: 13px
 .account__btn
     background-color: $light-gray
+    margin-right: 15px
 .account__icon
     color: $medium-gray
-.usuario__icons
 .noti
+    cursor: pointer
     margin-right: 1.5rem
     color: $medium-gray
 .logout
     cursor: pointer
     color: $medium-gray
+    margin-right: 45px
