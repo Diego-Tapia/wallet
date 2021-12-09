@@ -1,0 +1,38 @@
+<div class="login__container">
+    <div class="img__container">
+        <img src="../../../../../assets/images/Ilustracion-Login.png">
+    </div>
+    <div class="form__container">
+        <div class="logo">
+            <img src="../../../../../assets/images/Interconomy-Isotipo.png" class="image" />
+        </div>
+        <div class="login-item">
+            <form [formGroup]="myForm" (ngSubmit)="login()" method="post" class="form form-login">
+                <mat-form-field appearance="fill">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput type="text" placeholder="Usuario" formControlName="username" required />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña"
+                        formControlName="password" required />
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+
+                <div class="check__container">
+                    <mat-checkbox class="custom__checkbox" color="primary">Recordar contraseña</mat-checkbox>
+                </div>
+
+                <div class="form-field">
+                    <button type="submit" mat-raised-button class="login__btn">INGRESAR</button>
+                </div>
+
+                <div class="box">
+                    <span class="option">Olvidé mi contraseña</span>
+                    <span routerLink="/auth/register" class="option">Crear cuenta</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
