@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SidenavService } from 'src/app/shared/services/sidenav.service';
-import { animateText, onSideNavChange } from '../../animations/animations';
+import { onSideNavChange } from '../../animations/animations';
 
 @Component({
   selector: 'app-sidenav-bar',
   templateUrl: './sidenav-bar.component.html',
   styleUrls: ['./sidenav-bar.component.sass'],
-  animations: [onSideNavChange, animateText],
+  animations: [onSideNavChange],
 })
 export class SidenavBarComponent implements OnInit {
   public sideNavState: boolean = false;
@@ -19,7 +18,7 @@ export class SidenavBarComponent implements OnInit {
       route: 'detalles/activos',
       icon: 'account_balance_wallet',
     },
-    { name: 'Pagos', route: 'detalles/movimientos', icon: 'attach_money' },
+    { name: 'Pagos', route: '1', icon: 'attach_money' },
     {
       name: 'Transferencias',
       route: 'detalles/movimientos',
@@ -30,16 +29,15 @@ export class SidenavBarComponent implements OnInit {
 
   usuario = { name: 'Username', id: '123456789' };
 
-  constructor(private _sidenavService: SidenavService) {}
+  constructor() {}
 
   ngOnInit() {}
 
   onSinenavToggle() {
     this.sideNavState = !this.sideNavState;
 
-    setTimeout(() => {
-      this.linkText = this.sideNavState;
-    }, 200);
-    this._sidenavService.sideNavState$.next(this.sideNavState);
+    if (this.sideNavState) {
+      setTimeout(() => (this.linkText = this.sideNavState), 250);
+    } else this.linkText = this.sideNavState;
   }
 }
