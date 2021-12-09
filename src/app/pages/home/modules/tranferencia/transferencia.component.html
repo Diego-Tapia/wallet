@@ -1,1 +1,37 @@
-<p>transferencia works!</p>
+<div class="section__transferencia">
+  <app-title
+    [title]="'Transferencias'"
+    [textButton]="'NUEVA TRANSFERENCIA'"
+    [showAll]="false"
+  ></app-title>
+  <div class="section_subtitle">
+    <app-subtitle [subtitle]="'Destinatarios frecuentes'"></app-subtitle>
+  </div>
+  <div class="section_card_data">
+    <div class="lista__container">
+      <div *ngFor="let transfer of transaction; let lastItem = last">
+        <div class="transfer__container">
+          <div class="transfer__name" style="width: 70%; display: flex">
+            <div class="transfer__img"></div>
+            <div>
+              <span>{{ transfer.title }}</span
+              ><br />
+              <span class="subtitle_card">{{ transfer.subtitle }}</span>
+            </div>
+          </div>
+          <div class=""></div>
+          <div class="btn__group">
+            <button mat-raised-button class="activo__btn">TRANSFERIR</button>
+            <button
+              mat-icon-button
+              aria-label="Example icon button with a vertical three dot icon"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+        </div>
+        <mat-divider *ngIf="!lastItem"></mat-divider>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,6 +12,7 @@ import { SubtitleComponent } from './subtitle/subtitle.component';
 import { TablaMovimientosComponent } from './tabla-movimientos/tabla-movimientos.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { TransferenciaModalComponent } from './transferencia-modal/transferencia-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     TitleComponent,
     SubtitleComponent,
     TablaMovimientosComponent,
+    TransferenciaModalComponent,
   ],
   imports: [
     CommonModule,

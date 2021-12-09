@@ -21,7 +21,7 @@ export class SidenavBarComponent implements OnInit {
     { name: 'Pagos', route: '1', icon: 'attach_money' },
     {
       name: 'Transferencias',
-      route: 'detalles/movimientos',
+      route: 'transferencia',
       icon: 'swap_vert',
     },
     { name: 'Ayuda', route: 'help', icon: 'info_outline' },
