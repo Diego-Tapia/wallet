@@ -3,24 +3,28 @@
     <mat-nav-list>
         <div class="img__group">
             <img src="../../../../../assets/images/logo-caja-resistencia-no-text.png" class="logo__img" alt="">
-            <img src="../../../../../assets/images/texto-logo-caja-resistencia.png" class="text__img"
-                [@animateText]="linkText ? 'show' : 'hide'">
+            <div class="animation__container">
+                <img src="../../../../../assets/images/texto-logo-caja-resistencia.png" class="text__img"
+                    [ngClass]="linkText ? 'showText' : 'hideText'">
+            </div>
         </div>
         <div class="first__group">
             <mat-list-item mat-list-item routerLink="/home/{{ item.route }}" routerLinkActive="active"
                 *ngFor="let item of navItems">
                 <mat-icon>{{item?.icon}}</mat-icon>
-                <span [@animateText]="linkText ? 'show' : 'hide'">{{ item?.name }} </span>
+                <div class="animation__container">
+                    <span [ngClass]="linkText ? 'showText' : 'hideText'">{{ item?.name }} </span>
+                </div>
             </mat-list-item>
         </div>
         <mat-divider></mat-divider>
         <mat-list-item mat-list-item routerLink="/home/detalles/perfil" routerLinkActive="active">
-            <div class="profile__img">
-                <mat-icon class="material-icons account__icon">account_circle</mat-icon>
-            </div>
-            <div [@animateText]="linkText ? 'show' : 'hide'" class="user__info">
-                <p>{{ usuario?.name }} </p>
-                <p>{{ usuario?.id }} </p>
+            <div class="profile__img"></div>
+            <div class="animation__container">
+                <div [ngClass]="linkText ? 'showText' : 'hideText'" class="user__info">
+                    <p>{{ usuario?.name }} </p>
+                    <p>{{ usuario?.id }} </p>
+                </div>
             </div>
         </mat-list-item>
     </mat-nav-list>

@@ -9,7 +9,6 @@ import { SidenavBarComponent } from './components/sidenav-bar/sidenav-bar.compon
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { SidenavService } from 'src/app/shared/services/sidenav.service';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -24,6 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatDividerModule,
     MatButtonModule,
   ],
-  providers: [SidenavService],
+  providers: [],
 })
 export class HomeModule {}

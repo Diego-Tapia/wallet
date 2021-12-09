@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SidenavService } from 'src/app/shared/services/sidenav.service';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +6,5 @@ import { SidenavService } from 'src/app/shared/services/sidenav.service';
   styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
-  public onSideNavChange!: boolean;
-
-  constructor(private _sidenavService: SidenavService) {
-    this._sidenavService.sideNavState$.subscribe(
-      (res) => (this.onSideNavChange = res)
-    );
-  }
-
   ngOnInit(): void {}
 }
