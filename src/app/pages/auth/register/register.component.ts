@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   public hide: boolean = true;
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(private router: Router, private formBuilder: FormBuilder) { }
   myForm = this.formBuilder.group({
     firstname: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
@@ -22,7 +22,8 @@ export class RegisterComponent implements OnInit {
     password: ['', [Validators.required]],
     repeat_password: ['', [Validators.required]],
   });
-  ngOnInit(): void {}
+
+  ngOnInit(): void { }
   register() {
     if (!this.myForm.valid) {
       return console.log('ERROR');

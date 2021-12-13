@@ -1,91 +1,164 @@
 <div class="register__container">
-    <div class="img__container">
-        <img src="../../../../../assets/images/Ilustracion-Login.png">
+  <div class="img__container">
+    <img src="../../../../../assets/images/Ilustracion-Login.png" />
+  </div>
+  <div class="form__container">
+    <div class="logo">
+      <img
+        src="../../../../../assets/images/Interconomy-Isotipo.png"
+        class="image"
+      />
     </div>
-    <div class="form__container">
-        <div class="logo">
-            <img src="../../../../../assets/images/Interconomy-Isotipo.png" class="image" />
-        </div>
-        <div class="register-item">
-            <div class="title-register">
-                <h1>Datos de Registro</h1>
+    <div class="register-item">
+      <div class="title-register">
+        <h2>Datos de Registro</h2>
+      </div>
+      <form
+        [formGroup]="myForm"
+        (ngSubmit)="register()"
+        method="post"
+        class="form form-register"
+      >
+        <mat-stepper [linear]="false" #stepper>
+          <mat-step [stepControl]="myForm" class="step__container">
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Nombre"
+                formControlName="firstname"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Apellido</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Apellido"
+                formControlName="lastname"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>DNI</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="DNI"
+                formControlName="dni"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>CUIL</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="CUIL"
+                formControlName="cuil"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input
+                matInput
+                type="date"
+                placeholder="Fecha de nacimiento"
+                formControlName="birthDate"
+                required
+              />
+            </mat-form-field>
+            <br />
+            <mat-dialog-actions>
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                class="register__btn"
+                matStepperNext
+              >
+                SIGUIENTE
+              </button>
+            </mat-dialog-actions>
+          </mat-step>
+
+          <mat-step [stepControl]="myForm" class="step__container">
+            <mat-form-field appearance="fill">
+              <mat-label>E-mail</mat-label>
+              <input
+                matInput
+                type="email"
+                placeholder="E-mail"
+                formControlName="email"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Teléfono</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="Teléfono"
+                formControlName="phoneNumber"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Usuario</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Usuario"
+                formControlName="username"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Contraseña</mat-label>
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                placeholder="Contraseña"
+                formControlName="password"
+                required
+              />
+              <mat-icon matSuffix (click)="hide = !hide"
+                >{{ hide ? "visibility_off" : "visibility" }}
+              </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Repetir contraseña</mat-label>
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                placeholder="Repetir contraseña"
+                formControlName="password"
+                required
+              />
+              <mat-icon matSuffix (click)="hide = !hide"
+                >{{ hide ? "visibility_off" : "visibility" }}
+              </mat-icon>
+            </mat-form-field>
+
+            <div class="form-field">
+              <button type="submit" mat-raised-button class="register__btn">
+                CREAR CUENTA
+              </button>
             </div>
-            <form [formGroup]="myForm" (ngSubmit)="register()" method="post" class="form form-register">
-                <mat-stepper [linear]="false" #stepper>
-                    <mat-step [stepControl]="myForm" class="step__container">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Nombre</mat-label>
-                            <input matInput type="text" placeholder="Nombre" formControlName="firstname" required />
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill">
-                            <mat-label>Apellido</mat-label>
-                            <input matInput type="text" placeholder="Apellido" formControlName="lastname" required />
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill">
-                            <mat-label>DNI</mat-label>
-                            <input matInput type="number" placeholder="DNI" formControlName="dni" required />
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill">
-                            <mat-label>CUIL</mat-label>
-                            <input matInput type="number" placeholder="CUIL" formControlName="cuil" required />
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill">
-                            <mat-label>Fecha de nacimiento</mat-label>
-                            <input matInput type="date" placeholder="Fecha de nacimiento" formControlName="birthDate"
-                                required />
-                        </mat-form-field>
-                        <br />
-                        <mat-dialog-actions>
-                            <button type="button" mat-raised-button color="primary" class="register__btn"
-                                matStepperNext>
-                                SIGUIENTE
-                            </button>
-                        </mat-dialog-actions>
-                    </mat-step>
-
-                    <mat-step [stepControl]="myForm" class="step__container">
-                        <mat-form-field appearance="fill">
-                            <mat-label>E-mail</mat-label>
-                            <input matInput type="email" placeholder="E-mail" formControlName="email" required />
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill">
-                            <mat-label>Teléfono</mat-label>
-                            <input matInput type="number" placeholder="Teléfono" formControlName="phoneNumber"
-                                required />
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill">
-                            <mat-label>Usuario</mat-label>
-                            <input matInput type="text" placeholder="Usuario" formControlName="username" required />
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill">
-                            <mat-label>Contraseña</mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña"
-                                formControlName="password" required />
-                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}
-                            </mat-icon>
-                        </mat-form-field>
-
-                        <mat-form-field appearance="fill">
-                            <mat-label>Repetir contraseña</mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Repetir contraseña"
-                                formControlName="password" required />
-                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}
-                            </mat-icon>
-                        </mat-form-field>
-
-                        <div class="form-field">
-                            <button type="submit" mat-raised-button class="register__btn">CREAR CUENTA</button>
-                        </div>
-                    </mat-step>
-                </mat-stepper>
-            </form>
-        </div>
+          </mat-step>
+        </mat-stepper>
+      </form>
     </div>
+  </div>
 </div>

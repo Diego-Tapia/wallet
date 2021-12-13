@@ -23,4 +23,4 @@ registerLocaleData(localeEsAr, 'es-Ar');
   providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
