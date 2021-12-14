@@ -8,6 +8,9 @@ import { ComponentsModule } from './shared/components/components.module';
 import { MatIconModule } from '@angular/material/icon';
 import localeEsAr from '@angular/common/locales/es-AR';
 import { registerLocaleData } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducersMap } from './shared/store/app.state.map';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 
@@ -19,6 +22,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     BrowserAnimationsModule,
     ComponentsModule,
     MatIconModule,
+    StoreModule.forRoot(appReducersMap),
+    EffectsModule.forRoot([])
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent],

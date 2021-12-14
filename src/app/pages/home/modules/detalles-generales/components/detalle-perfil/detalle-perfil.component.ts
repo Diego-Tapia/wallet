@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { IState } from 'src/app/shared/models/state.interface';
+import { IUser } from 'src/app/shared/models/user.interface';
+import { IDetallesGeneralesReducersMap } from '../../det-generales.reducers.map';
+import { setGetUsuario, setGetUsuarioClear } from './store/get-usuario.actions';
 
 @Component({
   selector: 'app-detalle-perfil',
   templateUrl: './detalle-perfil.component.html',
   styleUrls: ['./detalle-perfil.component.sass'],
 })
-export class DetallePerfilComponent implements OnInit {
+export class DetallePerfilComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[] = [];
   usuario = {
-    firstName: 'Martin Ignacio',
-    lastName: 'Perez Arias',
+    firstName: 'Mariano Alejandro',
+    lastName: 'Bustos Rodriguez',
     username: '@marianbrod',
     dni: '36666666',
     cuil: '27-36666666-6',
@@ -31,7 +38,22 @@ export class DetallePerfilComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(
+    private store: Store<{ detallesGeneralesReducersMap: IDetallesGeneralesReducersMap }>
+  ) {
+    this.subscriptions.push(
+      this.store.select('detallesGeneralesReducersMap', 'getUsuario').subscribe((res: IState<IUser[]>) => {
+        console.log(res);
+      })
+    );
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(setGetUsuario());
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subs) => subs.unsubscribe());
+    this.store.dispatch(setGetUsuarioClear());
+  }
 }

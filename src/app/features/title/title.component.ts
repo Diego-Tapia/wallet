@@ -6,15 +6,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./title.component.sass'],
 })
 export class TitleComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
   @Input() title!: string;
   @Input() textButton!: string;
-  @Input() showAll!: boolean;
+  @Input() route!: string;
 
   @Output() newAction = new EventEmitter();
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   actionButton(): void {
     this.newAction.emit();

@@ -13,6 +13,11 @@ import { TablaMovimientosComponent } from './tabla-movimientos/tabla-movimientos
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TransferenciaModalComponent } from './transferencia-modal/transferencia-modal.component';
+import { StoreModule } from '@ngrx/store';
+import { featuresReducersMap } from './features.reducers.map';
+import { GetActivosEffects } from './lista-activos/store/activos.effects';
+import { GetActivosByIdEffects } from './lista-activos/store/activos-by-id.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,8 @@ import { TransferenciaModalComponent } from './transferencia-modal/transferencia
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
+    StoreModule.forFeature('featuresReducersMap', featuresReducersMap),
+    EffectsModule.forFeature([GetActivosEffects, GetActivosByIdEffects])
   ],
   exports: [
     TitleComponent,
@@ -39,4 +46,4 @@ import { TransferenciaModalComponent } from './transferencia-modal/transferencia
     TablaMovimientosComponent,
   ],
 })
-export class FeaturesModule {}
+export class FeaturesModule { }
