@@ -10,17 +10,32 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public hide: boolean = true;
   constructor(private router: Router, private formBuilder: FormBuilder) {}
-  myForm = this.formBuilder.group({
+  loginForm = this.formBuilder.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
     //email: ['', [Validators.required, Validators.email]]
   });
   ngOnInit(): void {}
-  login() {
-    if (!this.myForm.valid) {
-      return console.log('ERROR');
-    }
-    console.log(this.myForm.value);
-    this.router.navigate(['/home/inicio']);
+
+  get username(): string {
+    return this.loginForm.get('username')?.value;
   }
+
+  get password(): string {
+    return this.loginForm.get('password')?.value;
+  }
+
+  onLogin(): void {
+    // if (this.loginForm.valid) {
+    // 	this.store.dispatch(setAuth({ username: this.username, password: this.password }));
+    // }
+  }
+
+  //handleLogin(res: IState<IAuthResponse | null>): void {
+  // if (res.success && res.response) {
+  // 	this.authService.setUser(res.response.token, res.response.refreshToken, res.response.user);
+  // } else if (res.error) {
+  // 	this.noti.error('Error login', res.error.error?.message || '');
+  // }
+  // }
 }
