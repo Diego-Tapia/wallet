@@ -2,9 +2,16 @@
   <div class="title__container">
     <div style="display: flex">
       <h1 class="section__title">{{ title }}</h1>
-      <span class="show__all__btn" *ngIf="showAll">Ver todo</span>
+      <span class="show__all__btn" *ngIf="route" [routerLink]="route">
+        Ver todo
+      </span>
     </div>
-    <button mat-stroked-button *ngIf="textButton" class="btn__style" (click)="actionButton()">
+    <button
+      mat-stroked-button
+      *ngIf="textButton"
+      class="btn__style"
+      (click)="actionButton()"
+    >
       <span class="btn__text">{{ textButton }}</span>
     </button>
   </div>

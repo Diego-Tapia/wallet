@@ -8,6 +8,10 @@ import { DetallePerfilComponent } from './components/detalle-perfil/detalle-perf
 import { FeaturesModule } from 'src/app/features/features.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { detallesGeneralesReducersMap } from './det-generales.reducers.map';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { GetUsuarioEffects } from './components/detalle-perfil/store/get-usuario.effects';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     DetallesGeneralesRoutingModule,
     FeaturesModule,
+    StoreModule.forFeature('detallesGeneralesReducersMap', detallesGeneralesReducersMap),
+    EffectsModule.forFeature([GetUsuarioEffects])
   ],
 })
-export class DetallesGeneralesModule {}
+export class DetallesGeneralesModule { }

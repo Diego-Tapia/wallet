@@ -1,5 +1,7 @@
 <div class="subtitle__container">
   <div class="vl"></div>
   <span class="subtitle">{{ subtitle }}</span>
-  <span class="show__all__btn" *ngIf="displayButton">{{ textButton }}</span>
+  <span class="show__all__btn" *ngIf="route" [routerLink]="route">
+    {{ textButton }}
+  </span>
 </div>

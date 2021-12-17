@@ -8,6 +8,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CardMovimientosComponent } from './components/card-movimientos/card-movimientos.component';
 import { CardActivosComponent } from './components/card-activos/card-activos.component';
 import { CardNovedadesComponent } from './components/card-novedades/card-novedades.component';
+import { inicioReducersMap } from './inicio.reducers.map';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { GetNovedadesEffects } from './components/card-novedades/store/get-novedades.effects';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,8 @@ import { CardNovedadesComponent } from './components/card-novedades/card-novedad
     CommonModule,
     InicioRoutingModule,
     MatDividerModule,
+    StoreModule.forFeature('inicioReducersMap', inicioReducersMap),
+    EffectsModule.forFeature([GetNovedadesEffects])
   ],
 })
-export class InicioModule {}
+export class InicioModule { }
