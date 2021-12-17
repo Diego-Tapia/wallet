@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@ngrx/effects": "^12.2.0",
     "@ngrx/store": "^12.2.0",
+    "@ngrx/store-devtools": "^13.0.2",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
     "date-fns": "^2.22.1",

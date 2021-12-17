@@ -12,6 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { authRedecuersMap } from './auth-reducers.map';
+import { LoginEffects } from './login/store/auth.effects';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -27,6 +31,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatStepperModule,
     MatDialogModule,
+    StoreModule.forFeature('authRedecuersMap', authRedecuersMap),
+    EffectsModule.forFeature([LoginEffects]),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

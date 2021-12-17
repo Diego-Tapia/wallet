@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { ILoginResponse } from 'src/app/shared/models/login.interface';
+import { IState } from 'src/app/shared/models/state.interface';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { setLogin } from './store/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +14,21 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public hide: boolean = true;
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  subscriptions: Subscription[] = [];
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private store: Store<{ setAuthReducer: IState<ILoginResponse> }>
+  ) {
+    this.subscriptions.push(
+      this.store
+        .select('setAuthReducer')
+        .subscribe((res: IState<ILoginResponse | null>) => {
+          this.handleLogin(res);
+        })
+    );
+  }
+
   loginForm = this.formBuilder.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
@@ -26,16 +45,23 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    // if (this.loginForm.valid) {
-    // 	this.store.dispatch(setAuth({ username: this.username, password: this.password }));
-    // }
+    if (this.loginForm.valid) {
+      this.store.dispatch(
+        setLogin({ username: this.username, password: this.password })
+      );
+    }
   }
 
-  //handleLogin(res: IState<IAuthResponse | null>): void {
-  // if (res.success && res.response) {
-  // 	this.authService.setUser(res.response.token, res.response.refreshToken, res.response.user);
-  // } else if (res.error) {
-  // 	this.noti.error('Error login', res.error.error?.message || '');
-  // }
-  // }
+  handleLogin(res: IState<ILoginResponse | null>): void {
+    if (res.success && res.response) {
+      this.authService.setUser(
+        res.response.token,
+        res.response.refreshToken,
+        res.response.user
+      );
+    } else if (res.error) {
+      console.log(res.error);
+      // this.noti.error('Error login', res.error.error?.message || '');
+    }
+  }
 }

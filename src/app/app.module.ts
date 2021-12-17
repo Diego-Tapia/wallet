@@ -11,6 +11,8 @@ import { registerLocaleData } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { appReducersMap } from './shared/store/app.state.map';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 
@@ -23,7 +25,11 @@ registerLocaleData(localeEsAr, 'es-Ar');
     ComponentsModule,
     MatIconModule,
     StoreModule.forRoot(appReducersMap),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent],
