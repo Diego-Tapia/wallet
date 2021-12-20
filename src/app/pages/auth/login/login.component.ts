@@ -1,28 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { ILoginResponse } from 'src/app/shared/models/login.interface';
 import { IState } from 'src/app/shared/models/state.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { setLogin } from './store/auth.actions';
+import { IAuthReducerMap } from '../auth-reducers.map';
+import { setLogin, setLoginClear } from './store/auth.actions';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   public hide: boolean = true;
   subscriptions: Subscription[] = [];
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private store: Store<{ setAuthReducer: IState<ILoginResponse> }>
+    private noti: NotificationsService,
+    private store: Store<{ authRedecuersMap: IAuthReducerMap }>
   ) {
     this.subscriptions.push(
       this.store
-        .select('setAuthReducer')
+        .select('authRedecuersMap', 'setLogin')
         .subscribe((res: IState<ILoginResponse | null>) => {
           this.handleLogin(res);
         })
@@ -34,7 +37,13 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required]],
     //email: ['', [Validators.required, Validators.email]]
   });
+
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.store.dispatch(setLoginClear());
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 
   get username(): string {
     return this.loginForm.get('username')?.value;
@@ -60,8 +69,7 @@ export class LoginComponent implements OnInit {
         res.response.user
       );
     } else if (res.error) {
-      console.log(res.error);
-      // this.noti.error('Error login', res.error.error?.message || '');
+      this.noti.error('Error login', res.error.error?.message || '');
     }
   }
 }
