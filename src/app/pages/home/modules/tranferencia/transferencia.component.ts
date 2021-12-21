@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ITransaction } from 'src/app/shared/models/transaction.interface';
+import { ModalComponent } from './components/modal/modal.component';
 @Component({
   selector: 'app-transferencia',
   templateUrl: './transferencia.component.html',
@@ -23,18 +25,10 @@ export class TransferenciaComponent implements OnInit {
       title: 'Nombre destinatario',
       subtitle: 'ID/CUIL',
     },
-    {
-      title: 'Nombre destinatario',
-      subtitle: 'ID/CUIL',
-    },
-    {
-      title: 'Nombre destinatario',
-      subtitle: 'ID/CUIL',
-    },
   ];
   @Input() displayButton!: boolean;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     if (!this.displayButton) {
@@ -42,4 +36,19 @@ export class TransferenciaComponent implements OnInit {
     }
   }
   openModalTransference(): void {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: {},
+      closeOnNavigation: true,
+      height: '100%',
+      width: '500px',
+      panelClass: '',
+      position: { right: '0%' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
