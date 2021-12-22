@@ -37,9 +37,9 @@ export class TransferenciaComponent implements OnInit {
   }
   openModalTransference(): void {}
 
-  openDialog() {
+  openDialog(data: any) {
     const dialogRef = this.dialog.open(ModalComponent, {
-      data: {},
+      data,
       closeOnNavigation: true,
       height: '100%',
       width: '500px',

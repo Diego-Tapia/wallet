@@ -1,21 +1,54 @@
-<h2 mat-dialog-title>Install Angular</h2>
+<div class="title__container">
+  <h2 class="title" mat-dialog-title>Transferir activos</h2>
+  <mat-icon mat-dialog-close aria-hidden="false" aria-label="home icon"
+    >close</mat-icon
+  >
+</div>
+<div class="user__container">
+  <mat-icon class="material-icons-outlined user__icon">account_circle</mat-icon>
+  <p class="user__name">Nombre destinatario</p>
+  <p class="user__info">ID/CUILD</p>
+</div>
 <mat-dialog-content class="mat-typography">
-  <h3>Develop across all platforms</h3>
-  <p>
-    Learn one way to build applications with Angular and reuse your code and
-    abilities to build apps for any deployment target. For web, mobile web,
-    native mobile and native desktop.
-  </p>
-
-  <h3>Speed &amp; Performance</h3>
-  <p>
-    Achieve the maximum speed possible on the Web Platform today, and take it
-    further, via Web Workers and server-side rendering. Angular puts you in
-    control over scalability. Meet huge data requirements by building data
-    models on RxJS, Immutable.js or another push-model.
-  </p>
+  <form [formGroup]="transferenciaForm" (ngSubmit)="onSubmit()">
+    <div class="form__item">
+      <p class="item__title">Activo</p>
+      <div class="select__container">
+        <p class="item__subtitle">Seleccionar</p>
+        <mat-select class="item__select" disableRipple>
+          <mat-option value="1">Option 1</mat-option>
+          <mat-option value="2">Option 2</mat-option>
+          <mat-option value="3">Option 3</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="form__item">
+      <p class="item__title">Monto</p>
+      <input type="number" class="item__input" />
+    </div>
+    <div class="form__item">
+      <p class="item__title">Origen</p>
+      <div class="item__info">
+        <p class="item__subtitle margin__b">27-37525727-1</p>
+        <p class="item__subtitle">Nombre usuario</p>
+      </div>
+    </div>
+    <div class="form__item">
+      <p class="item__title">Destinatario</p>
+      <div class="item__info">
+        <p class="item__subtitle margin__b">27-37525727-1</p>
+        <p class="item__subtitle">Nombre usuario</p>
+      </div>
+    </div>
+    <div class="form__item">
+      <p class="item__title">Fecha</p>
+      <p class="item__subtitle">30/08/2021</p>
+    </div>
+  </form>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+<mat-dialog-actions class="button__container">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="button">
+    TRANSFERIR
+  </button>
+  <button mat-button mat-dialog-close class="button__cancelar">CANCELAR</button>
 </mat-dialog-actions>
