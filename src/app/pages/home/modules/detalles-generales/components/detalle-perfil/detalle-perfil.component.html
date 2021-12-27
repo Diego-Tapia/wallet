@@ -2,54 +2,24 @@
   <div style="width: 45%">
     <div class="first__block">
       <div class="profile__img"></div>
-      <h1>{{ usuario.firstName }} {{ usuario.lastName }}</h1>
+      <h1>{{ userData.user.shortName }} {{ userData.user.lastName }}</h1>
       <mat-icon class="edit__icon">edit</mat-icon>
     </div>
     <div class="second__block">
       <table>
         <td class="table__header">
-          <tr>
-            Usuario
-          </tr>
-          <tr>
-            DNI
-          </tr>
-          <tr>
-            CUIL
-          </tr>
-          <tr>
-            Teléfono
-          </tr>
-          <tr>
-            E-mail
-          </tr>
+          <tr>Usuario</tr>
+          <tr>DNI</tr>
+          <tr>CUIL</tr>
+          <tr>Teléfono</tr>
+          <tr>E-mail</tr>
         </td>
         <td>
-          <tr>
-            {{
-              usuario.username
-            }}
-          </tr>
-          <tr>
-            {{
-              usuario.dni
-            }}
-          </tr>
-          <tr>
-            {{
-              usuario.cuil
-            }}
-          </tr>
-          <tr>
-            {{
-              usuario.telefono
-            }}
-          </tr>
-          <tr>
-            {{
-              usuario.email
-            }}
-          </tr>
+          <tr> {{ userData.user.userId.username }} </tr>
+          <tr> {{ userData.user.dni }} </tr>
+          <tr> {{ userData.user.cuil }} </tr>
+          <tr> {{ userData.user.phoneNumber }} </tr>
+          <tr> {{ userData.user.email }} </tr>
         </td>
       </table>
     </div>

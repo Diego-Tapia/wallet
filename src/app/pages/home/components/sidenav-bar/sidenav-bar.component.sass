@@ -14,7 +14,6 @@
     height: 45px
     margin-top: 8px
 .mat-nav-list
-    cursor: pointer
     padding: 20px 18px
     height: 95%
 .mat-list-item
@@ -43,11 +42,9 @@
 .mat-divider
     border-top-width: 2px
     border-top-color: #ececec7e
-.profile__img
-    width: 30px
+.account__btn
     height: 30px
     border-radius: 50%
-    background: #aaa
     .account__icon
         margin: 3px 0 0 2px
 .user__info
@@ -57,7 +54,7 @@
     font-size: 16px
     p
         transform: translateY(-10px)
-        margin-left: 15px
+        margin-left: 12px
     p:not(:first-child)
         transform: translateY(-22px)
         font-size: 12px
@@ -70,3 +67,7 @@
 .showText
     opacity: 1
     transition: opacity .25s ease-out
+.mat-list-item-disabled
+    background-color: #00000047
+    border-radius: 5px
+    cursor: not-allowed !important

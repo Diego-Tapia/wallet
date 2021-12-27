@@ -1,8 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
-import { IActivo } from 'src/app/shared/models/activo.interface';
 import { IState } from 'src/app/shared/models/state.interface';
+import { IWallet } from 'src/app/shared/models/wallet.interface';
 import { IFeaturesReducersMap } from '../features.reducers.map';
 import { setGetActivos, setGetActivosClear } from './store/activos.actions';
 
@@ -13,66 +14,34 @@ import { setGetActivos, setGetActivosClear } from './store/activos.actions';
 })
 export class ListaActivosComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
-  activos: IActivo[] = [
-    {
-      shortName: 'BENETICKET',
-      symbol: 'BNT',
-      price: 15000,
-      money: 'BENET',
-    },
-    {
-      shortName: 'BENETICKET',
-      symbol: 'BNT',
-      price: 15000,
-      money: 'BENET',
-    },
-    {
-      shortName: 'BENETICKET',
-      symbol: 'BNT',
-      price: 15000,
-      money: 'BENET',
-    },
-    {
-      shortName: 'BENETICKET',
-      symbol: 'BNT',
-      price: 15000,
-      money: 'BENET',
-    },
-    {
-      shortName: 'BENETICKET',
-      symbol: 'BNT',
-      price: 15000,
-      money: 'BENET',
-    },
-    {
-      shortName: 'BENETICKET',
-      symbol: 'BNT',
-      price: 15000,
-      money: 'BENET',
-    },
-  ];
+  wallet!: IWallet;
 
   @Input() displayButton!: boolean;
 
   constructor(
+    private noti: NotificationsService,
     private store: Store<{ featuresReducersMap: IFeaturesReducersMap }>
   ) {
     this.subscriptions.push(
-      this.store.select('featuresReducersMap', 'getActivos').subscribe((res: IState<IActivo[]>) => {
-        console.log(res);
+      this.store.select('featuresReducersMap', 'getActivos').subscribe((res: IState<any>) => {
+        this.handleGetActivos(res)
       })
     );
   }
 
   ngOnInit(): void {
     this.store.dispatch(setGetActivos());
-    if (!this.displayButton) {
-      this.activos = this.activos.slice(0, 3);
-    }
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subs) => subs.unsubscribe());
     this.store.dispatch(setGetActivosClear());
+  }
+
+  handleGetActivos(res: IState<any>): void {
+    console.log(res);
+    
+    if(res.error) this.noti.error('Error', res.error.error.message)
+    if(res.success && res.response) this.wallet = res.response.data
   }
 }

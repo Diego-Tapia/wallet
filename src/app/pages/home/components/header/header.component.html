@@ -9,12 +9,10 @@
     </div>
     <div class="header__rigth">
         <div class="usuario__container">
-            <button mat-mini-fab class="account__btn" routerLink="/home/detalles/perfil">
-                <mat-icon class="material-icons account__icon">account_circle</mat-icon>
-            </button>
-            <div class="usuario__nombre">
-                <p>Hola usuario!</p>
-                <p>Cargo usuario</p>
+            <img *ngIf="userData.user.avatarUrl" routerLink="/home/detalles/perfil" class="account__btn" [src]="userData.user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
+            <div class="usuario__nombre" *ngIf="userData">
+                <p>Hola {{ userData.user.shortName }} {{ userData.user.lastName }}!</p>
+                <p> {{ userData.user.userId.username }} </p>
             </div>
         </div>
         <div class="usuario__icons">

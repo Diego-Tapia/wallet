@@ -3,19 +3,19 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { setLogin, setLoginError, setLoginSucces } from './auth.actions';
+import { setRegister, setRegisterError, setRegisterSucces } from './register.actions';
 
 @Injectable()
-export class LoginEffects {
+export class RegisterEffects {
   constructor(private actions$: Actions, private authService: AuthService) {}
 
-  setLogin$ = createEffect(() =>
+  setRegister$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(setLogin),
+      ofType(setRegister),
       mergeMap((props) =>
-        this.authService.logIn(props.username, props.password).pipe(
-          map((userProfile) => setLoginSucces({ payload: userProfile })),
-          catchError((err) => of(setLoginError({ payload: err })))
+        this.authService.register(props.form).pipe(
+          map((register) => setRegisterSucces({ payload: register })),
+          catchError((err) => of(setRegisterError({ payload: err })))
         )
       )
     )

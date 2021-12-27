@@ -13,7 +13,7 @@ export class ActivosService {
   constructor(private http: HttpClient) { }
 
   getActivos(): Observable<IActivo[]> {
-    return this.http.get<IActivo[]>(`${this.url}/token`)
+    return this.http.get<IActivo[]>(`${this.url}/wallet`)
   }
 
   getActivosById(id: string): Observable<IActivo> {

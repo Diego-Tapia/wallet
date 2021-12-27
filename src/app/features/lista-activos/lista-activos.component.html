@@ -1,21 +1,21 @@
-<div class="lista__container">
-  <div *ngFor="let activo of activos; let lastItem = last">
+<div class="lista__container" *ngIf="wallet">
+  <div *ngFor="let balance of wallet.balances; let lastItem = last">
     <div class="activo__container">
       <div class="activo__name">
         <div class="activo__img"></div>
-        <span>{{ activo.shortName }}</span>
+        <span>{{ balance.tokenId.shortName }}</span>
       </div>
       <div class="activo__price">
         <div>
-          <span> {{ activo.price | number }} {{ activo.symbol }} </span>
+          <span> {{ balance.amount | number }} {{ balance.tokenId.symbol | uppercase }} </span>
         </div>
         <span class="activo__pesos">
-          ≈{{ activo.price | currency: "ARS" }}
+          ≈{{ balance.amount | currency: "ARS" }}
         </span>
       </div>
       <div class="btn__group">
-        <button mat-raised-button class="activo__btn">COMPRAR</button>
-        <button mat-stroked-button *ngIf="displayButton" class="detalles__btn">
+        <button mat-raised-button class="activo__btn">ENVIAR</button>
+        <button mat-stroked-button *ngIf="displayButton" class="detalles__btn" disabled>
           VER MÁS
         </button>
       </div>

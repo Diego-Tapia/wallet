@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="first__group">
-            <mat-list-item mat-list-item routerLink="/home/{{ item.route }}" routerLinkActive="active"
+            <mat-list-item mat-list-item routerLink="/home/{{ item.route }}" routerLinkActive="active" [disabled]=!item.available
                 *ngFor="let item of navItems">
                 <mat-icon>{{item?.icon}}</mat-icon>
                 <div class="animation__container">
@@ -19,11 +19,11 @@
         </div>
         <mat-divider></mat-divider>
         <mat-list-item mat-list-item routerLink="/home/detalles/perfil" routerLinkActive="active">
-            <div class="profile__img"></div>
+            <img *ngIf="userData.user.avatarUrl" routerLink="/home/detalles/perfil" class="account__btn" [src]="userData.user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
             <div class="animation__container">
                 <div [ngClass]="linkText ? 'showText' : 'hideText'" class="user__info">
-                    <p>{{ usuario?.name }} </p>
-                    <p>{{ usuario?.id }} </p>
+                    <p>{{ userData.user.shortName }} {{ userData.user.lastName }}</p>
+                    <p>{{ userData.user.userId.username }} </p>
                 </div>
             </div>
         </mat-list-item>

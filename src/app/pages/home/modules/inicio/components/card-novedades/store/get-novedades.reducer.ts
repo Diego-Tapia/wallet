@@ -1,9 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { IState } from 'src/app/shared/models/state.interface';
-import { IUser } from 'src/app/shared/models/user.interface';
 import { setGetNovedades, setGetNovedadesClear, setGetNovedadesError, setGetNovedadesSucces } from './get-novedades.actions';
 
-export const initialState: IState<IUser | null> = {
+export const initialState: IState<any> = {
 	response: null,
 	pending: false,
 	success: false,
@@ -42,6 +41,6 @@ const mySetGetNovedadesReducer = createReducer(
 	})
 );
 
-export function setGetNovedadesReducer(state: IState<IUser> | undefined, action: Action) {
+export function setGetNovedadesReducer(state: IState<any> | undefined, action: Action) {
 	return mySetGetNovedadesReducer(state, action);
 }

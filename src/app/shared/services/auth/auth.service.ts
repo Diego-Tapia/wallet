@@ -21,7 +21,7 @@ export class AuthService {
     private router: Router
   ) {}
 
-  register(registerForm: IRegister): Observable<any> {
+  register(registerForm: IRegister): Observable<any> {   
     return this.http.post<IAuthResponse>(
       `${this.url}/auth/register`,
       registerForm
