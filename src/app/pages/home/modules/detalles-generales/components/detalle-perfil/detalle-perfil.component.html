@@ -8,48 +8,18 @@
     <div class="second__block">
       <table>
         <td class="table__header">
-          <tr>
-            Usuario
-          </tr>
-          <tr>
-            DNI
-          </tr>
-          <tr>
-            CUIL
-          </tr>
-          <tr>
-            Teléfono
-          </tr>
-          <tr>
-            E-mail
-          </tr>
+          <tr>Usuario</tr>
+          <tr>DNI</tr>
+          <tr>CUIL</tr>
+          <tr>Teléfono</tr>
+          <tr>E-mail</tr>
         </td>
         <td>
-          <tr>
-            {{
-              userData.user.userId.username
-            }}
-          </tr>
-          <tr>
-            {{
-              userData.user.dni
-            }}
-          </tr>
-          <tr>
-            {{
-              userData.user.cuil
-            }}
-          </tr>
-          <tr>
-            {{
-              userData.user.phoneNumber
-            }}
-          </tr>
-          <tr>
-            {{
-              userData.user.email
-            }}
-          </tr>
+          <tr> {{ userData.user.userId.username }} </tr>
+          <tr> {{ userData.user.dni }} </tr>
+          <tr> {{ userData.user.cuil }} </tr>
+          <tr> {{ userData.user.phoneNumber }} </tr>
+          <tr> {{ userData.user.email }} </tr>
         </td>
       </table>
     </div>
