@@ -10,12 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ModalComponent } from './components/modal/modal.component';
+import { TransferenciasModalComponent } from './components/modal/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [TransferenciaComponent, ModalComponent],
+  declarations: [TransferenciaComponent, TransferenciasModalComponent],
   imports: [
     CommonModule,
     FormsModule,

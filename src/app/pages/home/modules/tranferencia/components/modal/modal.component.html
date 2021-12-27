@@ -4,51 +4,115 @@
     >close</mat-icon
   >
 </div>
-<div class="user__container">
-  <mat-icon class="material-icons-outlined user__icon">account_circle</mat-icon>
-  <p class="user__name">Nombre destinatario</p>
-  <p class="user__info">ID/CUILD</p>
-</div>
-<mat-dialog-content class="mat-typography">
-  <form [formGroup]="transferenciaForm" (ngSubmit)="onSubmit()">
-    <div class="form__item">
-      <p class="item__title">Activo</p>
-      <div class="select__container">
-        <p class="item__subtitle">Seleccionar</p>
-        <mat-select class="item__select" disableRipple>
-          <mat-option value="1">Option 1</mat-option>
-          <mat-option value="2">Option 2</mat-option>
-          <mat-option value="3">Option 3</mat-option>
-        </mat-select>
+
+<!-- SWITCH TEMPLATES -->
+
+<ng-container [ngSwitch]="step">
+  <ng-container *ngSwitchCase="1">
+    <ng-container *ngTemplateOutlet="step_1"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="2">
+    <ng-container *ngTemplateOutlet="step_2"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="3">
+    <ng-container *ngTemplateOutlet="step_3"></ng-container>
+  </ng-container>
+</ng-container>
+
+<!-- STEP TRANSFERENCIA -->
+
+<ng-template #step_1>
+  <div class="user__container">
+    <mat-icon class="material-icons-outlined user__icon"
+      >account_circle</mat-icon
+    >
+    <p class="user__name">Nombre destinatario</p>
+    <p class="user__info">ID/CUILD</p>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <form [formGroup]="transferenciaForm">
+      <div class="form__item">
+        <p class="item__title">Activo</p>
+        <div class="select__container">
+          <p class="item__subtitle">{{ activoSelected }}</p>
+          <mat-select
+            formControlName="activo"
+            class="item__select"
+            disableRipple
+          >
+            <mat-option
+              *ngFor="let activo of ACTIVOS"
+              value="{{ activo.id }}"
+              >{{ activo.name }}</mat-option
+            >
+          </mat-select>
+        </div>
       </div>
-    </div>
-    <div class="form__item">
-      <p class="item__title">Monto</p>
-      <input type="number" class="item__input" />
-    </div>
-    <div class="form__item">
-      <p class="item__title">Origen</p>
-      <div class="item__info">
-        <p class="item__subtitle margin__b">27-37525727-1</p>
-        <p class="item__subtitle">Nombre usuario</p>
+      <div class="form__item">
+        <p class="item__title">Monto</p>
+        <input formControlName="monto" type="number" class="item__input" />
       </div>
-    </div>
-    <div class="form__item">
-      <p class="item__title">Destinatario</p>
-      <div class="item__info">
-        <p class="item__subtitle margin__b">27-37525727-1</p>
-        <p class="item__subtitle">Nombre usuario</p>
+      <div class="form__item">
+        <p class="item__title">Origen</p>
+        <div class="item__info">
+          <p class="item__subtitle margin__b">27-37525727-1</p>
+          <p class="item__subtitle">Nombre usuario</p>
+        </div>
       </div>
-    </div>
-    <div class="form__item">
-      <p class="item__title">Fecha</p>
-      <p class="item__subtitle">30/08/2021</p>
-    </div>
-  </form>
-</mat-dialog-content>
-<mat-dialog-actions class="button__container">
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="button">
-    TRANSFERIR
-  </button>
-  <button mat-button mat-dialog-close class="button__cancelar">CANCELAR</button>
-</mat-dialog-actions>
+      <div class="form__item">
+        <p class="item__title">Destinatario</p>
+        <div class="item__info">
+          <p class="item__subtitle margin__b">27-37525727-1</p>
+          <p class="item__subtitle">Nombre usuario</p>
+        </div>
+      </div>
+      <div class="form__item">
+        <p class="item__title">Fecha</p>
+        <p class="item__subtitle">{{ today | date: "dd/MM/YYYY" }}</p>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions class="button__container">
+    <button mat-button cdkFocusInitial class="button" (click)="onSubmit()">
+      TRANSFERIR
+    </button>
+    <button mat-button mat-dialog-close class="button__cancelar">
+      CANCELAR
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+<!-- STEP SUCCESS -->
+
+<ng-template #step_2>
+  <mat-dialog-content class="mat-typography">
+    <h1 class="success__title">Transferencia realizada</h1>
+    <p class="success__text">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis facere
+      praesentium.
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions class="button__container">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="button">
+      CONTINUAR
+    </button>
+    <button mat-button class="button__cancelar">VER COMPROBANTE</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<!-- STEP ERROR -->
+
+<ng-template #step_3>
+  <mat-dialog-content class="mat-typography">
+    <h1 class="success__title">Algo salió mal...</h1>
+    <p class="success__text">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis facere
+      praesentium.
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions class="button__container">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="button">
+      VOLVER
+    </button>
+  </mat-dialog-actions>
+</ng-template>
