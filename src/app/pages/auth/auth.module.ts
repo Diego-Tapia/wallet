@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { authRedecuersMap } from './auth-reducers.map';
 import { LoginEffects } from './login/store/auth.effects';
+import { RegisterEffects } from './register/store/register.effects';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -32,7 +33,7 @@ import { LoginEffects } from './login/store/auth.effects';
     MatStepperModule,
     MatDialogModule,
     StoreModule.forFeature('authRedecuersMap', authRedecuersMap),
-    EffectsModule.forFeature([LoginEffects]),
+    EffectsModule.forFeature([LoginEffects, RegisterEffects]),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

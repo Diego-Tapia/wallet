@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { IState } from 'src/app/shared/models/state.interface';
-import { IUser } from 'src/app/shared/models/user.interface';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { IDetallesGeneralesReducersMap } from '../../det-generales.reducers.map';
 import { setGetUsuario, setGetUsuarioClear } from './store/get-usuario.actions';
 
@@ -13,6 +13,8 @@ import { setGetUsuario, setGetUsuarioClear } from './store/get-usuario.actions';
 })
 export class DetallePerfilComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
+  public userData!:any;
+  
   usuario = {
     firstName: 'Mariano Alejandro',
     lastName: 'Bustos Rodriguez',
@@ -39,16 +41,18 @@ export class DetallePerfilComponent implements OnInit, OnDestroy {
   ];
 
   constructor(
+    private authService: AuthService,
     private store: Store<{ detallesGeneralesReducersMap: IDetallesGeneralesReducersMap }>
   ) {
     this.subscriptions.push(
-      this.store.select('detallesGeneralesReducersMap', 'getUsuario').subscribe((res: IState<IUser[]>) => {
-        console.log(res);
+      this.store.select('detallesGeneralesReducersMap', 'getUsuario').subscribe((res: IState<any>) => {
+        // console.log(res);
       })
     );
   }
 
   ngOnInit(): void {
+    this.userData = this.authService.getUserData()
     this.store.dispatch(setGetUsuario());
   }
 

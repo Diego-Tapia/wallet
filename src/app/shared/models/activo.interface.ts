@@ -3,4 +3,5 @@ export interface IActivo {
 	symbol: string;
 	price: number;
 	money: string;
+	description: string;
 }

@@ -11,6 +11,7 @@
       *ngIf="textButton"
       class="btn__style"
       (click)="actionButton()"
+      [disabled]="isDisabled"
     >
       <span class="btn__text">{{ textButton }}</span>
     </button>

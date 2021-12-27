@@ -11,6 +11,8 @@ export class TitleComponent implements OnInit {
   @Input() title!: string;
   @Input() textButton!: string;
   @Input() route!: string;
+  @Input() isDisabled: boolean = false;
+
 
   @Output() newAction = new EventEmitter();
 

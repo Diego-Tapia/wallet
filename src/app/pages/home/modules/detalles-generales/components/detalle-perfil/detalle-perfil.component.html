@@ -2,7 +2,7 @@
   <div style="width: 45%">
     <div class="first__block">
       <div class="profile__img"></div>
-      <h1>{{ usuario.firstName }} {{ usuario.lastName }}</h1>
+      <h1>{{ userData.user.shortName }} {{ userData.user.lastName }}</h1>
       <mat-icon class="edit__icon">edit</mat-icon>
     </div>
     <div class="second__block">
@@ -27,27 +27,27 @@
         <td>
           <tr>
             {{
-              usuario.username
+              userData.user.userId.username
             }}
           </tr>
           <tr>
             {{
-              usuario.dni
+              userData.user.dni
             }}
           </tr>
           <tr>
             {{
-              usuario.cuil
+              userData.user.cuil
             }}
           </tr>
           <tr>
             {{
-              usuario.telefono
+              userData.user.phoneNumber
             }}
           </tr>
           <tr>
             {{
-              usuario.email
+              userData.user.email
             }}
           </tr>
         </td>

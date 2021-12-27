@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { onSideNavChange } from '../../animations/animations';
 
 @Component({
@@ -10,28 +11,24 @@ import { onSideNavChange } from '../../animations/animations';
 export class SidenavBarComponent implements OnInit {
   public sideNavState: boolean = false;
   public linkText: boolean = false;
+  public userData!:any;
 
   navItems = [
-    { name: 'Inicio', route: 'inicio', icon: 'home_outlined' },
-    {
-      name: 'Mi Billetera',
-      route: 'detalles/activos',
-      icon: 'account_balance_wallet',
-    },
-    { name: 'Pagos', route: '1', icon: 'attach_money' },
-    {
-      name: 'Transferencias',
-      route: 'transferencia',
-      icon: 'swap_vert',
-    },
-    { name: 'Ayuda', route: 'help', icon: 'info_outline' },
+    { name: 'Inicio', route: 'inicio', icon: 'home_outlined', available:true },
+    { name: 'Mi Billetera', route: 'detalles/activos', icon: 'account_balance_wallet', available:true},
+    { name: 'Pagos', route: '1', icon: 'attach_money', available:false },
+    { name: 'Transferencias', route: 'transferencia', icon: 'swap_vert', available:true },
+    { name: 'Ayuda', route: 'help', icon: 'info_outline', available:false },
   ];
 
   usuario = { name: 'Username', id: '123456789' };
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.userData = this.authService.getUserData()
+  }
 
   onSinenavToggle() {
     this.sideNavState = !this.sideNavState;

@@ -39,7 +39,7 @@ export class CardNovedadesComponent implements OnInit, OnDestroy {
     private store: Store<{ inicioReducersMap: IInicioReducersMap }>
   ) {
     this.store.select('inicioReducersMap', 'getNovedades').subscribe((res: IState<any>) => {
-      console.log(res);
+      // console.log(res);
     })
   }
 
