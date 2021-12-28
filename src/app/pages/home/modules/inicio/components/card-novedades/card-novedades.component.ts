@@ -44,7 +44,7 @@ export class CardNovedadesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(setGetNovedades())
+    // this.store.dispatch(setGetNovedades())
   }
 
   ngOnDestroy(): void {

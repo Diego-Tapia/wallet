@@ -1,9 +1,9 @@
 <div class="profile__container">
-  <div class="flex__item">
+  <div class="flex__item" *ngIf="user">
     <div class="first__block">
       <div>
-        <img *ngIf="userData.user.avatarUrl" routerLink="/home/detalles/perfil" class="profile__img" [src]="userData.user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
-        <h1>{{ userData.user.shortName }} {{ userData.user.lastName }}</h1>
+        <img *ngIf="user.avatarUrl" routerLink="/home/detalles/perfil" class="profile__img" [src]="user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
+        <h1>{{ user.shortName }} {{ user.lastName }}</h1>
       </div>
       <mat-icon class="edit__icon">edit</mat-icon>
     </div>
@@ -17,11 +17,11 @@
           <tr>E-mail</tr>
         </td>
         <td>
-          <tr> {{ userData.user.userId.username }} </tr>
-          <tr> {{ userData.user.dni }} </tr>
-          <tr> {{ userData.user.cuil }} </tr>
-          <tr> {{ userData.user.phoneNumber }} </tr>
-          <tr> {{ userData.user.email }} </tr>
+          <tr> {{ user.userId.username }} </tr>
+          <tr> {{ user.dni }} </tr>
+          <tr> {{ user.cuil }} </tr>
+          <tr> {{ user.phoneNumber }} </tr>
+          <tr> {{ user.email }} </tr>
         </td>
       </table>
     </div>

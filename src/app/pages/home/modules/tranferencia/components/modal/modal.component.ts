@@ -1,8 +1,8 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { NotificationsService } from 'angular2-notifications';
+import { Notification, NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { setGetActivos, setGetActivosClear } from 'src/app/features/lista-activos/store/activos.actions';
 import { IActivo } from 'src/app/shared/models/activo.interface';
@@ -11,7 +11,7 @@ import { ITransferenciaRes } from 'src/app/shared/models/transferencia.interface
 import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
 import { IBalances, IWallet } from 'src/app/shared/models/wallet.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { setTransferencia } from '../../store/transferencias.action';
+import { setTransferencia, setTransferenciaClear } from '../../store/transferencias.action';
 import { setVerifyUser, setVerifyUserClear } from '../../store/verify-user/verify-user.action';
 import { ITransferenciasMap } from '../../transferencia-reducer.map';
 
@@ -19,6 +19,7 @@ import { ITransferenciasMap } from '../../transferencia-reducer.map';
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.sass'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TransferenciasModalComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
@@ -74,6 +75,7 @@ export class TransferenciasModalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
+    this.store.dispatch(setTransferenciaClear());
     this.store.dispatch(setGetActivosClear());
     this.store.dispatch(setVerifyUserClear());
   }
@@ -106,13 +108,19 @@ export class TransferenciasModalComponent implements OnInit, OnDestroy {
 		} 
   }
 
-  onVerifyUser(): void {    
-    this.store.dispatch(setVerifyUser({userIdentifier: this.transferenciaForm.value.userIdentifier}));
+  onVerifyUser(): void | Notification {
+    const userIdentifier = this.transferenciaForm.value.userIdentifier
+    if(userIdentifier == this.user?.cuil || userIdentifier == this.user?.dni ||
+      userIdentifier == this.user?.userId.customId || userIdentifier == this.user?.userId.username) 
+    return this.noti.error('Error','Las billeteras de origen y destino no pueden ser iguales')
+    else this.store.dispatch(setVerifyUser({userIdentifier: this.transferenciaForm.value.userIdentifier}));
   }
 
   onSubmit(): void {
     if(this.transferenciaForm.valid) this.store.dispatch(setTransferencia({form: this.transferenciaForm.value}));    
   }
+  
+  verComprobante(): void { this.step = 4;}
 
   onSelectionChanged(name: string): void {
     this.activoSelected = name;

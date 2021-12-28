@@ -4,6 +4,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { IState } from 'src/app/shared/models/state.interface';
 import { IWallet } from 'src/app/shared/models/wallet.interface';
+import { TotalService } from 'src/app/shared/services/total/total.service';
 import { IFeaturesReducersMap } from '../features.reducers.map';
 import { setGetActivos, setGetActivosClear } from './store/activos.actions';
 
@@ -16,10 +17,11 @@ export class ListaActivosComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   wallet!: IWallet;
 
-  @Input() displayButton!: boolean;
+  @Input() displayButton: boolean = false;
 
   constructor(
     private noti: NotificationsService,
+    private totalService: TotalService,
     private store: Store<{ featuresReducersMap: IFeaturesReducersMap }>
   ) {
     this.subscriptions.push(
@@ -40,6 +42,9 @@ export class ListaActivosComponent implements OnInit, OnDestroy {
 
   handleGetActivos(res: IState<any>): void {    
     if(res.error) this.noti.error('Error', res.error.error.message)
-    if(res.success && res.response) this.wallet = res.response.data
+    if(res.success && res.response) {
+      this.wallet = res.response.data
+      this.totalService.totalAmount.next(this.wallet.total)
+    } 
   }
 }
