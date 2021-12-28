@@ -1,8 +1,10 @@
 <div class="profile__container">
-  <div style="width: 45%">
+  <div class="flex__item">
     <div class="first__block">
-      <div class="profile__img"></div>
-      <h1>{{ userData.user.shortName }} {{ userData.user.lastName }}</h1>
+      <div>
+        <img *ngIf="userData.user.avatarUrl" routerLink="/home/detalles/perfil" class="profile__img" [src]="userData.user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
+        <h1>{{ userData.user.shortName }} {{ userData.user.lastName }}</h1>
+      </div>
       <mat-icon class="edit__icon">edit</mat-icon>
     </div>
     <div class="second__block">
@@ -25,19 +27,19 @@
     </div>
   </div>
 
-  <div style="width: 45%">
+  <div class="flex__item">
     <app-subtitle [subtitle]="'Mis representados'"></app-subtitle>
     <div class="lista__container">
       <div *ngFor="let representado of representados">
         <div class="flex__container__representados">
-          <div style="width: 15%">
+          <div class="flex__group">
             <div class="representados__img"></div>
+            <div class="representados__text">
+              <p>{{ representado.nombre }}</p>
+              <p>CUIT {{ representado.cuil }}</p>
+            </div>
           </div>
-          <div class="representados__text" style="width: 60%">
-            <p>{{ representado.nombre }}</p>
-            <p>CUIT {{ representado.cuil }}</p>
-          </div>
-          <span style="width: 15%" class="show__all__btn">Ver más</span>
+          <span class="show__all__btn">Ver más</span>
         </div>
       </div>
     </div>

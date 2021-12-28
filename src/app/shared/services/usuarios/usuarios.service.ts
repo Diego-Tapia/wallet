@@ -14,4 +14,8 @@ export class UsuariosService {
   getUsuario(): Observable<any> {
     return this.http.get<any>(`${this.url}/user`)
   }
+
+  verifyUser(userIdentifier: string): Observable<any> {    
+    return this.http.get<any>(`${this.url}/user-profile/verify-user/${userIdentifier}`)
+  }
 }

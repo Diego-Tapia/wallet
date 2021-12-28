@@ -18,12 +18,12 @@
             </mat-list-item>
         </div>
         <mat-divider></mat-divider>
-        <mat-list-item mat-list-item routerLink="/home/detalles/perfil" routerLinkActive="active">
-            <img *ngIf="userData.user.avatarUrl" routerLink="/home/detalles/perfil" class="account__btn" [src]="userData.user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
+        <mat-list-item mat-list-item routerLink="/home/detalles/perfil" routerLinkActive="active" *ngIf="user">
+            <img routerLink="/home/detalles/perfil" class="account__btn" [src]= "user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
             <div class="animation__container">
                 <div [ngClass]="linkText ? 'showText' : 'hideText'" class="user__info">
-                    <p>{{ userData.user.shortName }} {{ userData.user.lastName }}</p>
-                    <p>{{ userData.user.userId.username }} </p>
+                    <p>{{ user.shortName }} {{ user.lastName }}</p>
+                    <p>{{ user.userId.username }} </p>
                 </div>
             </div>
         </mat-list-item>

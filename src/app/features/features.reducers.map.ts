@@ -4,8 +4,8 @@ import { setGetActivosByIdReducer } from './lista-activos/store/activos-by-id.re
 import { setGetActivosReducer } from './lista-activos/store/activos.reducer';
 
 export interface IFeaturesReducersMap {
-	getActivos: IState<any>
-	getActivosById: IState<any>
+	getActivos: IState<any>;
+	getActivosById: IState<any>;
 }
 
 export const featuresReducersMap: ActionReducerMap<IFeaturesReducersMap> = {

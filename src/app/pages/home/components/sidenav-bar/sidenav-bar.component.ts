@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { onSideNavChange } from '../../animations/animations';
 
@@ -11,7 +12,7 @@ import { onSideNavChange } from '../../animations/animations';
 export class SidenavBarComponent implements OnInit {
   public sideNavState: boolean = false;
   public linkText: boolean = false;
-  public userData!:any;
+  public user!: IUserProfile | undefined;
 
   navItems = [
     { name: 'Inicio', route: 'inicio', icon: 'home_outlined', available:true },
@@ -27,7 +28,7 @@ export class SidenavBarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.userData = this.authService.getUserData()
+    this.user = this.authService.getUserData()?.userProfile
   }
 
   onSinenavToggle() {

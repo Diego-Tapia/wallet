@@ -8,11 +8,11 @@
         </div>
     </div>
     <div class="header__rigth">
-        <div class="usuario__container">
-            <img *ngIf="userData.user.avatarUrl" routerLink="/home/detalles/perfil" class="account__btn" [src]="userData.user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
-            <div class="usuario__nombre" *ngIf="userData">
-                <p>Hola {{ userData.user.shortName }} {{ userData.user.lastName }}!</p>
-                <p> {{ userData.user.userId.username }} </p>
+        <div class="usuario__container" *ngIf="user">
+            <img routerLink="/home/detalles/perfil" class="account__btn" [src]="user.avatarUrl" onError="this.src='assets/images/default-profile-img.png'">
+            <div class="usuario__nombre">
+                <p>Hola {{ user.shortName }} {{ user.lastName }}!</p>
+                <p> {{ user.userId.username }} </p>
             </div>
         </div>
         <div class="usuario__icons">

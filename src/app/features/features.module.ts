@@ -12,7 +12,6 @@ import { SubtitleComponent } from './subtitle/subtitle.component';
 import { TablaMovimientosComponent } from './tabla-movimientos/tabla-movimientos.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { TransferenciaModalComponent } from './transferencia-modal/transferencia-modal.component';
 import { StoreModule } from '@ngrx/store';
 import { featuresReducersMap } from './features.reducers.map';
 import { GetActivosEffects } from './lista-activos/store/activos.effects';
@@ -25,7 +24,6 @@ import { EffectsModule } from '@ngrx/effects';
     TitleComponent,
     SubtitleComponent,
     TablaMovimientosComponent,
-    TransferenciaModalComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +35,7 @@ import { EffectsModule } from '@ngrx/effects';
     MatTableModule,
     MatPaginatorModule,
     StoreModule.forFeature('featuresReducersMap', featuresReducersMap),
-    EffectsModule.forFeature([GetActivosEffects, GetActivosByIdEffects])
+    EffectsModule.forFeature([GetActivosEffects, GetActivosByIdEffects]),
   ],
   exports: [
     TitleComponent,
@@ -46,4 +44,4 @@ import { EffectsModule } from '@ngrx/effects';
     TablaMovimientosComponent,
   ],
 })
-export class FeaturesModule { }
+export class FeaturesModule {}

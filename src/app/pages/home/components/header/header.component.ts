@@ -9,13 +9,13 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public userData!:any;
+  public user!: IUserProfile | undefined;
   constructor(private authService: AuthService) {}
 
   total: number = 20755.6;
 
   ngOnInit(): void {
-    this.userData = this.authService.getUserData()
+    this.user = this.authService.getUserData()?.userProfile;
   }
 
   onLogOut(): void {
