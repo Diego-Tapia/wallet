@@ -8,19 +8,20 @@ import {
   setTransferenciaSucces,
 } from './transferencias.action';
 import { TransferenciasService } from 'src/app/shared/services/transferencias/transferencias.service';
+import { TransaccionesService } from 'src/app/shared/services/transacciones/transacciones.service';
 
 @Injectable()
 export class TransferenciaEffects {
   constructor(
     private actions$: Actions,
-    private transferenciaService: TransferenciasService
+    private transaccionesService: TransaccionesService
   ) {}
 
   setTransferencia$ = createEffect(() =>
     this.actions$.pipe(
       ofType(setTransferencia),
       mergeMap((props) =>
-        this.transferenciaService.submitTransferencia(props.form).pipe(
+        this.transaccionesService.submitTransactions(props.form).pipe(
           map((response) => setTransferenciaSucces({ payload: response })),
           catchError((err) => of(setTransferenciaError({ payload: err })))
         )

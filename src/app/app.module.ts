@@ -35,13 +35,14 @@ registerLocaleData(localeEsAr, 'es-Ar');
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    SimpleNotificationsModule.forRoot({
-      position: ['top', 'right'],
-      showProgressBar: true,
-      timeOut: 5000,
-      clickToClose: true,
-      pauseOnHover: true,
-    }),
+		SimpleNotificationsModule.forRoot({
+			position: ['bottom', 'right'],
+			showProgressBar: true,
+			timeOut: 5000,
+			clickToClose: true,
+			pauseOnHover: true,
+			maxStack: 3
+		})
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent],

@@ -1,55 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-
-export interface PeriodicElement {
-  activos: string;
-  operacion: string;
-  fecha: Date;
-  monto: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    activos: 'ACT 1',
-    operacion: 'Disminución',
-    fecha: new Date(),
-    monto: '(5.000)',
-  },
-  {
-    activos: 'CRE 2',
-    operacion: 'Inc. Individual',
-    fecha: new Date(),
-    monto: '100',
-  },
-  {
-    activos: 'CRE 3',
-    operacion: 'Incremento',
-    fecha: new Date(),
-    monto: '100.000',
-  },
-  {
-    activos: 'CRE 4',
-    operacion: 'Incremento',
-    fecha: new Date(),
-    monto: '8.500',
-  },
-  {
-    activos: 'CRE 5',
-    operacion: 'Disminución Individual',
-    fecha: new Date(),
-    monto: '(400)',
-  },
-];
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { IState } from 'src/app/shared/models/state.interface';
+import { ITransaction } from 'src/app/shared/models/transaction.interface';
+import { ITransferenciaRes } from 'src/app/shared/models/transferencia.interface';
+import { IFeaturesReducersMap } from '../features.reducers.map';
+import { setGetTransactions, setGetTransactionsClear } from './store/get-transacciones.actions';
 
 @Component({
   selector: 'app-tabla-movimientos',
   templateUrl: './tabla-movimientos.component.html',
   styleUrls: ['./tabla-movimientos.component.sass'],
 })
-export class TablaMovimientosComponent implements OnInit {
-  displayedColumns: string[] = ['activos', 'operacion', 'fecha', 'monto'];
-  dataSource = ELEMENT_DATA;
+export class TablaMovimientosComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[] = [];
+  displayedColumns: string[] = ['token', 'transactionType', 'createdAt', 'amount'];
+  transactions: ITransferenciaRes[] = []
 
-  constructor() {}
+  constructor(    
+    private store: Store<{ featuresReducersMap: IFeaturesReducersMap }>
+  ) {
+    this.subscriptions.push(
+      this.store.select('featuresReducersMap', 'getTransactions').subscribe((res: IState<any>) => {
+        this.handleGetTransactions(res)
+      })
+    );
+  }
 
-  ngOnInit(): void {}
+  handleGetTransactions(res: IState<any>): void {
+    if(res.success && res.response) this.transactions = res.response
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(setGetTransactions())
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subs) => subs.unsubscribe());
+    this.store.dispatch(setGetTransactionsClear())
+  }
 }

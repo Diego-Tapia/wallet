@@ -2,28 +2,28 @@
   <div class="section__subtable">
     <table
       mat-table
-      [dataSource]="dataSource"
+      [dataSource]="transactions"
       class="mat-elevation-z8"
       style="width: 100%"
     >
-      <ng-container matColumnDef="activos">
+      <ng-container matColumnDef="token">
         <th mat-header-cell *matHeaderCellDef>Activos</th>
-        <td mat-cell *matCellDef="let element">{{ element.activos }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.token }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="operacion">
+      <ng-container matColumnDef="transactionType">
         <th mat-header-cell *matHeaderCellDef>Operación</th>
-        <td mat-cell *matCellDef="let element">{{ element.operacion }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.transactionType }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="fecha">
+      <ng-container matColumnDef="createdAt">
         <th mat-header-cell *matHeaderCellDef>Fecha</th>
-        <td mat-cell *matCellDef="let element">{{ element.fecha | date }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.createdAt | date }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="monto">
+      <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef>Monto</th>
-        <td mat-cell *matCellDef="let element">{{ element.monto }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

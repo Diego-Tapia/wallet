@@ -17,6 +17,7 @@ import { featuresReducersMap } from './features.reducers.map';
 import { GetActivosEffects } from './lista-activos/store/activos.effects';
 import { GetActivosByIdEffects } from './lista-activos/store/activos-by-id.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { GetTransactionsEffects } from './tabla-movimientos/store/get-transacciones.effects';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
     MatTableModule,
     MatPaginatorModule,
     StoreModule.forFeature('featuresReducersMap', featuresReducersMap),
-    EffectsModule.forFeature([GetActivosEffects, GetActivosByIdEffects]),
+    EffectsModule.forFeature([GetActivosEffects, GetActivosByIdEffects, GetTransactionsEffects]),
   ],
   exports: [
     TitleComponent,

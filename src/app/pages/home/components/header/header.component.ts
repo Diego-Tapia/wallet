@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { TotalService } from 'src/app/shared/services/total/total.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,18 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class HeaderComponent implements OnInit {
 
   public user!: IUserProfile | undefined;
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private totalService: TotalService
+  ) {}
 
-  total: number = 20755.6;
+  public total!: number;
 
   ngOnInit(): void {
     this.user = this.authService.getUserData()?.userProfile;
+    this.totalService.totalAmount.subscribe(res => {
+      this.total = res
+    })
   }
 
   onLogOut(): void {

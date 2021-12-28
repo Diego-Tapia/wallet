@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { IState } from 'src/app/shared/models/state.interface';
+import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { IDetallesGeneralesReducersMap } from '../../det-generales.reducers.map';
 import { setGetUsuario, setGetUsuarioClear } from './store/get-usuario.actions';
@@ -13,7 +14,7 @@ import { setGetUsuario, setGetUsuarioClear } from './store/get-usuario.actions';
 })
 export class DetallePerfilComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
-  public userData!:any;
+  public user!: IUserProfile | undefined;
   
   usuario = {
     firstName: 'Mariano Alejandro',
@@ -52,7 +53,7 @@ export class DetallePerfilComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.userData = this.authService.getUserData()
+    this.user = this.authService.getUserData()?.userProfile
     this.store.dispatch(setGetUsuario());
   }
 
