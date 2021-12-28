@@ -38,9 +38,7 @@ export class ListaActivosComponent implements OnInit, OnDestroy {
     this.store.dispatch(setGetActivosClear());
   }
 
-  handleGetActivos(res: IState<any>): void {
-    console.log(res);
-    
+  handleGetActivos(res: IState<any>): void {    
     if(res.error) this.noti.error('Error', res.error.error.message)
     if(res.success && res.response) this.wallet = res.response.data
   }

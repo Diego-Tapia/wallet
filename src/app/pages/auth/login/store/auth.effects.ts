@@ -14,7 +14,7 @@ export class LoginEffects {
       ofType(setLogin),
       mergeMap((props) =>
         this.authService.logIn(props.username, props.password).pipe(
-          map((userProfile) => setLoginSucces({ payload: userProfile })),
+          map((user) => setLoginSucces({ payload: user })),
           catchError((err) => of(setLoginError({ payload: err })))
         )
       )
