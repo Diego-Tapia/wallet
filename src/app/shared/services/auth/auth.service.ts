@@ -22,24 +22,15 @@ export class AuthService {
   ) {}
 
   register(registerForm: IRegister): Observable<any> {   
-    return this.http.post<IAuthResponse>(
-      `${this.url}/auth/register`,
-      registerForm
-    );
+    return this.http.post<IAuthResponse>(`${this.url}/auth/register`, registerForm);
   }
 
   confirm(confirmRegisterForm: IConfirmRegister): Observable<any> {
-    return this.http.post<IAuthResponse>(
-      `${this.url}/auth/confirm`,
-      confirmRegisterForm
-    );
+    return this.http.post<IAuthResponse>(`${this.url}/auth/confirm`, confirmRegisterForm);
   }
 
   logIn(username: string, password: string): Observable<IAuthResponse> {
-    return this.http.post<IAuthResponse>(`${this.url}/auth/login`, {
-      username,
-      password,
-    });
+    return this.http.post<IAuthResponse>(`${this.url}/auth/login`, {username,password});
   }
 
   logOut(): void {

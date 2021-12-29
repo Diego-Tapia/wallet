@@ -27,8 +27,14 @@
 <ng-template #step_1>
   <div class="user__container">
     <mat-icon class="material-icons-outlined user__icon">account_circle</mat-icon>
-    <p class="user__name">{{ userTo ? userTo.shortName + ' ' + userTo.lastName : 'Nombre destinatario' }}</p>
-    <p class="user__info">{{ userTo ? userTo.cuil : 'ID/CUILD' }}</p>
+    <p class="user__name">
+      {{
+        userTo
+          ? userTo.shortName + " " + userTo.lastName
+          : "Nombre destinatario"
+      }}
+    </p>
+    <p class="user__info">{{ userTo ? userTo.cuil : "ID/CUILD" }}</p>
   </div>
   <mat-dialog-content class="mat-typography">
     <form [formGroup]="transferenciaForm">
@@ -62,10 +68,17 @@
       </div>
       <div class="form__item">
         <p class="item__title">Destinatario</p>
-        <input formControlName="userIdentifier" type="string" class="item__input" *ngIf="!verified"/>
+        <input
+          formControlName="userIdentifier"
+          type="string"
+          class="item__input"
+          *ngIf="!verified"
+        />
         <div class="item__info" *ngIf="userTo">
           <p class="item__subtitle margin__b">{{ userTo.cuil }}</p>
-          <p class="item__subtitle">{{ userTo.shortName + ' ' + userTo.lastName }} </p>
+          <p class="item__subtitle">
+            {{ userTo.shortName + " " + userTo.lastName }}
+          </p>
         </div>
       </div>
       <div class="form__item">
@@ -79,10 +92,22 @@
     </form>
   </mat-dialog-content>
   <mat-dialog-actions class="button__container">
-    <button mat-button cdkFocusInitial class="button" (click)="onVerifyUser()" [disabled]="verified">
+    <button
+      mat-button
+      cdkFocusInitial
+      class="button"
+      (click)="onVerifyUser()"
+      [disabled]="verified"
+    >
       VERIFICAR DESTINATARIO
     </button>
-    <button mat-button cdkFocusInitial class="button" (click)="onSubmit()" [disabled]="!verified">
+    <button
+      mat-button
+      cdkFocusInitial
+      class="button"
+      (click)="onSubmit()"
+      [disabled]="!verified"
+    >
       TRANSFERIR
     </button>
     <button mat-button mat-dialog-close class="button__cancelar">
@@ -126,28 +151,29 @@
   </mat-dialog-actions>
 </ng-template>
 
-
 <!-- STEP COMPROBANTE -->
 
 <ng-template #step_4>
   <mat-dialog-content class="mat-typography">
     <h1 class="success__title">Comprobante</h1>
     <div class="form__item">
-      <p class="item__title">Monto</p>
-      <p class="item__subtitle margin__b">{{ transactionRes.amount }}</p>
+      <p class="item__title">Activo y monto</p>
+      <p class="item__subtitle margin__b">{{ activoSelected }} {{ transactionRes.amount }}</p>
     </div>
     <div class="form__item">
       <p class="item__title">Origen</p>
       <div class="item__info" *ngIf="user">
         <p class="item__subtitle margin__b">{{ user.cuil }}</p>
-        <p class="item__subtitle">{{ user.shortName + ' ' + user.lastName }}</p>
+        <p class="item__subtitle">{{ user.shortName + " " + user.lastName }}</p>
       </div>
     </div>
     <div class="form__item">
       <p class="item__title">Destino</p>
       <div class="item__info">
         <p class="item__subtitle margin__b">{{ userTo.cuil }}</p>
-        <p class="item__subtitle">{{ userTo.shortName + ' ' + userTo.lastName }} </p>
+        <p class="item__subtitle">
+          {{ userTo.shortName + " " + userTo.lastName }}
+        </p>
       </div>
     </div>
     <div class="form__item">
@@ -156,17 +182,11 @@
     </div>
     <div class="form__item">
       <p class="item__title">Notas</p>
-      <p class="item__subtitle">{{ transactionRes.notes }}</p>
+      <p class="item__subtitle">{{ transactionRes.notes ? transactionRes.notes : '-' }}</p>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions class="button__container">
-    <button mat-button cdkFocusInitial class="button" disabled>
-      GUARDAR
-    </button>
-    <button mat-button mat-dialog-close class="button__cancelar">
-      SALIR
-    </button>
+    <button mat-button cdkFocusInitial class="button" disabled>GUARDAR</button>
+    <button mat-button mat-dialog-close class="button__cancelar">SALIR</button>
   </mat-dialog-actions>
 </ng-template>
-
-<simple-notification></simple-notification>

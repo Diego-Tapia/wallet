@@ -1,11 +1,14 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
+import { IActivo } from 'src/app/shared/models/activo.interface';
 import { IState } from 'src/app/shared/models/state.interface';
 import { IWallet } from 'src/app/shared/models/wallet.interface';
 import { TotalService } from 'src/app/shared/services/total/total.service';
 import { IFeaturesReducersMap } from '../features.reducers.map';
+import { ModalTransferenciaComponent } from '../modal-transferencia/modal-transferencia.component';
 import { setGetActivos, setGetActivosClear } from './store/activos.actions';
 
 @Component({
@@ -21,6 +24,7 @@ export class ListaActivosComponent implements OnInit, OnDestroy {
 
   constructor(
     private noti: NotificationsService,
+    public dialog: MatDialog,
     private totalService: TotalService,
     private store: Store<{ featuresReducersMap: IFeaturesReducersMap }>
   ) {
@@ -46,5 +50,16 @@ export class ListaActivosComponent implements OnInit, OnDestroy {
       this.wallet = res.response.data
       this.totalService.totalAmount.next(this.wallet.total)
     } 
+  }
+
+  openDialog(data:IActivo) {
+    this.dialog.open(ModalTransferenciaComponent, {
+      data,
+      closeOnNavigation: true,
+      height: '100%',
+      width: '500px',
+      panelClass: '',
+      position: { right: '0%' },
+    });
   }
 }

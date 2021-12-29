@@ -2,9 +2,20 @@
     <div class="header__left">
         <div class="total__container">
             <p>Total en ARS
-                <mat-icon class="help__icon">help_outline</mat-icon>
+                <mat-icon 
+                    class="help__icon"
+                    #tooltip="matTooltip"
+                    matTooltip="Equivalente total en ARS"
+                    matTooltipPosition="right">
+                    help_outline
+                </mat-icon>
             </p>
-            <h2>≈{{ total | currency : 'ARS'}}</h2>
+            <div class="total__group">
+                <h2>≈{{ hide ? "$ **" : (total | currency : 'ARS')}}</h2>
+                <mat-icon matSuffix (click)="hide = !hide">
+                    {{hide ? "visibility_off" : "visibility"}}
+                </mat-icon>
+            </div>
         </div>
     </div>
     <div class="header__rigth">

@@ -5,10 +5,11 @@
     overflow: hidden
 .img__container
     width: 40vw
+    z-index: 999
     img
         object-fit: cover
-        min-height: 720px
-        height: 110vh
+        position: fixed
+        height: 100vh
         width: 40vw
 .form__container
     height: 100%
@@ -24,10 +25,11 @@
 .title-register
     margin: 0 25%
     h2
-        margin: 0
+        margin: 15px 0
 .mat-form-field
     width: 30vw
-    margin: 0 25%
+    margin: 0 50%
+    transform: translateX(-50%)
     .mat-icon
         cursor: pointer
         user-select: none
@@ -38,5 +40,27 @@
 .register__btn
     background-color: $primary-blue
     color: #ffffff
-    width: 15vw
-    margin: 20px 22vw 0 22vw
+    width: 20vw
+    margin: 5px 50%
+    transform: translateX(-50%)
+.second__step__btn
+    display: block
+    margin: 10px auto
+    color: #ffffff
+    background-color: $primary-blue
+    width: 10vw
+.back__btn
+    background-color: #ffffff
+    color: $grey
+    box-shadow: none
+.box
+    width: 25vw
+    margin: 4vh auto
+    color: $primary-blue
+    display: flex
+    justify-content: space-around
+    span
+        font-weight: 500
+        cursor: pointer
+::ng-deep .mat-horizontal-stepper-header-container
+    display: none !important

@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { IApiResponse } from 'src/app/shared/models/api.interface';
 import { IState } from 'src/app/shared/models/state.interface';
+import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
 import {
   setVerifyUser,
   setVerifyUserClear,
@@ -8,7 +8,7 @@ import {
   setVerifyUserSucces,
 } from './verify-user.action';
 
-export const initialState: IState<IApiResponse<any> | null> = {
+export const initialState: IState<IUserProfile | null> = {
   response: null,
   pending: false,
   success: false,
@@ -49,7 +49,7 @@ const mySetVerifyUserReducer = createReducer(
 );
 
 export function setVerifyUserReducer(
-  state: IState<IApiResponse<any> | null> | undefined,
+  state: IState<IUserProfile | null> | undefined,
   action: Action
 ) {
   return mySetVerifyUserReducer(state, action);
