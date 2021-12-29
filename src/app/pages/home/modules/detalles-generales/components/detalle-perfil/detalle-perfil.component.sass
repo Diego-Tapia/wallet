@@ -2,12 +2,10 @@
 
 .profile__container
     display: flex
-    justify-content: space-between
-.flex__item:first-of-type
-     margin: 0 10vw
+    justify-content: space-around
+    margin: 0 8vw
 .flex__item
     width: 35vw
-    margin: 0 5rem
 .edit__icon
     font-size: 15px
     color: #777
@@ -54,7 +52,7 @@ table
         font-weight: 500
     p:not(:first-child)
         color: $grey
-        font-size: 14px
+        font-size: 12px
 
 .show__all__btn
     margin: 2px 0 0 15px
@@ -63,13 +61,23 @@ table
     cursor: pointer
     width: 65px
 
+@media screen and (min-width: 1366px) 
+    .flex__container__representados
+        width: 80%
 
 @media screen and (max-width: 1366px) 
     .flex__item:first-of-type, .flex__item
         margin: 0 5vw
+    .flex__container__representados
+        width: 100%
+    .representados__img
+        margin-left: 0
   
 
 @media screen and (max-width: 1035px) 
     .flex__item:first-of-type, .flex__item
         margin: 0 1vw
-  
+    .flex__container__representados
+        width: 100%
+    .representados__img
+        margin-left: 0

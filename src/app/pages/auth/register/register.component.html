@@ -13,15 +13,10 @@
       <div class="title-register">
         <h2>Datos de Registro</h2>
       </div>
-      <form
-        [formGroup]="myForm"
-        (ngSubmit)="register()"
-        method="post"
-        class="form form-register"
-      >
-        <mat-stepper [linear]="false" #stepper>
-          <mat-step [stepControl]="myForm" class="step__container">
-            <mat-form-field appearance="fill">
+      <mat-stepper [linear]="isLinear" #stepper *ngIf="true">
+        <form [formGroup]="firstRegisterForm" class="form form-register">
+          <mat-step [stepControl]="firstRegisterForm" class="step__container">
+            <mat-form-field appearance="outline">
               <mat-label>Nombre</mat-label>
               <input
                 matInput
@@ -32,7 +27,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>Apellido</mat-label>
               <input
                 matInput
@@ -43,7 +38,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>DNI</mat-label>
               <input
                 matInput
@@ -54,7 +49,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>CUIL</mat-label>
               <input
                 matInput
@@ -65,7 +60,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>Fecha de nacimiento</mat-label>
               <input
                 matInput
@@ -77,20 +72,20 @@
             </mat-form-field>
             <br />
             <mat-dialog-actions>
-              <button
-                type="button"
-                mat-raised-button
-                color="primary"
-                class="register__btn"
-                matStepperNext
-              >
+              <button type="button" mat-raised-button color="primary" class="register__btn" matStepperNext >
                 SIGUIENTE
               </button>
             </mat-dialog-actions>
+            <div class="box">
+              <span routerLink="/auth/login" class="option">Iniciar sesión</span>
+              <span (click)="confirmStep()" class="option">Confirmar cuenta</span>
+            </div>
           </mat-step>
+        </form>
 
-          <mat-step [stepControl]="myForm" class="step__container">
-            <mat-form-field appearance="fill">
+        <form [formGroup]="secondRegisterForm" class="form form-register">
+          <mat-step [stepControl]="secondRegisterForm" class="step__container">
+            <mat-form-field appearance="outline">
               <mat-label>E-mail</mat-label>
               <input
                 matInput
@@ -101,7 +96,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>Teléfono</mat-label>
               <input
                 matInput
@@ -112,7 +107,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>Usuario</mat-label>
               <input
                 matInput
@@ -123,7 +118,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>Contraseña</mat-label>
               <input
                 matInput
@@ -137,28 +132,53 @@
               </mat-icon>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>Repetir contraseña</mat-label>
               <input
                 matInput
                 [type]="hide ? 'password' : 'text'"
                 placeholder="Repetir contraseña"
-                formControlName="password"
+                formControlName="repeat_password"
                 required
               />
               <mat-icon matSuffix (click)="hide = !hide"
                 >{{ hide ? "visibility_off" : "visibility" }}
               </mat-icon>
             </mat-form-field>
-
-            <div class="form-field">
-              <button type="submit" mat-raised-button class="register__btn">
+            <mat-dialog-actions>
+              <button type="button" (click)="register()" mat-raised-button color="primary" class="second__step__btn">
                 CREAR CUENTA
               </button>
-            </div>
+              <button type="button" (click)="stepper.previous()" mat-raised-button class="second__step__btn back__btn">
+                VOLVER
+              </button>
+            </mat-dialog-actions>
           </mat-step>
-        </mat-stepper>
-      </form>
+        </form>
+
+        <mat-step [stepControl]="confirmForm" class="step__container">
+          <form [formGroup]="confirmForm" class="form form-register">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre de usuario</mat-label>
+              <input matInput type="text" placeholder="Nombre de usuario" formControlName="username" required/>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Código de confirmación</mat-label>
+              <input matInput type="string" placeholder="Código de confirmación" formControlName="confirmCode" required/>
+            </mat-form-field>
+            <br />
+            <mat-dialog-actions>
+              <button type="button" (click)="confirmRegister()" mat-raised-button class="register__btn">
+                CONFIRMAR CUENTA
+              </button>
+            </mat-dialog-actions>
+            <div class="box">
+              <span *ngIf="!isLinear" (click)="backRegister()" class="option">Volver a registro</span>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper>
     </div>
   </div>
 </div>

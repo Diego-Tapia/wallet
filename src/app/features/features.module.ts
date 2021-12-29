@@ -18,6 +18,14 @@ import { GetActivosEffects } from './lista-activos/store/activos.effects';
 import { GetActivosByIdEffects } from './lista-activos/store/activos-by-id.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { GetTransactionsEffects } from './tabla-movimientos/store/get-transacciones.effects';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { ModalTransferenciaComponent } from './modal-transferencia/modal-transferencia.component';
+import { TransferenciaEffects } from './modal-transferencia/store/transferencia/transferencia.effects';
+import { VerifyUserEffects } from './modal-transferencia/store/verify-user/verify-user.effects';
 
 @NgModule({
   declarations: [
@@ -25,6 +33,7 @@ import { GetTransactionsEffects } from './tabla-movimientos/store/get-transaccio
     TitleComponent,
     SubtitleComponent,
     TablaMovimientosComponent,
+    ModalTransferenciaComponent,
   ],
   imports: [
     CommonModule,
@@ -35,8 +44,13 @@ import { GetTransactionsEffects } from './tabla-movimientos/store/get-transaccio
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSidenavModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    SharedModule,
     StoreModule.forFeature('featuresReducersMap', featuresReducersMap),
-    EffectsModule.forFeature([GetActivosEffects, GetActivosByIdEffects, GetTransactionsEffects]),
+    EffectsModule.forFeature([GetActivosEffects, GetActivosByIdEffects, GetTransactionsEffects, TransferenciaEffects, VerifyUserEffects]),
   ],
   exports: [
     TitleComponent,

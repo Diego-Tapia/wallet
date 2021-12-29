@@ -10,18 +10,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TransferenciasModalComponent } from './components/modal/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TransferenciasReducerMap } from './transferencia-reducer.map';
-import { TransferenciaEffects } from './store/transferencia.effects';
 import { GetActivosEffects } from 'src/app/features/lista-activos/store/activos.effects';
-import { VerifyUserEffects } from './store/verify-user/verify-user.effects';
+import { TransferenciaEffects } from 'src/app/features/modal-transferencia/store/transferencia/transferencia.effects';
+import { VerifyUserEffects } from 'src/app/features/modal-transferencia/store/verify-user/verify-user.effects';
 
 @NgModule({
-  declarations: [TransferenciaComponent, TransferenciasModalComponent],
+  declarations: [TransferenciaComponent],
   imports: [
     CommonModule,
     FormsModule,

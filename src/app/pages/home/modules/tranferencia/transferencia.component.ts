@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { IActivo } from 'src/app/shared/models/activo.interface';
+import { ModalTransferenciaComponent } from 'src/app/features/modal-transferencia/modal-transferencia.component';
 import { ITransaction } from 'src/app/shared/models/transaction.interface';
-import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { TransferenciasModalComponent } from './components/modal/modal.component';
+import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
+
 @Component({
   selector: 'app-transferencia',
   templateUrl: './transferencia.component.html',
@@ -37,18 +37,14 @@ export class TransferenciaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openDialog(data:IActivo | null) {
-    const dialogRef = this.dialog.open(TransferenciasModalComponent, {
+  openDialog(data:IUserProfile | null) {
+    this.dialog.open(ModalTransferenciaComponent, {
       data,
       closeOnNavigation: true,
       height: '100%',
       width: '500px',
       panelClass: '',
       position: { right: '0%' },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      // console.log(`Dialog result: ${result}`);
     });
   }
 }

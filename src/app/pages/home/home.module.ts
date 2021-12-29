@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [HomeComponent, SidenavBarComponent, HeaderComponent],
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatListModule,
     MatDividerModule,
     MatButtonModule,
+    MatTooltipModule
   ],
   providers: [],
 })

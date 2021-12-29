@@ -4,24 +4,25 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Notification, NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
-import { setGetActivos, setGetActivosClear } from 'src/app/features/lista-activos/store/activos.actions';
+
 import { IActivo } from 'src/app/shared/models/activo.interface';
+import { IApiResponse } from 'src/app/shared/models/api.interface';
 import { IState } from 'src/app/shared/models/state.interface';
 import { ITransferenciaRes } from 'src/app/shared/models/transferencia.interface';
 import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
 import { IBalances, IWallet } from 'src/app/shared/models/wallet.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { setTransferencia, setTransferenciaClear } from '../../store/transferencias.action';
-import { setVerifyUser, setVerifyUserClear } from '../../store/verify-user/verify-user.action';
-import { ITransferenciasMap } from '../../transferencia-reducer.map';
+import { IFeaturesReducersMap } from '../features.reducers.map';
+import { setGetActivos, setGetActivosClear } from '../lista-activos/store/activos.actions';
+import { setTransferencia, setTransferenciaClear } from './store/transferencia/transferencias.action';
+import { setVerifyUser, setVerifyUserClear } from './store/verify-user/verify-user.action';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.sass'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-modal-transferencia',
+  templateUrl: './modal-transferencia.component.html',
+  styleUrls: ['./modal-transferencia.component.sass'],
 })
-export class TransferenciasModalComponent implements OnInit, OnDestroy {
+export class ModalTransferenciaComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   user: IUserProfile | undefined;
   wallet!: IWallet;
@@ -46,22 +47,22 @@ export class TransferenciasModalComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private noti: NotificationsService,
-    private store: Store<{ TransferenciasReducerMap: ITransferenciasMap }>
+    private store: Store<{ featuresReducersMap: IFeaturesReducersMap }>
     ) {
       this.subscriptions.push(
-        this.store.select('TransferenciasReducerMap', 'getActivos').subscribe((res: IState<any>) => {
+        this.store.select('featuresReducersMap', 'getActivos').subscribe((res: IState<IApiResponse<IWallet>>) => {
           this.handleGetActivos(res)
         }),
-        this.store.select('TransferenciasReducerMap', 'verifyUser').subscribe((res: IState<any>) => {
+        this.store.select('featuresReducersMap', 'verifyUser').subscribe((res: IState<IUserProfile>) => {
           this.handleVerifyUser(res)
         }),
-        this.store.select('TransferenciasReducerMap', 'setTransferencia').subscribe((res: IState<any>) => {
+        this.store.select('featuresReducersMap', 'setTransferencia').subscribe((res: IState<IApiResponse<ITransferenciaRes>>) => {
           this.handleSetTransferencia(res)
         }),
       );
     }
 
-  ngOnInit(): void {  
+  ngOnInit(): void {       
     this.user = this.authService.getUserData()?.userProfile;
     this.store.dispatch(setGetActivos());
     this.subscriptions.push(
@@ -80,15 +81,23 @@ export class TransferenciasModalComponent implements OnInit, OnDestroy {
     this.store.dispatch(setVerifyUserClear());
   }
 
-  handleGetActivos(res: IState<any>): void {    
+  handleGetActivos(res: IState<IApiResponse<IWallet>>): void {    
     if(res.error) this.noti.error('Error', res.error.error.message)
     if(res.success && res.response) {
-      this.wallet = res.response.data
-      this.balances = this.wallet.balances
+      this.balances = res.response.data.balances
+      if(this.data) {
+        const activo = this.balances.find((balance) => balance.tokenId._id == this.data?._id)
+        if(activo) {
+          // this.activoSelected = activo.tokenId.symbol;
+          this.transferenciaForm.patchValue({
+            token: activo.tokenId._id
+          })
+        } 
+      }
     } 
   }
 
-  handleVerifyUser(res: IState<any>): void {
+  handleVerifyUser(res: IState<IUserProfile>): void {
     if (res.error) {
 			if(res.error.status === 404) this.noti.error('Error', 'No se encontró ningun usuario con esa identificación');
 			else this.noti.error('Error', res.error.error.message);
@@ -100,8 +109,11 @@ export class TransferenciasModalComponent implements OnInit, OnDestroy {
 		} 
   }
 
-  handleSetTransferencia(res: IState<any>): void {
-    if (res.error)  this.noti.error('Error', 'No se encontró ningun usuario con esa identificación');
+  handleSetTransferencia(res: IState<IApiResponse<ITransferenciaRes>>): void {
+    if (res.error) { 
+      this.noti.error('Error', res.error.error.message);
+      this.step = 3
+    }
 		if (res.success && res.response) {
 			this.transactionRes = res.response.data
       this.step = 2;
@@ -116,8 +128,9 @@ export class TransferenciasModalComponent implements OnInit, OnDestroy {
     else this.store.dispatch(setVerifyUser({userIdentifier: this.transferenciaForm.value.userIdentifier}));
   }
 
-  onSubmit(): void {
-    if(this.transferenciaForm.valid) this.store.dispatch(setTransferencia({form: this.transferenciaForm.value}));    
+  onSubmit(): void | Notification {
+    if(!this.transferenciaForm.valid) return this.noti.error('Error','Faltan completar campos para la transferencia')
+    return this.store.dispatch(setTransferencia({form: this.transferenciaForm.value}));    
   }
   
   verComprobante(): void { this.step = 4;}

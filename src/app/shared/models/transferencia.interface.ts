@@ -6,7 +6,7 @@ export interface ITransferenciaReq {
 }
 
 export interface ITransferenciaRes {
-  transactionType: string;
+  transactionType: ITransactionTypes;
   token: string;
   walletFrom: string;
   walletTo: string;
@@ -15,4 +15,11 @@ export interface ITransferenciaRes {
   notes: string;
   hash: string;
   id: string;
+}
+
+
+
+export interface ITransactionTypes {
+  name: string,
+  _id: string
 }

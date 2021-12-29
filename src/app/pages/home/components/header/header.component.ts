@@ -10,13 +10,14 @@ import { TotalService } from 'src/app/shared/services/total/total.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public hide: boolean = true;
+  public total!: number;
   public user!: IUserProfile | undefined;
   constructor(
     private authService: AuthService,
     private totalService: TotalService
   ) {}
 
-  public total!: number;
 
   ngOnInit(): void {
     this.user = this.authService.getUserData()?.userProfile;
