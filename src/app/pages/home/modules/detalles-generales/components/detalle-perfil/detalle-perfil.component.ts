@@ -15,50 +15,13 @@ import { setGetUsuario, setGetUsuarioClear } from './store/get-usuario.actions';
 export class DetallePerfilComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   public user!: IUserProfile | undefined;
-  
-  usuario = {
-    firstName: 'Mariano Alejandro',
-    lastName: 'Bustos Rodriguez',
-    username: '@marianbrod',
-    dni: '36666666',
-    cuil: '27-36666666-6',
-    telefono: '35124865791',
-    email: 'marianbrod@cliente.com.ar',
-  };
 
-  representados = [
-    {
-      nombre: 'Representado 1',
-      cuil: '20-30118548-7',
-    },
-    {
-      nombre: 'Representado 2',
-      cuil: '20-30118548-7',
-    },
-    {
-      nombre: 'Representado 3',
-      cuil: '20-30118548-7',
-    },
-  ];
-
-  constructor(
-    private authService: AuthService,
-    private store: Store<{ detallesGeneralesReducersMap: IDetallesGeneralesReducersMap }>
-  ) {
-    this.subscriptions.push(
-      this.store.select('detallesGeneralesReducersMap', 'getUsuario').subscribe((res: IState<any>) => {
-        // console.log(res);
-      })
-    );
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.user = this.authService.getUserData()?.userProfile
-    this.store.dispatch(setGetUsuario());
+    this.user = this.authService.getUserData()?.user
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((subs) => subs.unsubscribe());
-    this.store.dispatch(setGetUsuarioClear());
   }
 }

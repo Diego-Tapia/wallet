@@ -7,24 +7,24 @@
       style="width: 100%"
     >
       <ng-container matColumnDef="token">
-        <th mat-header-cell *matHeaderCellDef>Activos</th>
+        <th mat-header-cell *matHeaderCellDef style="width: 20%">Activos</th>
         <td mat-cell *matCellDef="let element">
           <strong>{{ element.token.symbol }}</strong>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="transactionType">
-        <th mat-header-cell *matHeaderCellDef>Operación</th>
+        <th mat-header-cell *matHeaderCellDef style="width: 35%">Operación</th>
         <td mat-cell *matCellDef="let element">{{ element.transactionType.name | tipoTransaccion }}</td>
       </ng-container>
 
       <ng-container matColumnDef="createdAt">
-        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <th mat-header-cell *matHeaderCellDef style="width: 30%">Fecha</th>
         <td mat-cell *matCellDef="let element">{{ element.createdAt | date: "dd/MM/YYYY" }}</td>
       </ng-container>
 
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef>Monto</th>
+        <th mat-header-cell *matHeaderCellDef style="width: 15%">Monto</th>
         <td mat-cell *matCellDef="let element">
           <span>
             {{ element.amount | montoTransaccion: {transaction: element, user:user?.userId} }}

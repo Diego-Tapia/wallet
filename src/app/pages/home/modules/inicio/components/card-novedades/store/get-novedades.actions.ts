@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 
 export const setGetNovedades = createAction(
@@ -10,7 +11,7 @@ export const setGetNovedadesSucces = createAction(
 
 export const setGetNovedadesError = createAction(
 	'[Novedades Component] Set Get Novedades Error',
-	props<{ payload: any }>());
+	props<{ payload: HttpErrorResponse }>());
 
 export const setGetNovedadesClear = createAction(
 	'[Novedades Component] Set Get Novedades Clear');

@@ -14,8 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { StoreModule } from '@ngrx/store';
 import { featuresReducersMap } from './features.reducers.map';
-import { GetActivosEffects } from './lista-activos/store/activos.effects';
-import { GetActivosByIdEffects } from './lista-activos/store/activos-by-id.effects';
+import { GetMisActivosEffects } from './lista-activos/store/get-mis-activos.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { GetTransactionsEffects } from './tabla-movimientos/store/get-transacciones.effects';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -50,7 +49,7 @@ import { VerifyUserEffects } from './modal-transferencia/store/verify-user/verif
     ReactiveFormsModule,
     SharedModule,
     StoreModule.forFeature('featuresReducersMap', featuresReducersMap),
-    EffectsModule.forFeature([GetActivosEffects, GetActivosByIdEffects, GetTransactionsEffects, TransferenciaEffects, VerifyUserEffects]),
+    EffectsModule.forFeature([GetMisActivosEffects, GetTransactionsEffects, TransferenciaEffects, VerifyUserEffects]),
   ],
   exports: [
     TitleComponent,

@@ -4,12 +4,13 @@ import { Store } from '@ngrx/store';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { IActivo } from 'src/app/shared/models/activo.interface';
+import { IApiResponse } from 'src/app/shared/models/api.interface';
 import { IState } from 'src/app/shared/models/state.interface';
 import { IWallet } from 'src/app/shared/models/wallet.interface';
 import { TotalService } from 'src/app/shared/services/total/total.service';
 import { IFeaturesReducersMap } from '../features.reducers.map';
 import { ModalTransferenciaComponent } from '../modal-transferencia/modal-transferencia.component';
-import { setGetActivos, setGetActivosClear } from './store/activos.actions';
+import { setGetMisActivos, setGetMisActivosClear } from './store/get-mis-activos.actions';
 
 @Component({
   selector: 'app-lista-activos',
@@ -29,22 +30,22 @@ export class ListaActivosComponent implements OnInit, OnDestroy {
     private store: Store<{ featuresReducersMap: IFeaturesReducersMap }>
   ) {
     this.subscriptions.push(
-      this.store.select('featuresReducersMap', 'getActivos').subscribe((res: IState<any>) => {
+      this.store.select('featuresReducersMap', 'getMisActivos').subscribe((res: IState<IApiResponse<IWallet> | null>) => {
         this.handleGetActivos(res)
       })
     );
   }
 
   ngOnInit(): void {
-    this.store.dispatch(setGetActivos());
+    this.store.dispatch(setGetMisActivos());
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subs) => subs.unsubscribe());
-    this.store.dispatch(setGetActivosClear());
+    this.store.dispatch(setGetMisActivosClear());
   }
 
-  handleGetActivos(res: IState<any>): void {    
+  handleGetActivos(res: IState<IApiResponse<IWallet> | null>): void {    
     if(res.error) this.noti.error('Error', res.error.error.message)
     if(res.success && res.response) {
       this.wallet = res.response.data

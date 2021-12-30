@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { ILoginResponse } from 'src/app/shared/models/login.interface';
 
@@ -13,7 +14,7 @@ export const setLoginSucces = createAction(
 
 export const setLoginError = createAction(
   '[Login Component] Set Login Error',
-  props<{ payload: any }>()
+  props<{ payload: HttpErrorResponse }>()
 );
 
 export const setLoginClear = createAction('[Login Component] Set Login Clear');

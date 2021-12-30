@@ -18,8 +18,8 @@
         </td>
         <td>
           <tr> {{ user.userId.username }} </tr>
-          <tr> {{ user.dni }} </tr>
-          <tr> {{ user.cuil }} </tr>
+          <tr> {{ user.dni | number }} </tr>
+          <tr> {{ user.cuil | cuil }} </tr>
           <tr> {{ user.phoneNumber }} </tr>
           <tr> {{ user.email }} </tr>
         </td>
@@ -36,7 +36,7 @@
             <div class="representados__img"></div>
             <div class="representados__text">
               <p>{{ representado.nombre }}</p>
-              <p>CUIT {{ representado.cuil }}</p>
+              <p>CUIT {{ representado.cuil | cuil }}</p>
             </div>
           </div>
           <span class="show__all__btn">Ver más</span>

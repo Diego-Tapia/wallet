@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.authService.setUser(
         res.response.token,
         res.response.refreshToken,
-        res.response.userProfile
+        res.response.user
       );
     } else if (res.error) {
       this.noti.error('Error login', res.error.error?.message || '');

@@ -14,24 +14,24 @@ export class CardNovedadesComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = []
   novedades = [
     {
-      title: 'Title1',
-      text: 'Lorem ipsum dolor sit amet, consectetur ',
+      title: 'Horarios de atención',
+      text: 'Lunes a Viernes de 7:00 a 17:00 hs.',
+      imgSrc: '../../../assets/images/caja-resistencia-novedades00.png'
     },
     {
-      title: 'Title2',
-      text: 'Lorem ipsum dolor sit amet, consectetur ',
+      title: 'Comercios adheridos',
+      text: 'Consultá donde utilizar tus Benetickets Ciudad.',
+      imgSrc: '../../../assets/images/caja-resistencia-novedades01.png'
     },
     {
-      title: 'Title3',
-      text: 'Lorem ipsum dolor sit amet, consectetur ',
+      title: 'Descargá la app',
+      text: 'Aboná tributos municipales en tu celular.',
+      imgSrc: '../../../assets/images/caja-resistencia-novedades02.png'
     },
     {
-      title: 'Title3',
-      text: 'Lorem ipsum dolor sit amet, consectetur ',
-    },
-    {
-      title: 'Title3',
-      text: 'Lorem ipsum dolor sit amet, consectetur ',
+      title: 'Cuotas sin interés',
+      text: 'Hasta 6 cuotas sin interés con TUYA.',
+      imgSrc: '../../../assets/images/caja-resistencia-novedades03.png'
     },
   ];
 

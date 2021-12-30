@@ -5,11 +5,13 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { TipoTransaccionPipe } from './pipes/tipo-transaccion.pipe';
 import { MontoTransaccionPipe } from './pipes/monto-transaccion.pipe';
+import { CuilPipe } from './pipes/cuil.pipe';
 
 @NgModule({
   declarations: [
     TipoTransaccionPipe,
-    MontoTransaccionPipe
+    MontoTransaccionPipe,
+    CuilPipe
   ],
   imports: [CommonModule],
   providers: [
@@ -18,7 +20,8 @@ import { MontoTransaccionPipe } from './pipes/monto-transaccion.pipe';
   ],
   exports: [
     TipoTransaccionPipe,
-    MontoTransaccionPipe
+    MontoTransaccionPipe,
+    CuilPipe
   ]
 })
 export class SharedModule {}
