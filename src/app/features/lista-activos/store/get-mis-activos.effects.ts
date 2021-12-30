@@ -3,20 +3,19 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ActivosService } from 'src/app/shared/services/activos/activos.service';
-import { setGetActivosById, setGetActivosByIdError, setGetActivosByIdSucces } from './activos-by-id.actions';
-
+import { setGetMisActivos, setGetMisActivosError, setGetMisActivosSucces } from './get-mis-activos.actions';
 
 @Injectable()
-export class GetActivosByIdEffects {
+export class GetMisActivosEffects {
 	constructor(private actions$: Actions, private activosService: ActivosService) { }
 
-	setGetActivosById$ = createEffect(() =>
+	setGetMisActivos$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType(setGetActivosById),
+			ofType(setGetMisActivos),
 			mergeMap((props) =>
-				this.activosService.getActivosById(props.id).pipe(
-					map((activos) => setGetActivosByIdSucces({ payload: activos })),
-					catchError((err) => of(setGetActivosByIdError({ payload: err })))
+				this.activosService.getMisActivos().pipe(
+					map((wallet) => setGetMisActivosSucces({ payload: wallet })),
+					catchError((err) => of(setGetMisActivosError({ payload: err })))
 				)
 			)
 		)

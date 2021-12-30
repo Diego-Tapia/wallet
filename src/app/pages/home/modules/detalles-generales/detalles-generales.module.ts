@@ -12,6 +12,7 @@ import { detallesGeneralesReducersMap } from './det-generales.reducers.map';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { GetUsuarioEffects } from './components/detalle-perfil/store/get-usuario.effects';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { GetUsuarioEffects } from './components/detalle-perfil/store/get-usuario
     MatIconModule,
     DetallesGeneralesRoutingModule,
     FeaturesModule,
+    SharedModule,
     StoreModule.forFeature('detallesGeneralesReducersMap', detallesGeneralesReducersMap),
     EffectsModule.forFeature([GetUsuarioEffects])
   ],

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { IConfirmRegister } from 'src/app/shared/models/confirm-register.interface';
 
@@ -12,7 +13,7 @@ export const setConfirmRegisterSucces = createAction(
 
 export const setConfirmRegisterError = createAction(
   '[Confirm Register Component] Set Confirm Register Error',
-  props<{ payload: any }>()
+  props<{ payload: HttpErrorResponse }>()
 );
 
 export const setConfirmRegisterClear = createAction('[Confirm Register Component] Set Confirm Register Clear');

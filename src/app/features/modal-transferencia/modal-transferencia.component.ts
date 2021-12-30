@@ -4,7 +4,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Notification, NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
-
 import { IActivo } from 'src/app/shared/models/activo.interface';
 import { IApiResponse } from 'src/app/shared/models/api.interface';
 import { IState } from 'src/app/shared/models/state.interface';
@@ -13,7 +12,7 @@ import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
 import { IBalances, IWallet } from 'src/app/shared/models/wallet.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { IFeaturesReducersMap } from '../features.reducers.map';
-import { setGetActivos, setGetActivosClear } from '../lista-activos/store/activos.actions';
+import { setGetMisActivos, setGetMisActivosClear } from '../lista-activos/store/get-mis-activos.actions';
 import { setTransferencia, setTransferenciaClear } from './store/transferencia/transferencias.action';
 import { setVerifyUser, setVerifyUserClear } from './store/verify-user/verify-user.action';
 
@@ -39,7 +38,7 @@ export class ModalTransferenciaComponent implements OnInit, OnDestroy {
     token: ['', [Validators.required]],
     amount: ['', [Validators.required]],
     userIdentifier: ['', [Validators.required]],
-    notes: [' ', [Validators.required]]
+    notes: [' ']
   });
 
   constructor(
@@ -50,57 +49,50 @@ export class ModalTransferenciaComponent implements OnInit, OnDestroy {
     private store: Store<{ featuresReducersMap: IFeaturesReducersMap }>
     ) {
       this.subscriptions.push(
-        this.store.select('featuresReducersMap', 'getActivos').subscribe((res: IState<IApiResponse<IWallet>>) => {
+        this.store.select('featuresReducersMap', 'getMisActivos').subscribe((res: IState<IApiResponse<IWallet> | null>) => {
           this.handleGetActivos(res)
         }),
-        this.store.select('featuresReducersMap', 'verifyUser').subscribe((res: IState<IUserProfile>) => {
+        this.store.select('featuresReducersMap', 'verifyUser').subscribe((res: IState<IUserProfile | null>) => {
           this.handleVerifyUser(res)
         }),
-        this.store.select('featuresReducersMap', 'setTransferencia').subscribe((res: IState<IApiResponse<ITransferenciaRes>>) => {
+        this.store.select('featuresReducersMap', 'setTransferencia').subscribe((res: IState<IApiResponse<ITransferenciaRes> | null>) => {
           this.handleSetTransferencia(res)
         }),
       );
     }
 
   ngOnInit(): void {       
-    this.user = this.authService.getUserData()?.userProfile;
-    this.store.dispatch(setGetActivos());
+    this.user = this.authService.getUserData()?.user;
+    this.store.dispatch(setGetMisActivos());
     this.subscriptions.push(
       this.transferenciaForm.controls['token'].valueChanges.subscribe((res) => {
-          const activo = this.balances.find((balance) => balance.tokenId._id == res);
-          if (activo) this.activoSelected = activo.tokenId.symbol;
-        }
-      )
+        const activo = this.balances.find((balance) => balance.tokenId._id == res);
+        if (activo) this.activoSelected = activo.tokenId.symbol;
+      })
     );
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
     this.store.dispatch(setTransferenciaClear());
-    this.store.dispatch(setGetActivosClear());
+    this.store.dispatch(setGetMisActivosClear());
     this.store.dispatch(setVerifyUserClear());
   }
 
-  handleGetActivos(res: IState<IApiResponse<IWallet>>): void {    
+  handleGetActivos(res: IState<IApiResponse<IWallet> | null>): void {    
     if(res.error) this.noti.error('Error', res.error.error.message)
     if(res.success && res.response) {
       this.balances = res.response.data.balances
       if(this.data) {
         const activo = this.balances.find((balance) => balance.tokenId._id == this.data?._id)
-        if(activo) {
-          // this.activoSelected = activo.tokenId.symbol;
-          this.transferenciaForm.patchValue({
-            token: activo.tokenId._id
-          })
-        } 
+        if(activo) this.transferenciaForm.patchValue({ token: activo.tokenId._id })
       }
     } 
   }
 
-  handleVerifyUser(res: IState<IUserProfile>): void {
+  handleVerifyUser(res: IState<IUserProfile | null>): void {
     if (res.error) {
-			if(res.error.status === 404) this.noti.error('Error', 'No se encontró ningun usuario con esa identificación');
-			else this.noti.error('Error', res.error.error.message);
+		  this.noti.error('Error', res.error.error.message);
       this.verified = false
 		} 
 		if (res.success && res.response) {
@@ -109,7 +101,7 @@ export class ModalTransferenciaComponent implements OnInit, OnDestroy {
 		} 
   }
 
-  handleSetTransferencia(res: IState<IApiResponse<ITransferenciaRes>>): void {
+  handleSetTransferencia(res: IState<IApiResponse<ITransferenciaRes> | null>): void {
     if (res.error) { 
       this.noti.error('Error', res.error.error.message);
       this.step = 3

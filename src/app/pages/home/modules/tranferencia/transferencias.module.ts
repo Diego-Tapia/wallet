@@ -15,7 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TransferenciasReducerMap } from './transferencia-reducer.map';
-import { GetActivosEffects } from 'src/app/features/lista-activos/store/activos.effects';
+import { GetMisActivosEffects } from 'src/app/features/lista-activos/store/get-mis-activos.effects';
 import { TransferenciaEffects } from 'src/app/features/modal-transferencia/store/transferencia/transferencia.effects';
 import { VerifyUserEffects } from 'src/app/features/modal-transferencia/store/verify-user/verify-user.effects';
 
@@ -35,7 +35,7 @@ import { VerifyUserEffects } from 'src/app/features/modal-transferencia/store/ve
     MatDialogModule,
     MatSelectModule,
     StoreModule.forFeature('TransferenciasReducerMap', TransferenciasReducerMap),
-    EffectsModule.forFeature([TransferenciaEffects, GetActivosEffects, VerifyUserEffects]),
+    EffectsModule.forFeature([TransferenciaEffects, GetMisActivosEffects, VerifyUserEffects]),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

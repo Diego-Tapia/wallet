@@ -1,9 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { IActivo } from 'src/app/shared/models/activo.interface';
+import { IApiResponse } from 'src/app/shared/models/api.interface';
 import { IState } from 'src/app/shared/models/state.interface';
+import { ITransferenciaRes } from 'src/app/shared/models/transferencia.interface';
 import { setGetTransactions, setGetTransactionsClear, setGetTransactionsError, setGetTransactionsSucces } from './get-transacciones.actions';
 
-export const initialState: IState<IActivo[] | null> = {
+export const initialState: IState<ITransferenciaRes[] | null> = {
 	response: null,
 	pending: false,
 	success: false,
@@ -42,6 +44,6 @@ const mySetGetTransactionsReducer = createReducer(
 	})
 );
 
-export function setGetTransactionsReducer(state: IState<IActivo[]> | undefined, action: Action) {
+export function setGetTransactionsReducer(state: IState<ITransferenciaRes[] | null> | undefined, action: Action) {
 	return mySetGetTransactionsReducer(state, action);
 }

@@ -3,12 +3,14 @@
   <div class="novedades__container">
     <div *ngFor="let novedad of novedades; let lastItem = last">
       <div class="novedad__item" style="display: flex">
-        <div class="novedad__img"></div>
+        <img [src]="novedad.imgSrc" [alt]="" class="novedad__img" style="display: flex">
         <div>
-          <div class="novedad__title">
-            <span>{{ novedad.title }}</span>
+          <div class="text__group">
+            <div class="novedad__title">
+              <span>{{ novedad.title }}</span>
+            </div>
+            <div class="novedad__text">{{ novedad.text }}</div>
           </div>
-          <div class="novedad__text">{{ novedad.text }}</div>
           <mat-divider *ngIf="!lastItem"></mat-divider>
         </div>
       </div>

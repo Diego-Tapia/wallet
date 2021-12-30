@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 
 export const setGetTransactions = createAction(
@@ -10,7 +11,7 @@ export const setGetTransactionsSucces = createAction(
 
 export const setGetTransactionsError = createAction(
 	'[Activos Component] Set Get Transactions Error', 
-	props<{ payload: any }>());
+	props<{ payload: HttpErrorResponse }>());
 
 export const setGetTransactionsClear = createAction(
 	'[Activos Component] Set Get Transactions Clear');

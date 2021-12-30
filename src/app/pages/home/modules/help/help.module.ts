@@ -5,6 +5,7 @@ import { HelpRoutingModule } from './help-routing.module';
 import { HelpComponent } from './help.component';
 import { FeaturesModule } from '../../../../features/features.module';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [HelpComponent],
@@ -13,6 +14,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HelpRoutingModule,
     FeaturesModule,
     MatExpansionModule,
+    MatDividerModule,
     FeaturesModule,
   ],
 })

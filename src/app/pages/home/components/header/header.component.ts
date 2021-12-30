@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.user = this.authService.getUserData()?.userProfile;
+    this.user = this.authService.getUserData()?.user;
     this.totalService.totalAmount.subscribe(res => {
       this.total = res
     })

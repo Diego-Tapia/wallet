@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IActivo } from '../../models/activo.interface';
+import { IApiResponse } from '../../models/api.interface';
+import { IWallet } from '../../models/wallet.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +14,7 @@ export class ActivosService {
 
   constructor(private http: HttpClient) { }
 
-  getActivos(): Observable<IActivo[]> {
-    return this.http.get<IActivo[]>(`${this.url}/wallet`)
-  }
-
-  getActivosById(id: string): Observable<IActivo> {
-    return this.http.get<IActivo>(`${this.url}/token/${id}`)
+  getMisActivos(): Observable<IApiResponse<IWallet>> {
+    return this.http.get<IApiResponse<IWallet>>(`${this.url}/wallet`)
   }
 }

@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { IApiResponse } from 'src/app/shared/models/api.interface';
 import { IState } from 'src/app/shared/models/state.interface';
 import { ITransferenciaRes } from 'src/app/shared/models/transferencia.interface';
 import { IUserProfile } from 'src/app/shared/models/user-profile.interface';
@@ -28,20 +29,20 @@ export class TablaMovimientosComponent implements OnInit, OnDestroy, AfterViewIn
     private store: Store<{ featuresReducersMap: IFeaturesReducersMap }>
   ) {
     this.subscriptions.push(
-      this.store.select('featuresReducersMap', 'getTransactions').subscribe((res: IState<ITransferenciaRes[]>) => {
+      this.store.select('featuresReducersMap', 'getTransactions').subscribe((res: IState<ITransferenciaRes[] |  null>) => {
         this.handleGetTransactions(res)
       })
     );
   }
 
-  handleGetTransactions(res: IState<ITransferenciaRes[]>): void {
+  handleGetTransactions(res: IState<ITransferenciaRes[] |  null>): void {
     if(res.success && res.response) {
       this.dataSource.data = res.response
     }
   }
 
   ngOnInit(): void {
-    this.user = this.auth.getUserData()?.userProfile
+    this.user = this.auth.getUserData()?.user
     this.store.dispatch(setGetTransactions())
   }
 

@@ -34,7 +34,7 @@
           : "Nombre destinatario"
       }}
     </p>
-    <p class="user__info">{{ userTo ? userTo.cuil : "ID/CUILD" }}</p>
+    <p class="user__info">{{ userTo ? (userTo.cuil | cuil) : "ID/CUILD" }}</p>
   </div>
   <mat-dialog-content class="mat-typography">
     <form [formGroup]="transferenciaForm">
@@ -62,7 +62,7 @@
       <div class="form__item">
         <p class="item__title">Origen</p>
         <div class="item__info" *ngIf="user">
-          <p class="item__subtitle margin__b">{{ user.cuil }}</p>
+          <p class="item__subtitle margin__b">{{ user.cuil | cuil }}</p>
           <p class="item__subtitle">{{ user.shortName + ' ' + user.lastName }}</p>
         </div>
       </div>
@@ -75,7 +75,7 @@
           *ngIf="!verified"
         />
         <div class="item__info" *ngIf="userTo">
-          <p class="item__subtitle margin__b">{{ userTo.cuil }}</p>
+          <p class="item__subtitle margin__b">{{ userTo.cuil | cuil }}</p>
           <p class="item__subtitle">
             {{ userTo.shortName + " " + userTo.lastName }}
           </p>
@@ -163,14 +163,14 @@
     <div class="form__item">
       <p class="item__title">Origen</p>
       <div class="item__info" *ngIf="user">
-        <p class="item__subtitle margin__b">{{ user.cuil }}</p>
+        <p class="item__subtitle margin__b">{{ user.cuil | cuil }}</p>
         <p class="item__subtitle">{{ user.shortName + " " + user.lastName }}</p>
       </div>
     </div>
     <div class="form__item">
       <p class="item__title">Destino</p>
       <div class="item__info">
-        <p class="item__subtitle margin__b">{{ userTo.cuil }}</p>
+        <p class="item__subtitle margin__b">{{ userTo.cuil | cuil }}</p>
         <p class="item__subtitle">
           {{ userTo.shortName + " " + userTo.lastName }}
         </p>

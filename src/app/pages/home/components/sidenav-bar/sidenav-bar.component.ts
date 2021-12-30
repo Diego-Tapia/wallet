@@ -19,7 +19,7 @@ export class SidenavBarComponent implements OnInit {
     { name: 'Mi Billetera', route: 'detalles/activos', icon: 'account_balance_wallet', available:true},
     { name: 'Pagos', route: '1', icon: 'attach_money', available:false },
     { name: 'Transferencias', route: 'transferencia', icon: 'swap_vert', available:true },
-    { name: 'Ayuda', route: 'help', icon: 'info_outline', available:false },
+    { name: 'Ayuda', route: 'help', icon: 'info_outline', available:true },
   ];
 
   usuario = { name: 'Username', id: '123456789' };
@@ -28,7 +28,7 @@ export class SidenavBarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.user = this.authService.getUserData()?.userProfile
+    this.user = this.authService.getUserData()?.user
   }
 
   onSinenavToggle() {

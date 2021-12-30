@@ -9,60 +9,46 @@
           (closed)="panelOpenState = false"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title> Self aware panel </mat-panel-title>
-            <mat-panel-description>
-              Currently I am {{ panelOpenState ? "open" : "closed" }}
-            </mat-panel-description>
+            <mat-panel-title> ¿Qué es un BeneTicket? </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>Se trata de un servicio de canje que colabora a la sinergia positiva entre locales comerciales y posibilita al trabajador municipal el acceso a productos de primera necesidad y bienes durables.</p>
         </mat-expansion-panel>
+        <mat-divider></mat-divider>
         <mat-expansion-panel
           (opened)="panelOpenState = true"
           (closed)="panelOpenState = false"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title> Self aware panel </mat-panel-title>
-            <mat-panel-description>
-              Currently I am {{ panelOpenState ? "open" : "closed" }}
-            </mat-panel-description>
+            <mat-panel-title> ¿Cómo obtengo Benetickets? </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>Accedé al servicio en las oficinas de la Dirección de Prestamos de la Caja Municipal en 3 pasos:</p>
+          <p>1. Solicitá el monto a convertir en Benetickets.</p>
+          <p>2. Aceptá el descuento sobre tus haberes.</p>
+          <p>3. ¡Listo! Acreditaremos tus Benetickets en las próximas horas.</p>
         </mat-expansion-panel>
+        <mat-divider></mat-divider>
         <mat-expansion-panel
           (opened)="panelOpenState = true"
           (closed)="panelOpenState = false"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title> Self aware panel </mat-panel-title>
-            <mat-panel-description>
-              Currently I am {{ panelOpenState ? "open" : "closed" }}
-            </mat-panel-description>
+            <mat-panel-title> ¿Dónde cambiar mis Benetickets? </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>Canjeá tus Benetickets en una y hasta 12 cuotas, según el local, en rubros como supermercado, farmacia, indumentaria, librería, venta de motos, y vinculados a la construcción, marroquinería y peluquería, entre otros. Podés consultar la lista de locales adheridos haciendo <span class="span__link">click acá.</span></p>
         </mat-expansion-panel>
+        <mat-divider></mat-divider>
         <mat-expansion-panel
           (opened)="panelOpenState = true"
           (closed)="panelOpenState = false"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title> Self aware panel </mat-panel-title>
-            <mat-panel-description>
-              Currently I am {{ panelOpenState ? "open" : "closed" }}
-            </mat-panel-description>
+            <mat-panel-title> ¿Cómo hago una transferencia? </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
-        </mat-expansion-panel>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title> Self aware panel </mat-panel-title>
-            <mat-panel-description>
-              Currently I am {{ panelOpenState ? "open" : "closed" }}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>Podés transferir Benetickets a la billetera que elijas, en el momento que quieras.</p>
+          <p>En <span class="span__highlight" routerLink="/home/transferencia">Transferencias</span> elegí la opción "Nueva transferencia" y seguí estos pasos:</p>
+          <p>1. Ingresá el ID y seleccioná la cuenta destino.</p>
+          <p>2. Elegí el monto que quieras transferir.</p>
+          <p>3. ¡Listo! Los datos de la cuenta destino se guardarán en tus destinatarios frecuentes para que puedas buscarla más rápido la próxima vez.</p>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
